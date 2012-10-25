@@ -1,0 +1,272 @@
+
+
+body
+{
+         margin: 0;
+         padding: 0;
+         overflow: hidden;
+         background-image: -webkit-linear-gradient(bottom,white 0%, mediumslateblue 100%);
+	     background-image: -moz-linear-gradient(bottom, white 0%, mediumslateblue 100%);
+	     background-image: -o-linear-gradient(bottom, white 0%, mediumslateblue 100%);
+}
+
+#wrapper
+{
+         width: 1024px;
+         margin: auto;
+		 
+}
+#header
+{
+          width: 100%;
+          height: 30px;
+          background-image: -webkit-linear-gradient(white 0%, #CCD3FA 100%);
+	     background-image: -moz-linear-gradient(white 0%, #CCD3FA 100%);
+	     background-image: -o-linear-gradient(white 0%, #CCD3FA 100%);
+	     border-bottom: 1px solid silver;
+          width:auto;
+}
+#lauftext
+{
+		float:left;
+		margin-left:50px;
+		width:150px;
+		color:blue;
+}
+#login
+{
+         background-color: #C0C6EB;
+         float: right;
+         padding: 5px;
+         margin-right:50px;
+}
+
+#page
+{
+         height: 1024px;
+         width:  960px;
+         background-color: skyblue;
+         box-shadow: 10px 10px 15px black;
+		 border-radius:10px;
+ 
+}
+#container_kategorie
+{
+        height: 10%;
+        width:100%;
+        background-color:white;
+		border-radius:10px 10px 0 0; /* alle neuen Browser, W3C Standard */
+}
+#kat1
+{
+       
+         height: auto;
+         width: 250px;
+         background-color:white;
+         float: left;
+         margin-left:50px;
+         margin-top: 10px;
+         border-radius: 18px;
+         background-image: -webkit-linear-gradient(white 0%, #9FBFD2 100%); 
+	     background-image: -moz-linear-gradient(white 0%, #9FBFD2 100%); 
+	     background-image: -o-linear-gradient(white 0%, #9FBFD2 100%); 
+	     border: 1px solid silver;
+}
+#kat2
+{
+        height: auto;
+        width: 250px;
+        background-color:white;
+        float: left;
+        margin-left:50px;
+        margin-top: 10px;
+        border-radius: 18px;
+        background-image: -webkit-linear-gradient(white 0%, #9FBFD2 100%);
+	     background-image: -moz-linear-gradient(white 0%, #9FBFD2 100%);
+	     background-image: -o-linear-gradient(white 0%, #9FBFD2 100%);
+	     border: 1px solid silver;
+
+}
+#kat3
+{
+
+        height: auto;
+        width: 250px;
+        background-color:white;
+        float: left;
+        margin-left:50px;
+        margin-top: 10px;
+        border-radius: 18px;
+        background-image: -webkit-linear-gradient(white 0%, #9FBFD2 100%);
+	     background-image: -moz-linear-gradient(white 0%, #9FBFD2 100%);
+	     background-image: -o-linear-gradient(white 0%, #9FBFD2 100%);
+	     border: 1px solid silver;
+}
+
+.kat
+{
+ font-size: 20pt;
+ text-align: center;
+ padding: 20px;
+ margin: 0;
+}
+#container_frage
+{
+    height:25%;
+    width:100%;
+    background-color:white;
+    border-top: 1px solid silver;
+}
+#frage
+{
+  height: auto;
+  width:  500px;
+  margin-left:auto; margin-right:auto;
+  margin-top: 70px;
+  text-align: center;
+  font-size: 30pt;
+  padding: 5px;
+  -webkit-transition: all 1s ease-in-out; 
+  -moz-transition: all 1s ease-in-out; 
+  -o-transition: all 1s ease-in-out; 
+  -ms-transition: all 1s ease-in-out; 
+  transition: all 1s ease-in-out;
+  border: 1px solid silver;
+  border-radius:10px;
+
+}
+#frage:hover
+{
+    background: transparent;
+    /*-webkit-transform: rotate(360deg) scale(2); 
+    -moz-transform: rotate(360deg) scale(2); 
+    -o-transform: rotate(360deg) scale(2); 
+    -ms-transform: rotate(360deg) scale(2); 
+    transform: rotate(360deg) scale(2);*/
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -o-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+}
+
+
+#container_antworten
+{
+    height:17%;
+    width:100%;
+    background-color:white;
+    border-top: 1px solid white;
+ 
+}
+#antwort1
+{
+    height: 20px;
+    width:  250px;
+    margin:0 auto;
+    margin-top: 20px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid black;
+}
+#antwort1:hover
+{
+    background-color: #CCD3FA;
+}
+#antwort2
+{
+    height: 20px;
+    width:  250px;
+    margin:0 auto;
+    margin-top: 5px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid black;
+}
+#antwort2:hover
+{
+    background-color: #CCD3FA;
+}
+#antwort3
+{
+    height: 20px;
+    width:  250px;
+    margin:0 auto;
+    margin-top: 5px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid black;
+}
+#antwort3:hover
+{
+    background-color: #CCD3FA;
+}
+#antwort4
+{
+    height: 20px;
+    width:  250px;
+    margin:0 auto;
+    margin-top: 5px;
+    padding: 2px;
+    text-align: center;   
+    border: 1px solid black;
+}
+#antwort4:hover
+{
+    background-color: #CCD3FA;
+}
+.font_antwort
+{
+    font-size: 12pt;
+}
+#container_player
+{
+    height:10%;
+    width:100%;
+    background-color:white;
+    border-top: 1px solid silver;
+}
+#player1
+{
+    float:left;
+    height: 20px;
+    width:  200px;
+    margin-left:35px;
+    margin-top: 10px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid black;   
+}
+#player2
+{
+    float:left;
+    height: 20px;
+    width:  200px;
+    margin-left:20px;
+    margin-top: 10px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid black;
+}
+#player3
+{
+    float:left;
+    height: 20px;
+    width:  200px;
+    margin-left:20px;
+    margin-top: 10px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid black;
+}
+#player4
+{
+    float:left;
+    height: 20px;
+    width:  200px;
+    margin-left:20px;
+    margin-top: 10px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid black;
+}
