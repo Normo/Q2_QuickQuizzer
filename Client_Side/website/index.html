@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>QuickQuizzer</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="generator" content="Webocton - Scriptly (www.scriptly.de)"/>
+
+<link rel="stylesheet" type="text/css" href="layout/layout.css"/>
+
+<script type="text/javascript" src="scripts/scripts.js"></script>
+</head>
+<body>
+         <div id="header">
+			<div id = "lauftext" ><marquee>QuickQuizzer</marquee></div>
+			
+            <div id = "login">
+            <button class="btnlogin" value="login" onclick="login()">Login</button>
+            </div>
+            <div id="highscore">
+            <button type="button" class="btnhighscore" value="Highscore" onclick="self.location.href='file:///C:/Users/Enrico/Desktop/quizz/highscore.html'">Highscore</button>
+            </div>
+         </div> <!-- Ende header -->
+<div id = "wrapper">
+
+
+         <div id="page">
+            <div id="container_kategorie">
+                 <button class="btnkat" value="Naturwissenschaften">Naturwissenschaften</button>
+                 <button class="btnkat" value="Naturwissenschaften">Sport</button>
+                 <button class="btnkat" value="Naturwissenschaften">Informatik</button>
+            </div>
+            
+            <div id="container_frage">
+                <div id="frage">
+                Welcher Schriftsteller hat die Blechtrommel geschrieben?
+                </div>
+                <div id="timer"></div>
+                <button value="Timer" onclick="timer()">Timer</button>
+            </div>
+            
+            <div id="container_antworten">
+                
+                <div id="antwort1" class = "font_antwort" >
+                <button class="btnantwort" value="Antwort1">Antwort 1</button>
+                </div>
+                <div id="antwort2" class = "font_antwort">
+                <button class="btnantwort" value="Antwort1">Antwort 2</button>
+                </div>
+                <div id="antwort3" class = "font_antwort">
+                <button class="btnantwort" value="Antwort1">Antwort 3</button>
+                </div>
+                <div id="antwort4" class = "font_antwort">
+                <button class="btnantwort" value="Antwort1">Antwort 4</button>
+                </div>
+                
+                
+            </div>
+            <div id="container_player">
+                <div id="player1" >
+                Player1
+                </div>
+                <div id="player2">
+                Player2
+                </div>
+                <div id="player3">
+                Player3
+                </div>
+                <div id="player4">
+                Player4
+                </div>
+            
+            </div>
+         </div> <!-- Ende page -->
+
+<div style="clear: both;"></div>
+</div>  <!-- Ende wrapper -->
+</body>
+</html>
