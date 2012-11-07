@@ -9,7 +9,7 @@ body
 	     background-image: -moz-linear-gradient(bottom, white 0%, mediumslateblue 100%);
 	     background-image: -o-linear-gradient(bottom, white 0%, mediumslateblue 100%);*/
 	     /*background: url(../images/background.jpg)repeat-x;*/
-         background: url(../images/money.jpg)repeat;    
+         background:transparent url(../images/background.jpg) fixed no-repeat 50% 0;   
 }
 
 #wrapper
@@ -73,7 +73,7 @@ body
          height: 1024px;
          width:  1024px;
          /*background-color: skyblue;*/
-         background: url(../images/spot.jpg);
+         background: rgba(256,256,256,0.5);
          box-shadow: 10px 10px 15px black;
 		 border-radius:10px;
  
@@ -95,7 +95,7 @@ body
     margin-left:100px;
     margin-top: 10px;
     border-radius: 18px;
-    background: #4479BA;
+    background: #002657;
     color: #FFF;
     /*background-image: -webkit-linear-gradient(white 0%, #9FBFD2 100%);
     background-image: -moz-linear-gradient(white 0%, #9FBFD2 100%);
@@ -225,7 +225,7 @@ body
 {
     height:10%;
     width:100%;
-    background-color:white;
+    background-color: rgba(256,256,256,0.05);
     border-top: 1px solid silver;
 }
 #player1
@@ -239,7 +239,7 @@ body
     text-align: center;
     border: solid 1px #20538D;
     
-    background: #4479BA;
+    background: #002657;
     color: #FFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -257,7 +257,7 @@ body
     text-align: center;
     border: solid 1px #20538D;
 
-    background: #4479BA;
+    background: #002657;
     color: #FFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -275,7 +275,7 @@ body
     text-align: center;
     border: solid 1px #20538D;
 
-    background: #4479BA;
+    background: #002657;
     color: #FFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -293,7 +293,7 @@ body
     text-align: center;
     border: solid 1px #20538D;
 
-    background: #4479BA;
+    background: #002657;
     color: #FFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -310,5 +310,5 @@ body
  
 .btnantwort:hover {
   color: #FFF;
-  background: skyblue;
+  background:  #002657;
 }
