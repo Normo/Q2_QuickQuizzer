@@ -34,7 +34,7 @@ int DBHandler::dbConnect(QString &host, QString &dbName, QString &dbUser, QStrin
 void DBHandler::dbShowTablesQuery(QString *dbName){
     this->query = QSqlQuery("SHOW TABLES;");
     this->record = this->query.record();
-    QString tables[12];
+    QString tables[100];
     int count = 0;
     while (this->query.next()){
         QString table = this->query.value(this->record.indexOf("Tables_in_"+*dbName)).toString();
@@ -43,6 +43,20 @@ void DBHandler::dbShowTablesQuery(QString *dbName){
         count++;
     }
 }
+
+// Hole Tabellen aus Datenbank
+QStringList DBHandler::dbGetTables(QString *dbName){
+    this->query = QSqlQuery("SHOW TABLES;");
+    this->record = this->query.record();
+    QStringList tables;
+    //int count = 0;
+    while (this->query.next()){
+    tables.append(this->query.value(this->record.indexOf("Tables_in_"+*dbName)).toString());
+
+    }
+    return tables;
+}
+
 
 // Hole Fragenkategorien aus Datenbank
 QStringList DBHandler::dbGetCategories(){
@@ -89,6 +103,7 @@ void DBHandler::dbClose(){
     connectionName = this->db.connectionName();
     this->db.close();
     this->db = QSqlDatabase();
+
     QSqlDatabase::removeDatabase(connectionName);
     qDebug() << "Datenbankverbindung getrennt.";
 }

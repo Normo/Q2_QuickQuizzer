@@ -9,7 +9,7 @@
 
 #include <QMainWindow>
 #include "dbhandler.h"
-
+#include <qsqlrelationaltablemodel.h>
 namespace Ui {
     class MainWindow;
 }
@@ -26,6 +26,11 @@ private slots:
 
     void btn_dbConnectOnClick();
     void btn_dbDisconnectOnClick();
+    void cmb_tabellenIndexChanged();
+    void btn_deleteOnClick();
+    void btn_changeOnClick();
+    void btn_addOnClick();
+
 protected:
 
     void changeEvent(QEvent *e);
@@ -38,8 +43,10 @@ private:
     QString DBNAME;
     QString DBUSER;
     QString DBPASSWD;
+    QSqlRelationalTableModel *tableModel;
 
     void fillComboBoxes();
+    void fillTableView(QString tblName);
 };
 
 #endif // MAINWINDOW_H

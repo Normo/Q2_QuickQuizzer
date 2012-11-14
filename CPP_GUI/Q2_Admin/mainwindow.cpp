@@ -8,6 +8,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "dbhandler.h"
+#include <QtSql>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -22,6 +23,10 @@ MainWindow::MainWindow(QWidget *parent) :
     // Signals/Slots
     connect(ui->btn_dbConnect, SIGNAL(clicked()), this, SLOT(btn_dbConnectOnClick()));
     connect(ui->btn_dbDisconnect, SIGNAL(clicked()), this, SLOT(btn_dbDisconnectOnClick()));
+    connect(ui->btn_delete, SIGNAL(clicked()), this, SLOT(btn_deleteOnClick()));
+    connect(ui->cmb_tabellen, SIGNAL(currentIndexChanged(QString)), this, SLOT(cmb_tabellenIndexChanged()));
+    connect(ui->btn_change, SIGNAL(clicked()), this, SLOT(btn_changeOnClick()));
+    connect(ui->btn_add,SIGNAL(clicked()), this, SLOT (btn_addOnClick()));
 }
 
 MainWindow::~MainWindow()
@@ -41,6 +46,7 @@ void MainWindow::changeEvent(QEvent *e)
     }
 }
 
+
 // Befülle ComboBox mit den Fragekategorien
 void MainWindow::fillComboBoxes(){
 
@@ -50,6 +56,11 @@ void MainWindow::fillComboBoxes(){
     ui->cmb_difficulty->clear();
     ui->cmb_category->addItems(categories);
     ui->cmb_difficulty->addItems(difficulties);
+
+    //Befülle ComboBox mit Tabellen
+    QStringList table = this->dbHandler.dbGetTables(&DBNAME);
+    ui->cmb_tabellen->clear();
+    ui->cmb_tabellen->addItems(table);
 }
 
 // SLOT: Button-Methode "Verbinden"
@@ -78,7 +89,7 @@ void MainWindow::btn_dbConnectOnClick(){
 
         this->mStatLabel->setText("Datenbankverbindung aktiv.");
 
-        fillComboBoxes();
+        fillComboBoxes();//Methode ComboBoxen füllen
 
     } else {
         // Verbindung nicht erfolgreich..
@@ -92,12 +103,14 @@ void MainWindow::btn_dbConnectOnClick(){
 
     //Frage alle Tabelle der DB ab
     this->dbHandler.dbShowTablesQuery(&this->DBNAME);
+
     //Frage alle Fragekategorien ab
     this->dbHandler.dbGetCategories();
 }
 
 // SLOT: Button-Methode "Trennen"
 void MainWindow::btn_dbDisconnectOnClick(){
+
 
     // Trenne Datenbankverbindung
     this->dbHandler.dbClose();
@@ -118,3 +131,34 @@ void MainWindow::btn_dbDisconnectOnClick(){
     this->mStatLabel->setText("Datenbankverbindung getrennt.");
 }
 
+//SLOT:Button-Methode Datensatz löschen
+void MainWindow::btn_deleteOnClick(){
+    tableModel->removeRows((ui->tblView_tabellen->currentIndex().row()),1);//Datensatz löschen der gerade selektiert ist
+}
+
+//SLOT: ComboBox Auswahl/Index ändert sich
+void MainWindow::cmb_tabellenIndexChanged(){
+
+    tableModel = new QSqlRelationalTableModel(0,dbHandler.db);  //tableModel instanziert
+    tableModel->setEditStrategy(QSqlTableModel::OnManualSubmit);//automatisches Aktualisieren zu MySQL DB in manuell ändern
+    tableModel->setTable((QString)ui->cmb_tabellen->currentText());//dem tableModel die Tabelle die in ComboBox gewählt wurde zuweisen
+
+    tableModel->setRelation(3,QSqlRelation("fragen","id","Frage"));//Relation/Fremdschlüssel angeben
+
+    tableModel->select();//Datensätze holen
+    ui->tblView_tabellen->setModel(tableModel);//tableview mit tablemodel verknüpfen
+    ui->tblView_tabellen->setItemDelegate(new QSqlRelationalDelegate(ui->tblView_tabellen));//Verweis von tableView auf tableView
+    ui->tblView_tabellen->show();//View anzeigen
+}
+
+//SLOT: Button-Methode Datensatz speichern
+void MainWindow::btn_changeOnClick(){
+
+    tableModel->submitAll();
+    qDebug() << "Datensatz wurde gespeichert";
+}
+
+//SLOT: Button-Methode Datensatz hinzufügen
+void MainWindow::btn_addOnClick(){
+    tableModel->insertRow(tableModel->rowCount());//neuen Datensatz hinzufügen
+}

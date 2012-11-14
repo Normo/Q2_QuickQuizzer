@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon Nov 12 21:46:50 2012
+** Created: Wed Nov 14 15:13:39 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -25,6 +25,7 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QStatusBar>
 #include <QtGui/QTabWidget>
+#include <QtGui/QTableView>
 #include <QtGui/QTextEdit>
 #include <QtGui/QToolBar>
 #include <QtGui/QVBoxLayout>
@@ -67,18 +68,24 @@ public:
     QLineEdit *txt_answer3;
     QLabel *lbl_answer4;
     QLineEdit *txt_answer4;
-    QComboBox *cmb_category;
+    QLabel *lbl_category;
+    QLabel *lbl_difficulty;
+    QComboBox *cmb_difficulty;
+    QLabel *lbl_correctAnswerIndex;
+    QComboBox *cmb_correctAnswerIndex;
     QHBoxLayout *horizontalLayout_10;
     QPushButton *btn_sendQuestion;
     QPushButton *btn_abortQuestion;
-    QLabel *lbl_category;
-    QComboBox *cmb_difficulty;
-    QLabel *lbl_difficulty;
-    QComboBox *cmb_correctAnswerIndex;
-    QLabel *lbl_correctAnswerIndex;
+    QComboBox *cmb_category;
     QWidget *tab_3;
     QHBoxLayout *horizontalLayout_2;
     QFormLayout *formLayout_2;
+    QLabel *lbl_tabelle;
+    QComboBox *cmb_tabellen;
+    QTableView *tblView_tabellen;
+    QPushButton *btn_delete;
+    QPushButton *btn_add;
+    QPushButton *btn_change;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -149,6 +156,7 @@ public:
 
         txt_dbPasswd = new QLineEdit(tab);
         txt_dbPasswd->setObjectName(QString::fromUtf8("txt_dbPasswd"));
+        txt_dbPasswd->setEchoMode(QLineEdit::Password);
 
         formLayout1->setWidget(3, QFormLayout::FieldRole, txt_dbPasswd);
 
@@ -244,16 +252,30 @@ public:
 
         formLayout2->setWidget(4, QFormLayout::FieldRole, txt_answer4);
 
-        cmb_category = new QComboBox(tab_2);
-        cmb_category->setObjectName(QString::fromUtf8("cmb_category"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(cmb_category->sizePolicy().hasHeightForWidth());
-        cmb_category->setSizePolicy(sizePolicy1);
-        cmb_category->setInsertPolicy(QComboBox::InsertAlphabetically);
+        lbl_category = new QLabel(tab_2);
+        lbl_category->setObjectName(QString::fromUtf8("lbl_category"));
 
-        formLayout2->setWidget(5, QFormLayout::FieldRole, cmb_category);
+        formLayout2->setWidget(5, QFormLayout::LabelRole, lbl_category);
+
+        lbl_difficulty = new QLabel(tab_2);
+        lbl_difficulty->setObjectName(QString::fromUtf8("lbl_difficulty"));
+
+        formLayout2->setWidget(6, QFormLayout::LabelRole, lbl_difficulty);
+
+        cmb_difficulty = new QComboBox(tab_2);
+        cmb_difficulty->setObjectName(QString::fromUtf8("cmb_difficulty"));
+
+        formLayout2->setWidget(6, QFormLayout::FieldRole, cmb_difficulty);
+
+        lbl_correctAnswerIndex = new QLabel(tab_2);
+        lbl_correctAnswerIndex->setObjectName(QString::fromUtf8("lbl_correctAnswerIndex"));
+
+        formLayout2->setWidget(7, QFormLayout::LabelRole, lbl_correctAnswerIndex);
+
+        cmb_correctAnswerIndex = new QComboBox(tab_2);
+        cmb_correctAnswerIndex->setObjectName(QString::fromUtf8("cmb_correctAnswerIndex"));
+
+        formLayout2->setWidget(7, QFormLayout::FieldRole, cmb_correctAnswerIndex);
 
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setSpacing(6);
@@ -272,30 +294,16 @@ public:
 
         formLayout2->setLayout(8, QFormLayout::FieldRole, horizontalLayout_10);
 
-        lbl_category = new QLabel(tab_2);
-        lbl_category->setObjectName(QString::fromUtf8("lbl_category"));
+        cmb_category = new QComboBox(tab_2);
+        cmb_category->setObjectName(QString::fromUtf8("cmb_category"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(cmb_category->sizePolicy().hasHeightForWidth());
+        cmb_category->setSizePolicy(sizePolicy1);
+        cmb_category->setInsertPolicy(QComboBox::InsertAlphabetically);
 
-        formLayout2->setWidget(5, QFormLayout::LabelRole, lbl_category);
-
-        cmb_difficulty = new QComboBox(tab_2);
-        cmb_difficulty->setObjectName(QString::fromUtf8("cmb_difficulty"));
-
-        formLayout2->setWidget(6, QFormLayout::FieldRole, cmb_difficulty);
-
-        lbl_difficulty = new QLabel(tab_2);
-        lbl_difficulty->setObjectName(QString::fromUtf8("lbl_difficulty"));
-
-        formLayout2->setWidget(6, QFormLayout::LabelRole, lbl_difficulty);
-
-        cmb_correctAnswerIndex = new QComboBox(tab_2);
-        cmb_correctAnswerIndex->setObjectName(QString::fromUtf8("cmb_correctAnswerIndex"));
-
-        formLayout2->setWidget(7, QFormLayout::FieldRole, cmb_correctAnswerIndex);
-
-        lbl_correctAnswerIndex = new QLabel(tab_2);
-        lbl_correctAnswerIndex->setObjectName(QString::fromUtf8("lbl_correctAnswerIndex"));
-
-        formLayout2->setWidget(7, QFormLayout::LabelRole, lbl_correctAnswerIndex);
+        formLayout2->setWidget(5, QFormLayout::FieldRole, cmb_category);
 
 
         horizontalLayout_5->addLayout(formLayout2);
@@ -310,7 +318,39 @@ public:
         formLayout_2 = new QFormLayout();
         formLayout_2->setSpacing(6);
         formLayout_2->setObjectName(QString::fromUtf8("formLayout_2"));
-        formLayout_2->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
+        formLayout_2->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
+        lbl_tabelle = new QLabel(tab_3);
+        lbl_tabelle->setObjectName(QString::fromUtf8("lbl_tabelle"));
+
+        formLayout_2->setWidget(0, QFormLayout::LabelRole, lbl_tabelle);
+
+        cmb_tabellen = new QComboBox(tab_3);
+        cmb_tabellen->setObjectName(QString::fromUtf8("cmb_tabellen"));
+
+        formLayout_2->setWidget(0, QFormLayout::FieldRole, cmb_tabellen);
+
+        tblView_tabellen = new QTableView(tab_3);
+        tblView_tabellen->setObjectName(QString::fromUtf8("tblView_tabellen"));
+        tblView_tabellen->setSelectionMode(QAbstractItemView::SingleSelection);
+        tblView_tabellen->setSelectionBehavior(QAbstractItemView::SelectRows);
+
+        formLayout_2->setWidget(1, QFormLayout::SpanningRole, tblView_tabellen);
+
+        btn_delete = new QPushButton(tab_3);
+        btn_delete->setObjectName(QString::fromUtf8("btn_delete"));
+
+        formLayout_2->setWidget(3, QFormLayout::LabelRole, btn_delete);
+
+        btn_add = new QPushButton(tab_3);
+        btn_add->setObjectName(QString::fromUtf8("btn_add"));
+
+        formLayout_2->setWidget(3, QFormLayout::FieldRole, btn_add);
+
+        btn_change = new QPushButton(tab_3);
+        btn_change->setObjectName(QString::fromUtf8("btn_change"));
+
+        formLayout_2->setWidget(5, QFormLayout::FieldRole, btn_change);
+
 
         horizontalLayout_2->addLayout(formLayout_2);
 
@@ -332,7 +372,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -342,9 +382,13 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         lbl_dbHost->setText(QApplication::translate("MainWindow", "DB-Host", 0, QApplication::UnicodeUTF8));
+        txt_dbHost->setText(QApplication::translate("MainWindow", "192.168.0.1", 0, QApplication::UnicodeUTF8));
         lbl_dbName->setText(QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
+        txt_dbName->setText(QApplication::translate("MainWindow", "adressbuch", 0, QApplication::UnicodeUTF8));
         lbl_dbUser->setText(QApplication::translate("MainWindow", "Benutzer", 0, QApplication::UnicodeUTF8));
+        txt_dbUser->setText(QApplication::translate("MainWindow", "root", 0, QApplication::UnicodeUTF8));
         lbl_dbUserPasswd->setText(QApplication::translate("MainWindow", "Passwort", 0, QApplication::UnicodeUTF8));
+        txt_dbPasswd->setText(QApplication::translate("MainWindow", "FGS.209=Wme!", 0, QApplication::UnicodeUTF8));
         btn_dbConnect->setText(QApplication::translate("MainWindow", "Verbinden", 0, QApplication::UnicodeUTF8));
         btn_dbDisconnect->setText(QApplication::translate("MainWindow", "Trennen", 0, QApplication::UnicodeUTF8));
         lbl_debug->setText(QApplication::translate("MainWindow", "Debug-Info", 0, QApplication::UnicodeUTF8));
@@ -354,13 +398,17 @@ public:
         lbl_answer2->setText(QApplication::translate("MainWindow", "Antwort 2", 0, QApplication::UnicodeUTF8));
         lbl_answer3->setText(QApplication::translate("MainWindow", "Antwort 3", 0, QApplication::UnicodeUTF8));
         lbl_answer4->setText(QApplication::translate("MainWindow", "Antwort 4", 0, QApplication::UnicodeUTF8));
-        btn_sendQuestion->setText(QApplication::translate("MainWindow", "Senden", 0, QApplication::UnicodeUTF8));
-        btn_abortQuestion->setText(QApplication::translate("MainWindow", "Abbrechen", 0, QApplication::UnicodeUTF8));
         lbl_category->setText(QApplication::translate("MainWindow", "Kategorie", 0, QApplication::UnicodeUTF8));
         lbl_difficulty->setText(QApplication::translate("MainWindow", "Schwierigkeitsgrad", 0, QApplication::UnicodeUTF8));
         lbl_correctAnswerIndex->setText(QApplication::translate("MainWindow", "Richtige Antwort", 0, QApplication::UnicodeUTF8));
+        btn_sendQuestion->setText(QApplication::translate("MainWindow", "Senden", 0, QApplication::UnicodeUTF8));
+        btn_abortQuestion->setText(QApplication::translate("MainWindow", "Abbrechen", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Frage hinzuf\303\274gen", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "Datensatz l\303\266schen", 0, QApplication::UnicodeUTF8));
+        lbl_tabelle->setText(QApplication::translate("MainWindow", "Tabelle ausw\303\244hlen", 0, QApplication::UnicodeUTF8));
+        btn_delete->setText(QApplication::translate("MainWindow", "Datensatz loeschen", 0, QApplication::UnicodeUTF8));
+        btn_add->setText(QApplication::translate("MainWindow", "Datensatz hinzuf\303\274gen", 0, QApplication::UnicodeUTF8));
+        btn_change->setText(QApplication::translate("MainWindow", "Speichern", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "Datensatz manipulieren", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
