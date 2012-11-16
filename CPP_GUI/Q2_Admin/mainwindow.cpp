@@ -9,6 +9,7 @@
 #include "ui_mainwindow.h"
 #include "dbhandler.h"
 #include <QtSql>
+#include <qmessagebox.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -25,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btn_dbDisconnect, SIGNAL(clicked()), this, SLOT(btn_dbDisconnectOnClick()));
     connect(ui->btn_delete, SIGNAL(clicked()), this, SLOT(btn_deleteOnClick()));
     connect(ui->cmb_tabellen, SIGNAL(currentIndexChanged(QString)), this, SLOT(cmb_tabellenIndexChanged()));
-    connect(ui->btn_change, SIGNAL(clicked()), this, SLOT(btn_changeOnClick()));
+    connect(ui->btn_change, SIGNAL(clicked()), this, SLOT(btn_saveOnClick()));
     connect(ui->btn_add,SIGNAL(clicked()), this, SLOT (btn_addOnClick()));
     connect(ui->btn_edit, SIGNAL(clicked()), this, SLOT(btn_editOnClick()));
 
@@ -69,6 +70,20 @@ void MainWindow::fillComboBoxes(){
     ui->cmb_tabellen->addItems(table);
 }
 
+//Methode InfoBox anzeigen
+void MainWindow::show_infobox(QString msg, QString detmsg){
+
+    msgBox = new QMessageBox();
+    msgBox->setWindowTitle((QString)"QuickQuizzer");
+    msgBox->setText((QString)"Zur Information:");
+    msgBox->setInformativeText(msg);
+    msgBox->setDetailedText(detmsg);
+    msgBox->setStandardButtons(QMessageBox::Ok);
+    msgBox->setIcon(QMessageBox::Information);
+    msgBox->exec();
+
+}
+
 // SLOT: Button-Methode "Verbinden"
 void MainWindow::btn_dbConnectOnClick(){
 
@@ -81,7 +96,14 @@ void MainWindow::btn_dbConnectOnClick(){
     // Verbinde zu Datenbank
     int returnCode = this->dbHandler.dbConnect(this->DBHOST,this->DBNAME,this->DBUSER,this->DBPASSWD);
 
+
+
+
+
     if (returnCode == 0) {
+
+        //InfoBox "Verbindung wurde hergestellt"
+        show_infobox((QString)"Verbindung wurde hergestellt.",(QString)"DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER);
 
         // Wenn Verbindung erfolgreich,..
         // Deaktiviere Verbinden-Button
@@ -90,11 +112,21 @@ void MainWindow::btn_dbConnectOnClick(){
         // Aktiviere Trennen-Button
         ui->btn_dbDisconnect->setEnabled(true);
 
+        // Aktiviere Buttons auf Tab DatenManipulation
+        ui->btn_add->setEnabled(true);
+        ui->btn_change->setEnabled(true);
+        ui->btn_delete->setEnabled(true);
+        ui->btn_edit->setEnabled(true);
+
         this->mStatLabel->setText("Datenbankverbindung aktiv.");
 
         fillComboBoxes();//Methode ComboBoxen füllen
 
     } else {
+
+        //InfoBox " Verbindung wurde nicht hergestellt "
+        show_infobox((QString)"Verbindung konnte nicht hergestellt werden.",(QString)"DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER);
+
         // Verbindung nicht erfolgreich..
         ui->txt_debug->append("Verbindung konnte nicht aufgebaut werden.");
         this->mStatLabel->setText("Datenbankverbindung getrennt.");
@@ -114,12 +146,15 @@ void MainWindow::btn_dbConnectOnClick(){
 // SLOT: Button-Methode "Trennen"
 void MainWindow::btn_dbDisconnectOnClick(){
 
-    // Alle bestehenden Verbindungen zur DB schließen
-
+    //Aktive Datenbankverbindungen schließen
     delete this->tableModel;
 
     // Trenne Datenbankverbindung
     this->dbHandler.dbClose();
+
+    //InfoBox " Verbindung wurde getrennt "
+    show_infobox((QString)"Verbindung wurde getrennt.",(QString)"DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER);
+
 
     //Aktiviere/Deaktiviere entsprechende Buttons
     ui->btn_dbDisconnect->setEnabled(false);
@@ -141,7 +176,7 @@ void MainWindow::btn_deleteOnClick(){
 void MainWindow::cmb_tabellenIndexChanged(){
 
     tableModel = new QSqlRelationalTableModel(0,dbHandler.db);  //tableModel instanziert
-    tableModel->setEditStrategy(QSqlTableModel::OnManualSubmit);//automatisches Aktualisieren zu MySQL DB in manuell ändern
+    tableModel->setEditStrategy(QSqlTableModel::OnManualSubmit);//"automatisches" Aktualisieren zu MySQL DB in "manuell" ändern
     tableModel->setTable((QString)ui->cmb_tabellen->currentText());//dem tableModel die Tabelle die in ComboBox gewählt wurde zuweisen
 
     tableModel->setRelation(3,QSqlRelation("fragen","id","Frage"));//Relation/Fremdschlüssel angeben
@@ -154,10 +189,12 @@ void MainWindow::cmb_tabellenIndexChanged(){
 }
 
 //SLOT: Button-Methode Datensatz speichern
-void MainWindow::btn_changeOnClick(){
+void MainWindow::btn_saveOnClick(){
 
+    //InfoBox
+    show_infobox((QString)"Aenderungen wurden gespeichert.",(QString)"Hallo");
     tableModel->submitAll();
-    qDebug() << "Datensatz wurde gespeichert";
+     ui->tblView_tabellen->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 //SLOT: Button-Methode Datensatz hinzufügen
@@ -168,5 +205,8 @@ void MainWindow::btn_addOnClick(){
 //SLOT: Button-Methode Tabelle editieren
 void MainWindow::btn_editOnClick(){
 
+    //InfoBox
+    show_infobox((QString)"Tabelle kann nun editiert werden.",(QString)"HUHU");
     ui->tblView_tabellen->setEditTriggers(QAbstractItemView::DoubleClicked);
+
 }

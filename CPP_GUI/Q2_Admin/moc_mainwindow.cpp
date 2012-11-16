@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Thu Nov 15 09:06:57 2012
+** Created: Fri Nov 16 12:12:35 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -36,8 +36,8 @@ static const uint qt_meta_data_MainWindow[] = {
       61,   11,   11,   11, 0x08,
       88,   11,   11,   11, 0x08,
      108,   11,   11,   11, 0x08,
-     128,   11,   11,   11, 0x08,
-     145,   11,   11,   11, 0x08,
+     126,   11,   11,   11, 0x08,
+     143,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -46,7 +46,7 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0btn_dbConnectOnClick()\0"
     "btn_dbDisconnectOnClick()\0"
     "cmb_tabellenIndexChanged()\0"
-    "btn_deleteOnClick()\0btn_changeOnClick()\0"
+    "btn_deleteOnClick()\0btn_saveOnClick()\0"
     "btn_addOnClick()\0btn_editOnClick()\0"
 };
 
@@ -60,7 +60,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->btn_dbDisconnectOnClick(); break;
         case 2: _t->cmb_tabellenIndexChanged(); break;
         case 3: _t->btn_deleteOnClick(); break;
-        case 4: _t->btn_changeOnClick(); break;
+        case 4: _t->btn_saveOnClick(); break;
         case 5: _t->btn_addOnClick(); break;
         case 6: _t->btn_editOnClick(); break;
         default: ;
