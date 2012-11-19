@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Nov 18 23:15:32 2012
+** Created: Mon Nov 19 19:04:17 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -65,7 +65,7 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QComboBox *cmb_tabellen;
     QPushButton *btn_edit;
-    QPushButton *btn_change;
+    QPushButton *btn_save;
     QGroupBox *gb_editTable;
     QVBoxLayout *verticalLayout_3;
     QGridLayout *gridLayout;
@@ -208,13 +208,15 @@ public:
 
         btn_edit = new QPushButton(gb_selectTable);
         btn_edit->setObjectName(QString::fromUtf8("btn_edit"));
+        btn_edit->setEnabled(false);
 
         horizontalLayout_4->addWidget(btn_edit);
 
-        btn_change = new QPushButton(gb_selectTable);
-        btn_change->setObjectName(QString::fromUtf8("btn_change"));
+        btn_save = new QPushButton(gb_selectTable);
+        btn_save->setObjectName(QString::fromUtf8("btn_save"));
+        btn_save->setEnabled(false);
 
-        horizontalLayout_4->addWidget(btn_change);
+        horizontalLayout_4->addWidget(btn_save);
 
 
         verticalLayout_4->addLayout(horizontalLayout_4);
@@ -247,11 +249,13 @@ public:
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         btn_add = new QPushButton(gb_editTable);
         btn_add->setObjectName(QString::fromUtf8("btn_add"));
+        btn_add->setEnabled(false);
 
         horizontalLayout_5->addWidget(btn_add);
 
         btn_delete = new QPushButton(gb_editTable);
         btn_delete->setObjectName(QString::fromUtf8("btn_delete"));
+        btn_delete->setEnabled(false);
 
         horizontalLayout_5->addWidget(btn_delete);
 
@@ -305,7 +309,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -317,7 +321,7 @@ public:
         lbl_dbHost->setText(QApplication::translate("MainWindow", "DB-Host", 0, QApplication::UnicodeUTF8));
         txt_dbHost->setText(QApplication::translate("MainWindow", "192.168.0.1", 0, QApplication::UnicodeUTF8));
         lbl_dbName->setText(QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
-        txt_dbName->setText(QApplication::translate("MainWindow", "adressbuch", 0, QApplication::UnicodeUTF8));
+        txt_dbName->setText(QApplication::translate("MainWindow", "test", 0, QApplication::UnicodeUTF8));
         lbl_dbUser->setText(QApplication::translate("MainWindow", "Benutzer", 0, QApplication::UnicodeUTF8));
         txt_dbUser->setText(QApplication::translate("MainWindow", "root", 0, QApplication::UnicodeUTF8));
         lbl_dbUserPasswd->setText(QApplication::translate("MainWindow", "Passwort", 0, QApplication::UnicodeUTF8));
@@ -329,7 +333,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Datenbankverbindung", 0, QApplication::UnicodeUTF8));
         gb_selectTable->setTitle(QApplication::translate("MainWindow", "Tabelle ausw\303\244hlen:", 0, QApplication::UnicodeUTF8));
         btn_edit->setText(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));
-        btn_change->setText(QApplication::translate("MainWindow", "Speichern", 0, QApplication::UnicodeUTF8));
+        btn_save->setText(QApplication::translate("MainWindow", "Speichern", 0, QApplication::UnicodeUTF8));
         gb_editTable->setTitle(QApplication::translate("MainWindow", "Tabelle bearbeiten:", 0, QApplication::UnicodeUTF8));
         btn_add->setText(QApplication::translate("MainWindow", "Datensatz hinzuf\303\274gen", 0, QApplication::UnicodeUTF8));
         btn_delete->setText(QApplication::translate("MainWindow", "Datensatz loeschen", 0, QApplication::UnicodeUTF8));

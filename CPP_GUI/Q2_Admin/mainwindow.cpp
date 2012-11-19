@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btn_dbDisconnect, SIGNAL(clicked()), this, SLOT(btn_dbDisconnectOnClick()));
     connect(ui->btn_delete, SIGNAL(clicked()), this, SLOT(btn_deleteOnClick()));
     connect(ui->cmb_tabellen, SIGNAL(currentIndexChanged(QString)), this, SLOT(cmb_tabellenIndexChanged()));
-    connect(ui->btn_change, SIGNAL(clicked()), this, SLOT(btn_saveOnClick()));
+    connect(ui->btn_save, SIGNAL(clicked()), this, SLOT(btn_saveOnClick()));
     connect(ui->btn_add,SIGNAL(clicked()), this, SLOT (btn_addOnClick()));
     connect(ui->btn_edit, SIGNAL(clicked()), this, SLOT(btn_editOnClick()));
     connect(ui->btn_norman, SIGNAL(clicked()), this, SLOT(btn_normanOnClick()));
@@ -97,9 +97,6 @@ void MainWindow::btn_dbConnectOnClick(){
 
     if (returnCode == 0) {
 
-        //InfoBox "Verbindung wurde hergestellt"
-        showInfobox((QString)"Verbindung wurde hergestellt.",(QString)"DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER);
-
         // Wenn Verbindung erfolgreich,..
         // Deaktiviere Verbinden-Button
         ui->btn_dbConnect->setEnabled(false);
@@ -107,10 +104,7 @@ void MainWindow::btn_dbConnectOnClick(){
         // Aktiviere Trennen-Button
         ui->btn_dbDisconnect->setEnabled(true);
 
-        // Aktiviere Buttons auf Tab DatenManipulation
-        ui->btn_add->setEnabled(true);
-        ui->btn_change->setEnabled(true);
-        ui->btn_delete->setEnabled(true);
+        //Aktiviere Edit-Button
         ui->btn_edit->setEnabled(true);
 
         this->mStatLabel->setText("Datenbankverbindung aktiv.");
@@ -179,7 +173,13 @@ void MainWindow::cmb_tabellenIndexChanged(){
     this->tableModel->setEditStrategy(QSqlTableModel::OnManualSubmit);//"automatisches" Aktualisieren zu MySQL DB in "manuell" ändern
     this->tableModel->setTable((QString)ui->cmb_tabellen->currentText());//dem tableModel die Tabelle die in ComboBox gewählt wurde zuweisen
 
-    this->tableModel->setRelation(3,QSqlRelation("fragen","id","Frage"));//Relation/Fremdschlüssel angeben
+    //Relation/Fremdschlüssel angeben
+    if((QString)ui->cmb_tabellen->currentText()=="dt_question"){
+
+        this->tableModel->setRelation(2,QSqlRelation("dt_category","Category_UUID","Category_Text"));
+        this->tableModel->setRelation(3,QSqlRelation("dt_difficulty","Difficulty_UUID","Difficulty_Value"));
+    }
+
 
     this->tableModel->select();//Datensätze holen
     ui->tblView_tabellen->setModel(this->tableModel);//tableview mit tablemodel verknüpfen
@@ -208,5 +208,7 @@ void MainWindow::btn_editOnClick(){
     //InfoBox
     showInfobox((QString)"Tabelle kann nun editiert werden.",(QString)"HUHU");
     ui->tblView_tabellen->setEditTriggers(QAbstractItemView::DoubleClicked);
-
+    ui->btn_add->setEnabled(true);
+    ui->btn_delete->setEnabled(true);
+    ui->btn_save->setEnabled(true);
 }
