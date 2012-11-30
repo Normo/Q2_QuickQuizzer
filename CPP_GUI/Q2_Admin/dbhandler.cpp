@@ -31,6 +31,10 @@ int DBHandler::dbConnect(QString &host, QString &dbName, QString &dbUser, QStrin
     return 0;
 }
 
+QString DBHandler::getError(){
+    return db.lastError().text();
+}
+
 // Zeige Tabellen der Datenbank
 void DBHandler::dbShowTablesQuery(QString *dbName){
     this->query = QSqlQuery("SHOW TABLES;");

@@ -20,6 +20,7 @@ public:
     DBHandler();
     int dbConnect(QString &host, QString &dbName, QString &dbUser, QString &dbPasswd);
     void dbShowTablesQuery(QString *dbName);
+    QString getError();
     QStringList dbGetCategories();
     QStringList dbGetDifficulties();
     QStringList dbGetTables(QString *dbName);

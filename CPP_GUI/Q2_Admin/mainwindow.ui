@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>711</width>
-    <height>701</height>
+    <width>780</width>
+    <height>721</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,15 +27,15 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="tab1">
        <attribute name="title">
         <string>Datenbankverbindung</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QGroupBox" name="groupBox_2">
+         <widget class="QGroupBox" name="gb_dbConnect">
           <property name="styleSheet">
            <string notr="true"> QGroupBox {
      border: 2px solid gray;
@@ -54,77 +54,97 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_7">
            <item>
-            <layout class="QFormLayout" name="formLayout_1">
+            <layout class="QFormLayout" name="fl_dbConnect">
              <property name="fieldGrowthPolicy">
               <enum>QFormLayout::ExpandingFieldsGrow</enum>
              </property>
              <item row="0" column="0">
               <widget class="QLabel" name="lbl_dbHost">
                <property name="text">
-                <string>DB-Host</string>
+                <string>DB-Host:</string>
                </property>
               </widget>
              </item>
              <item row="0" column="1">
               <widget class="QLineEdit" name="txt_dbHost">
                <property name="text">
-                <string>192.168.0.1</string>
+                <string/>
                </property>
               </widget>
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="lbl_dbName">
                <property name="text">
-                <string>Datenbank</string>
+                <string>Datenbank:</string>
                </property>
               </widget>
              </item>
              <item row="1" column="1">
               <widget class="QLineEdit" name="txt_dbName">
                <property name="text">
-                <string>test</string>
+                <string/>
                </property>
               </widget>
              </item>
              <item row="2" column="0">
               <widget class="QLabel" name="lbl_dbUser">
                <property name="text">
-                <string>Benutzer</string>
+                <string>Benutzer:</string>
                </property>
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QLineEdit" name="txt_dbUser">
-               <property name="text">
-                <string>root</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="lbl_dbUserPasswd">
-               <property name="text">
-                <string>Passwort</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLineEdit" name="txt_dbPasswd">
-               <property name="text">
-                <string>FGS.209=Wme!</string>
-               </property>
-               <property name="echoMode">
-                <enum>QLineEdit::Password</enum>
-               </property>
-              </widget>
+              <layout class="QHBoxLayout" name="hbl_dbConnect1">
+               <item>
+                <widget class="QLineEdit" name="txt_dbUser">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="lbl_dbUserPasswd">
+                 <property name="text">
+                  <string>Passwort:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="txt_dbPasswd">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout1">
+            <layout class="QHBoxLayout" name="hbl_dbConnect2">
+             <item>
+              <spacer name="hspacer_dbConnect">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
              <item>
               <widget class="QPushButton" name="btn_dbConnect">
                <property name="text">
                 <string>Verbinden</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -136,12 +156,18 @@
                <property name="text">
                 <string>Trennen</string>
                </property>
+               <property name="autoDefault">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btn_norman">
                <property name="text">
                 <string>Norman</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -151,7 +177,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox">
+         <widget class="QGroupBox" name="gb_dbConnectionInfo">
           <property name="styleSheet">
            <string notr="true"> QGroupBox {
      border: 2px solid gray;
@@ -166,7 +192,7 @@
  }</string>
           </property>
           <property name="title">
-           <string>Debug-Info</string>
+           <string>Verbindungsinformationen</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <item>
@@ -179,7 +205,7 @@
       </widget>
       <widget class="QWidget" name="tab2">
        <attribute name="title">
-        <string>Datensatz manipulieren</string>
+        <string>Datenbank</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
@@ -198,11 +224,11 @@
  }</string>
           </property>
           <property name="title">
-           <string>Tabelle auswählen:</string>
+           <string>Tabelle auswählen</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <layout class="QHBoxLayout" name="hbl_selectTable">
              <item>
               <widget class="QComboBox" name="cmb_tabellen"/>
              </item>
@@ -212,7 +238,10 @@
                 <bool>false</bool>
                </property>
                <property name="text">
-                <string>Edit</string>
+                <string>Bearbeiten</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -223,6 +252,9 @@
                </property>
                <property name="text">
                 <string>Speichern</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -247,11 +279,11 @@
  }</string>
           </property>
           <property name="title">
-           <string>Tabelle bearbeiten:</string>
+           <string>Tabelle bearbeiten</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
-            <layout class="QGridLayout" name="gridLayout">
+            <layout class="QGridLayout" name="gl_editTable">
              <item row="0" column="0">
               <widget class="QTableView" name="tblView_tabellen">
                <property name="editTriggers">
@@ -268,14 +300,17 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <layout class="QHBoxLayout" name="hbl_editTable">
              <item>
               <widget class="QPushButton" name="btn_add">
                <property name="enabled">
                 <bool>false</bool>
                </property>
                <property name="text">
-                <string>Datensatz hinzufügen</string>
+                <string>Datensatz hinzufuegen</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -286,6 +321,9 @@
                </property>
                <property name="text">
                 <string>Datensatz loeschen</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -300,7 +338,136 @@
        <attribute name="title">
         <string>Einstellungen</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QGroupBox" name="gb_ftpConnection">
+          <property name="styleSheet">
+           <string notr="true"> QGroupBox {
+     border: 2px solid gray;
+     border-radius: 5px;
+     margin-top: 1ex; /* leave space at the top for the title */
+ }
+
+ QGroupBox::title {
+     subcontrol-origin: margin;
+     subcontrol-position: top left; /* position at the top center */
+     padding: 0 3px;
+ }</string>
+          </property>
+          <property name="title">
+           <string>FTP-Zugang</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
+            <layout class="QFormLayout" name="fl_ftpConnection">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="lbl_ftpUrl">
+               <property name="text">
+                <string>FTP-Adresse:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <layout class="QHBoxLayout" name="hbl_ftpConnection1">
+               <item>
+                <widget class="QLineEdit" name="txt_ftpUrl">
+                 <property name="text">
+                  <string>ftp://178.25.75.91/config.ini</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="lbl_ftpPort">
+                 <property name="text">
+                  <string>Port:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBox_ftpPort">
+                 <property name="maximum">
+                  <number>65535</number>
+                 </property>
+                 <property name="value">
+                  <number>21</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="lbl_ftpUser">
+               <property name="text">
+                <string>Benutzername:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <layout class="QHBoxLayout" name="hbl_ftpConnection2">
+               <item>
+                <widget class="QLineEdit" name="txt_ftpUser">
+                 <property name="text">
+                  <string>ftpuser</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="lbl_ftpPasswd">
+                 <property name="text">
+                  <string>Passwort:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="txt_ftpPasswd">
+                 <property name="text">
+                  <string>login</string>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hbl_ftpButtons">
+             <item>
+              <spacer name="hSpacer_ftpButtons">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::MinimumExpanding</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_loadSettings">
+               <property name="text">
+                <string>Datei laden</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item>
          <widget class="QGroupBox" name="gb_settings">
           <property name="styleSheet">
@@ -317,7 +484,7 @@
  }</string>
           </property>
           <property name="title">
-           <string>GroupBox</string>
+           <string>Einstellungen bearbeiten</string>
           </property>
           <property name="flat">
            <bool>false</bool>
@@ -328,6 +495,354 @@
           <property name="checked">
            <bool>false</bool>
           </property>
+          <layout class="QVBoxLayout" name="verticalLayout_11">
+           <item>
+            <widget class="QScrollArea" name="scrollArea">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>700</width>
+                <height>409</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="vbl_settingsForm">
+                 <item>
+                  <layout class="QFormLayout" name="fl_databaseSettings">
+                   <property name="fieldGrowthPolicy">
+                    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="lbl_databaseSettings">
+                     <property name="text">
+                      <string>[DataBase]- Settings</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="lbl_databaseSettings_dbHost">
+                     <property name="text">
+                      <string>DBHost:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLineEdit" name="txt_databaseSettings_dbHost"/>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="lbl_databaseSettings_dbName">
+                     <property name="text">
+                      <string>DBName:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLineEdit" name="txt_databaseSettings_dbName"/>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="lbl_databaseSettings_dbUser">
+                     <property name="text">
+                      <string>DBUser:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <layout class="QHBoxLayout" name="hbl_databaseSettings">
+                     <item>
+                      <widget class="QLineEdit" name="txt_databaseSettings_dbUser"/>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="lbl_databaseSettings_dbPasswd">
+                       <property name="text">
+                        <string>DBPassword</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="txt_databaseSettings_dbPasswd"/>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="Line" name="hline_settingsForm_1">
+                   <property name="lineWidth">
+                    <number>1</number>
+                   </property>
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QGridLayout" name="gl_gameSettings1">
+                   <item row="3" column="3">
+                    <widget class="QLabel" name="lbl_gameSettings_GetNextAfterAnswer">
+                     <property name="text">
+                      <string>GetNextAfterAnswer:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="4">
+                    <widget class="QCheckBox" name="chk_gameSettings_GetNextAfterAnswer">
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="tristate">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="3">
+                    <widget class="QLabel" name="lbl_gameSettings_TimePerQ">
+                     <property name="text">
+                      <string>TimePerQ:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="lbl_gameSettings_TimeWhenNailed">
+                     <property name="text">
+                      <string>TimeWhenNailed:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="lbl_gameSettings_DelayQ_A">
+                     <property name="text">
+                      <string>DelayQ_A:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="4">
+                    <widget class="QSpinBox" name="spinBox_gameSettings_TimesPerC"/>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="lbl_gameSettings_Rounds">
+                     <property name="text">
+                      <string>Rounds:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QSpinBox" name="spinBox_gameSettings_Rounds"/>
+                   </item>
+                   <item row="2" column="3">
+                    <widget class="QLabel" name="lbl_gameSettings_TimesPerC">
+                     <property name="text">
+                      <string>TimesPerC:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QSpinBox" name="spinBox_gameSettings_TimeWhenNailed"/>
+                   </item>
+                   <item row="1" column="7">
+                    <spacer name="hSpacer_gameSettings2">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="1" column="4">
+                    <widget class="QSpinBox" name="spinBox_gameSettings_TimePerQ"/>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="lbl_gameSettings">
+                     <property name="text">
+                      <string>[Game]-Settings</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QSpinBox" name="spinBox_gameSettings_DelayQ_A"/>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QLabel" name="lbl_gameSettings_HSCount">
+                     <property name="text">
+                      <string>HSCount:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QSpinBox" name="spinBox_gameSettings_HSCount"/>
+                   </item>
+                   <item row="1" column="2">
+                    <spacer name="hSpacer_gameSettings1">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="Line" name="hline_settingsForm_2">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QGridLayout" name="gl_gameSettings2">
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="lbl_gameSettings_NailCount">
+                     <property name="text">
+                      <string>NailCount:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="lbl_gameSettings_ignored">
+                     <property name="text">
+                      <string>Nicht berücksichtigt:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="lbl_gameSettings_ReNail">
+                     <property name="text">
+                      <string>ReNail:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="3">
+                    <widget class="QLabel" name="lbl_gameSettings_Points">
+                     <property name="text">
+                      <string>Points:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QSpinBox" name="spinBox_gameSettings_NailCount">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="4">
+                    <widget class="QComboBox" name="cmb_gameSettings_Points">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>default</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="2" column="4">
+                    <widget class="QSpinBox" name="spinBox_gameSettings_MinUserCount">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="3">
+                    <widget class="QLabel" name="lbl_gameSettings_MinUserCount">
+                     <property name="text">
+                      <string>MinUserCount:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <spacer name="hSpacer_gameSettings3">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="0" column="5">
+                    <spacer name="hSpacer_gameSettings4">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QCheckBox" name="chk_gameSettings_ReNail">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hbl_settingButtons">
+             <item>
+              <widget class="QPushButton" name="btn_sendSettings">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Senden</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_discardChanges">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Abbrechen</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -341,7 +856,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>711</width>
+     <width>780</width>
      <height>25</height>
     </rect>
    </property>
@@ -357,6 +872,25 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>txt_dbHost</tabstop>
+  <tabstop>txt_dbName</tabstop>
+  <tabstop>btn_dbConnect</tabstop>
+  <tabstop>btn_dbDisconnect</tabstop>
+  <tabstop>btn_norman</tabstop>
+  <tabstop>txt_debug</tabstop>
+  <tabstop>cmb_tabellen</tabstop>
+  <tabstop>btn_edit</tabstop>
+  <tabstop>btn_save</tabstop>
+  <tabstop>tblView_tabellen</tabstop>
+  <tabstop>btn_add</tabstop>
+  <tabstop>btn_delete</tabstop>
+  <tabstop>txt_ftpUrl</tabstop>
+  <tabstop>spinBox_ftpPort</tabstop>
+  <tabstop>btn_loadSettings</tabstop>
+  <tabstop>scrollArea</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

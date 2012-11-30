@@ -14,17 +14,22 @@
 
 class FileHandler
 {
+
 public:
     FileHandler();
-    void getFile();
+    FileHandler(QFile *file);
     void addKeyValue(QString key, QString value);
-    QHash<QString, QString> getKeyValues();
+    void writeFile();
+    QHash<QString, QString> getStringKeyValues();
+    QHash<QString, int> getIntKeyValues();
     QStringList getKeys();
+
 private:
-    QFile file;
+    QFile *myFile;
     QStringList keys;
     //QStringList values;
-    QHash<QString, QString> keyValues;
+    QHash<QString, QString> stringKeyValues;
+    QHash<QString, int> intKeyValues;
 };
 
 #endif // FILEHANDLER_H

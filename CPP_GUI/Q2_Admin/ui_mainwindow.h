@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon Nov 19 22:10:19 2012
+** Created: Fri Nov 30 07:55:24 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,8 +14,10 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QCheckBox>
 #include <QtGui/QComboBox>
 #include <QtGui/QFormLayout>
+#include <QtGui/QFrame>
 #include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
@@ -25,6 +27,9 @@
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenuBar>
 #include <QtGui/QPushButton>
+#include <QtGui/QScrollArea>
+#include <QtGui/QSpacerItem>
+#include <QtGui/QSpinBox>
 #include <QtGui/QStatusBar>
 #include <QtGui/QTabWidget>
 #include <QtGui/QTableView>
@@ -41,44 +46,113 @@ public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_2;
     QTabWidget *tabWidget;
-    QWidget *tab;
+    QWidget *tab1;
     QVBoxLayout *verticalLayout_5;
-    QGroupBox *groupBox_2;
+    QGroupBox *gb_dbConnect;
     QVBoxLayout *verticalLayout_7;
-    QFormLayout *formLayout_1;
+    QFormLayout *fl_dbConnect;
     QLabel *lbl_dbHost;
     QLineEdit *txt_dbHost;
     QLabel *lbl_dbName;
     QLineEdit *txt_dbName;
     QLabel *lbl_dbUser;
+    QHBoxLayout *hbl_dbConnect1;
     QLineEdit *txt_dbUser;
     QLabel *lbl_dbUserPasswd;
     QLineEdit *txt_dbPasswd;
-    QHBoxLayout *horizontalLayout1;
+    QHBoxLayout *hbl_dbConnect2;
+    QSpacerItem *hspacer_dbConnect;
     QPushButton *btn_dbConnect;
     QPushButton *btn_dbDisconnect;
     QPushButton *btn_norman;
-    QGroupBox *groupBox;
+    QGroupBox *gb_dbConnectionInfo;
     QVBoxLayout *verticalLayout_6;
     QTextEdit *txt_debug;
     QWidget *tab2;
     QVBoxLayout *verticalLayout;
     QGroupBox *gb_selectTable;
     QVBoxLayout *verticalLayout_4;
-    QHBoxLayout *horizontalLayout_4;
+    QHBoxLayout *hbl_selectTable;
     QComboBox *cmb_tabellen;
     QPushButton *btn_edit;
     QPushButton *btn_save;
     QGroupBox *gb_editTable;
     QVBoxLayout *verticalLayout_3;
-    QGridLayout *gridLayout;
+    QGridLayout *gl_editTable;
     QTableView *tblView_tabellen;
-    QHBoxLayout *horizontalLayout_5;
+    QHBoxLayout *hbl_editTable;
     QPushButton *btn_add;
     QPushButton *btn_delete;
     QWidget *tab3;
-    QHBoxLayout *horizontalLayout_3;
+    QVBoxLayout *verticalLayout_8;
+    QGroupBox *gb_ftpConnection;
+    QVBoxLayout *verticalLayout_9;
+    QFormLayout *fl_ftpConnection;
+    QLabel *lbl_ftpUrl;
+    QHBoxLayout *hbl_ftpConnection1;
+    QLineEdit *txt_ftpUrl;
+    QLabel *lbl_ftpPort;
+    QSpinBox *spinBox_ftpPort;
+    QLabel *lbl_ftpUser;
+    QHBoxLayout *hbl_ftpConnection2;
+    QLineEdit *txt_ftpUser;
+    QLabel *lbl_ftpPasswd;
+    QLineEdit *txt_ftpPasswd;
+    QHBoxLayout *hbl_ftpButtons;
+    QSpacerItem *hSpacer_ftpButtons;
+    QPushButton *btn_loadSettings;
     QGroupBox *gb_settings;
+    QVBoxLayout *verticalLayout_11;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QGridLayout *gridLayout_3;
+    QVBoxLayout *vbl_settingsForm;
+    QFormLayout *fl_databaseSettings;
+    QLabel *lbl_databaseSettings;
+    QLabel *lbl_databaseSettings_dbHost;
+    QLineEdit *txt_databaseSettings_dbHost;
+    QLabel *lbl_databaseSettings_dbName;
+    QLineEdit *txt_databaseSettings_dbName;
+    QLabel *lbl_databaseSettings_dbUser;
+    QHBoxLayout *hbl_databaseSettings;
+    QLineEdit *txt_databaseSettings_dbUser;
+    QLabel *lbl_databaseSettings_dbPasswd;
+    QLineEdit *txt_databaseSettings_dbPasswd;
+    QFrame *hline_settingsForm_1;
+    QGridLayout *gl_gameSettings1;
+    QLabel *lbl_gameSettings_GetNextAfterAnswer;
+    QCheckBox *chk_gameSettings_GetNextAfterAnswer;
+    QLabel *lbl_gameSettings_TimePerQ;
+    QLabel *lbl_gameSettings_TimeWhenNailed;
+    QLabel *lbl_gameSettings_DelayQ_A;
+    QSpinBox *spinBox_gameSettings_TimesPerC;
+    QLabel *lbl_gameSettings_Rounds;
+    QSpinBox *spinBox_gameSettings_Rounds;
+    QLabel *lbl_gameSettings_TimesPerC;
+    QSpinBox *spinBox_gameSettings_TimeWhenNailed;
+    QSpacerItem *hSpacer_gameSettings2;
+    QSpinBox *spinBox_gameSettings_TimePerQ;
+    QLabel *lbl_gameSettings;
+    QSpinBox *spinBox_gameSettings_DelayQ_A;
+    QLabel *lbl_gameSettings_HSCount;
+    QSpinBox *spinBox_gameSettings_HSCount;
+    QSpacerItem *hSpacer_gameSettings1;
+    QFrame *hline_settingsForm_2;
+    QGridLayout *gl_gameSettings2;
+    QLabel *lbl_gameSettings_NailCount;
+    QLabel *lbl_gameSettings_ignored;
+    QLabel *lbl_gameSettings_ReNail;
+    QLabel *lbl_gameSettings_Points;
+    QSpinBox *spinBox_gameSettings_NailCount;
+    QComboBox *cmb_gameSettings_Points;
+    QSpinBox *spinBox_gameSettings_MinUserCount;
+    QLabel *lbl_gameSettings_MinUserCount;
+    QSpacerItem *hSpacer_gameSettings3;
+    QSpacerItem *hSpacer_gameSettings4;
+    QCheckBox *chk_gameSettings_ReNail;
+    QHBoxLayout *hbl_settingButtons;
+    QPushButton *btn_sendSettings;
+    QPushButton *btn_discardChanges;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -87,7 +161,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(711, 701);
+        MainWindow->resize(780, 721);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_2 = new QVBoxLayout(centralWidget);
@@ -102,15 +176,15 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
         tabWidget->setSizePolicy(sizePolicy);
-        tab = new QWidget();
-        tab->setObjectName(QString::fromUtf8("tab"));
-        verticalLayout_5 = new QVBoxLayout(tab);
+        tab1 = new QWidget();
+        tab1->setObjectName(QString::fromUtf8("tab1"));
+        verticalLayout_5 = new QVBoxLayout(tab1);
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        groupBox_2 = new QGroupBox(tab);
-        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
+        gb_dbConnect = new QGroupBox(tab1);
+        gb_dbConnect->setObjectName(QString::fromUtf8("gb_dbConnect"));
+        gb_dbConnect->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
 "     border: 2px solid gray;\n"
 "     border-radius: 5px;\n"
 "     margin-top: 1ex; /* leave space at the top for the title */\n"
@@ -121,86 +195,99 @@ public:
 "     subcontrol-position: top left; /* position at the top center */\n"
 "     padding: 0 3px;\n"
 " }"));
-        verticalLayout_7 = new QVBoxLayout(groupBox_2);
+        verticalLayout_7 = new QVBoxLayout(gb_dbConnect);
         verticalLayout_7->setSpacing(6);
         verticalLayout_7->setContentsMargins(11, 11, 11, 11);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        formLayout_1 = new QFormLayout();
-        formLayout_1->setSpacing(6);
-        formLayout_1->setObjectName(QString::fromUtf8("formLayout_1"));
-        formLayout_1->setFieldGrowthPolicy(QFormLayout::ExpandingFieldsGrow);
-        lbl_dbHost = new QLabel(groupBox_2);
+        fl_dbConnect = new QFormLayout();
+        fl_dbConnect->setSpacing(6);
+        fl_dbConnect->setObjectName(QString::fromUtf8("fl_dbConnect"));
+        fl_dbConnect->setFieldGrowthPolicy(QFormLayout::ExpandingFieldsGrow);
+        lbl_dbHost = new QLabel(gb_dbConnect);
         lbl_dbHost->setObjectName(QString::fromUtf8("lbl_dbHost"));
 
-        formLayout_1->setWidget(0, QFormLayout::LabelRole, lbl_dbHost);
+        fl_dbConnect->setWidget(0, QFormLayout::LabelRole, lbl_dbHost);
 
-        txt_dbHost = new QLineEdit(groupBox_2);
+        txt_dbHost = new QLineEdit(gb_dbConnect);
         txt_dbHost->setObjectName(QString::fromUtf8("txt_dbHost"));
 
-        formLayout_1->setWidget(0, QFormLayout::FieldRole, txt_dbHost);
+        fl_dbConnect->setWidget(0, QFormLayout::FieldRole, txt_dbHost);
 
-        lbl_dbName = new QLabel(groupBox_2);
+        lbl_dbName = new QLabel(gb_dbConnect);
         lbl_dbName->setObjectName(QString::fromUtf8("lbl_dbName"));
 
-        formLayout_1->setWidget(1, QFormLayout::LabelRole, lbl_dbName);
+        fl_dbConnect->setWidget(1, QFormLayout::LabelRole, lbl_dbName);
 
-        txt_dbName = new QLineEdit(groupBox_2);
+        txt_dbName = new QLineEdit(gb_dbConnect);
         txt_dbName->setObjectName(QString::fromUtf8("txt_dbName"));
 
-        formLayout_1->setWidget(1, QFormLayout::FieldRole, txt_dbName);
+        fl_dbConnect->setWidget(1, QFormLayout::FieldRole, txt_dbName);
 
-        lbl_dbUser = new QLabel(groupBox_2);
+        lbl_dbUser = new QLabel(gb_dbConnect);
         lbl_dbUser->setObjectName(QString::fromUtf8("lbl_dbUser"));
 
-        formLayout_1->setWidget(2, QFormLayout::LabelRole, lbl_dbUser);
+        fl_dbConnect->setWidget(2, QFormLayout::LabelRole, lbl_dbUser);
 
-        txt_dbUser = new QLineEdit(groupBox_2);
+        hbl_dbConnect1 = new QHBoxLayout();
+        hbl_dbConnect1->setSpacing(6);
+        hbl_dbConnect1->setObjectName(QString::fromUtf8("hbl_dbConnect1"));
+        txt_dbUser = new QLineEdit(gb_dbConnect);
         txt_dbUser->setObjectName(QString::fromUtf8("txt_dbUser"));
 
-        formLayout_1->setWidget(2, QFormLayout::FieldRole, txt_dbUser);
+        hbl_dbConnect1->addWidget(txt_dbUser);
 
-        lbl_dbUserPasswd = new QLabel(groupBox_2);
+        lbl_dbUserPasswd = new QLabel(gb_dbConnect);
         lbl_dbUserPasswd->setObjectName(QString::fromUtf8("lbl_dbUserPasswd"));
 
-        formLayout_1->setWidget(3, QFormLayout::LabelRole, lbl_dbUserPasswd);
+        hbl_dbConnect1->addWidget(lbl_dbUserPasswd);
 
-        txt_dbPasswd = new QLineEdit(groupBox_2);
+        txt_dbPasswd = new QLineEdit(gb_dbConnect);
         txt_dbPasswd->setObjectName(QString::fromUtf8("txt_dbPasswd"));
         txt_dbPasswd->setEchoMode(QLineEdit::Password);
 
-        formLayout_1->setWidget(3, QFormLayout::FieldRole, txt_dbPasswd);
+        hbl_dbConnect1->addWidget(txt_dbPasswd);
 
 
-        verticalLayout_7->addLayout(formLayout_1);
+        fl_dbConnect->setLayout(2, QFormLayout::FieldRole, hbl_dbConnect1);
 
-        horizontalLayout1 = new QHBoxLayout();
-        horizontalLayout1->setSpacing(6);
-        horizontalLayout1->setObjectName(QString::fromUtf8("horizontalLayout1"));
-        btn_dbConnect = new QPushButton(groupBox_2);
+
+        verticalLayout_7->addLayout(fl_dbConnect);
+
+        hbl_dbConnect2 = new QHBoxLayout();
+        hbl_dbConnect2->setSpacing(6);
+        hbl_dbConnect2->setObjectName(QString::fromUtf8("hbl_dbConnect2"));
+        hspacer_dbConnect = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        hbl_dbConnect2->addItem(hspacer_dbConnect);
+
+        btn_dbConnect = new QPushButton(gb_dbConnect);
         btn_dbConnect->setObjectName(QString::fromUtf8("btn_dbConnect"));
+        btn_dbConnect->setAutoDefault(true);
 
-        horizontalLayout1->addWidget(btn_dbConnect);
+        hbl_dbConnect2->addWidget(btn_dbConnect);
 
-        btn_dbDisconnect = new QPushButton(groupBox_2);
+        btn_dbDisconnect = new QPushButton(gb_dbConnect);
         btn_dbDisconnect->setObjectName(QString::fromUtf8("btn_dbDisconnect"));
         btn_dbDisconnect->setEnabled(false);
+        btn_dbDisconnect->setAutoDefault(true);
 
-        horizontalLayout1->addWidget(btn_dbDisconnect);
+        hbl_dbConnect2->addWidget(btn_dbDisconnect);
 
-        btn_norman = new QPushButton(groupBox_2);
+        btn_norman = new QPushButton(gb_dbConnect);
         btn_norman->setObjectName(QString::fromUtf8("btn_norman"));
+        btn_norman->setAutoDefault(true);
 
-        horizontalLayout1->addWidget(btn_norman);
-
-
-        verticalLayout_7->addLayout(horizontalLayout1);
+        hbl_dbConnect2->addWidget(btn_norman);
 
 
-        verticalLayout_5->addWidget(groupBox_2);
+        verticalLayout_7->addLayout(hbl_dbConnect2);
 
-        groupBox = new QGroupBox(tab);
-        groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
+
+        verticalLayout_5->addWidget(gb_dbConnect);
+
+        gb_dbConnectionInfo = new QGroupBox(tab1);
+        gb_dbConnectionInfo->setObjectName(QString::fromUtf8("gb_dbConnectionInfo"));
+        gb_dbConnectionInfo->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
 "     border: 2px solid gray;\n"
 "     border-radius: 5px;\n"
 "     margin-top: 1ex; /* leave space at the top for the title */\n"
@@ -211,19 +298,19 @@ public:
 "     subcontrol-position: top left; /* position at the top center */\n"
 "     padding: 0 3px;\n"
 " }"));
-        verticalLayout_6 = new QVBoxLayout(groupBox);
+        verticalLayout_6 = new QVBoxLayout(gb_dbConnectionInfo);
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setContentsMargins(11, 11, 11, 11);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        txt_debug = new QTextEdit(groupBox);
+        txt_debug = new QTextEdit(gb_dbConnectionInfo);
         txt_debug->setObjectName(QString::fromUtf8("txt_debug"));
 
         verticalLayout_6->addWidget(txt_debug);
 
 
-        verticalLayout_5->addWidget(groupBox);
+        verticalLayout_5->addWidget(gb_dbConnectionInfo);
 
-        tabWidget->addTab(tab, QString());
+        tabWidget->addTab(tab1, QString());
         tab2 = new QWidget();
         tab2->setObjectName(QString::fromUtf8("tab2"));
         verticalLayout = new QVBoxLayout(tab2);
@@ -247,28 +334,30 @@ public:
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        hbl_selectTable = new QHBoxLayout();
+        hbl_selectTable->setSpacing(6);
+        hbl_selectTable->setObjectName(QString::fromUtf8("hbl_selectTable"));
         cmb_tabellen = new QComboBox(gb_selectTable);
         cmb_tabellen->setObjectName(QString::fromUtf8("cmb_tabellen"));
 
-        horizontalLayout_4->addWidget(cmb_tabellen);
+        hbl_selectTable->addWidget(cmb_tabellen);
 
         btn_edit = new QPushButton(gb_selectTable);
         btn_edit->setObjectName(QString::fromUtf8("btn_edit"));
         btn_edit->setEnabled(false);
+        btn_edit->setAutoDefault(true);
 
-        horizontalLayout_4->addWidget(btn_edit);
+        hbl_selectTable->addWidget(btn_edit);
 
         btn_save = new QPushButton(gb_selectTable);
         btn_save->setObjectName(QString::fromUtf8("btn_save"));
         btn_save->setEnabled(false);
+        btn_save->setAutoDefault(true);
 
-        horizontalLayout_4->addWidget(btn_save);
+        hbl_selectTable->addWidget(btn_save);
 
 
-        verticalLayout_4->addLayout(horizontalLayout_4);
+        verticalLayout_4->addLayout(hbl_selectTable);
 
 
         verticalLayout->addWidget(gb_selectTable);
@@ -290,37 +379,39 @@ public:
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        gridLayout = new QGridLayout();
-        gridLayout->setSpacing(6);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gl_editTable = new QGridLayout();
+        gl_editTable->setSpacing(6);
+        gl_editTable->setObjectName(QString::fromUtf8("gl_editTable"));
         tblView_tabellen = new QTableView(gb_editTable);
         tblView_tabellen->setObjectName(QString::fromUtf8("tblView_tabellen"));
         tblView_tabellen->setEditTriggers(QAbstractItemView::EditKeyPressed);
         tblView_tabellen->setSelectionMode(QAbstractItemView::SingleSelection);
         tblView_tabellen->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-        gridLayout->addWidget(tblView_tabellen, 0, 0, 1, 1);
+        gl_editTable->addWidget(tblView_tabellen, 0, 0, 1, 1);
 
 
-        verticalLayout_3->addLayout(gridLayout);
+        verticalLayout_3->addLayout(gl_editTable);
 
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        hbl_editTable = new QHBoxLayout();
+        hbl_editTable->setSpacing(6);
+        hbl_editTable->setObjectName(QString::fromUtf8("hbl_editTable"));
         btn_add = new QPushButton(gb_editTable);
         btn_add->setObjectName(QString::fromUtf8("btn_add"));
         btn_add->setEnabled(false);
+        btn_add->setAutoDefault(true);
 
-        horizontalLayout_5->addWidget(btn_add);
+        hbl_editTable->addWidget(btn_add);
 
         btn_delete = new QPushButton(gb_editTable);
         btn_delete->setObjectName(QString::fromUtf8("btn_delete"));
         btn_delete->setEnabled(false);
+        btn_delete->setAutoDefault(true);
 
-        horizontalLayout_5->addWidget(btn_delete);
+        hbl_editTable->addWidget(btn_delete);
 
 
-        verticalLayout_3->addLayout(horizontalLayout_5);
+        verticalLayout_3->addLayout(hbl_editTable);
 
 
         verticalLayout->addWidget(gb_editTable);
@@ -328,10 +419,108 @@ public:
         tabWidget->addTab(tab2, QString());
         tab3 = new QWidget();
         tab3->setObjectName(QString::fromUtf8("tab3"));
-        horizontalLayout_3 = new QHBoxLayout(tab3);
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        verticalLayout_8 = new QVBoxLayout(tab3);
+        verticalLayout_8->setSpacing(6);
+        verticalLayout_8->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        gb_ftpConnection = new QGroupBox(tab3);
+        gb_ftpConnection->setObjectName(QString::fromUtf8("gb_ftpConnection"));
+        gb_ftpConnection->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
+"     border: 2px solid gray;\n"
+"     border-radius: 5px;\n"
+"     margin-top: 1ex; /* leave space at the top for the title */\n"
+" }\n"
+"\n"
+" QGroupBox::title {\n"
+"     subcontrol-origin: margin;\n"
+"     subcontrol-position: top left; /* position at the top center */\n"
+"     padding: 0 3px;\n"
+" }"));
+        verticalLayout_9 = new QVBoxLayout(gb_ftpConnection);
+        verticalLayout_9->setSpacing(6);
+        verticalLayout_9->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
+        fl_ftpConnection = new QFormLayout();
+        fl_ftpConnection->setSpacing(6);
+        fl_ftpConnection->setObjectName(QString::fromUtf8("fl_ftpConnection"));
+        fl_ftpConnection->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
+        lbl_ftpUrl = new QLabel(gb_ftpConnection);
+        lbl_ftpUrl->setObjectName(QString::fromUtf8("lbl_ftpUrl"));
+
+        fl_ftpConnection->setWidget(0, QFormLayout::LabelRole, lbl_ftpUrl);
+
+        hbl_ftpConnection1 = new QHBoxLayout();
+        hbl_ftpConnection1->setSpacing(6);
+        hbl_ftpConnection1->setObjectName(QString::fromUtf8("hbl_ftpConnection1"));
+        txt_ftpUrl = new QLineEdit(gb_ftpConnection);
+        txt_ftpUrl->setObjectName(QString::fromUtf8("txt_ftpUrl"));
+
+        hbl_ftpConnection1->addWidget(txt_ftpUrl);
+
+        lbl_ftpPort = new QLabel(gb_ftpConnection);
+        lbl_ftpPort->setObjectName(QString::fromUtf8("lbl_ftpPort"));
+
+        hbl_ftpConnection1->addWidget(lbl_ftpPort);
+
+        spinBox_ftpPort = new QSpinBox(gb_ftpConnection);
+        spinBox_ftpPort->setObjectName(QString::fromUtf8("spinBox_ftpPort"));
+        spinBox_ftpPort->setMaximum(65535);
+        spinBox_ftpPort->setValue(21);
+
+        hbl_ftpConnection1->addWidget(spinBox_ftpPort);
+
+
+        fl_ftpConnection->setLayout(0, QFormLayout::FieldRole, hbl_ftpConnection1);
+
+        lbl_ftpUser = new QLabel(gb_ftpConnection);
+        lbl_ftpUser->setObjectName(QString::fromUtf8("lbl_ftpUser"));
+
+        fl_ftpConnection->setWidget(2, QFormLayout::LabelRole, lbl_ftpUser);
+
+        hbl_ftpConnection2 = new QHBoxLayout();
+        hbl_ftpConnection2->setSpacing(6);
+        hbl_ftpConnection2->setObjectName(QString::fromUtf8("hbl_ftpConnection2"));
+        txt_ftpUser = new QLineEdit(gb_ftpConnection);
+        txt_ftpUser->setObjectName(QString::fromUtf8("txt_ftpUser"));
+
+        hbl_ftpConnection2->addWidget(txt_ftpUser);
+
+        lbl_ftpPasswd = new QLabel(gb_ftpConnection);
+        lbl_ftpPasswd->setObjectName(QString::fromUtf8("lbl_ftpPasswd"));
+
+        hbl_ftpConnection2->addWidget(lbl_ftpPasswd);
+
+        txt_ftpPasswd = new QLineEdit(gb_ftpConnection);
+        txt_ftpPasswd->setObjectName(QString::fromUtf8("txt_ftpPasswd"));
+        txt_ftpPasswd->setEchoMode(QLineEdit::Password);
+
+        hbl_ftpConnection2->addWidget(txt_ftpPasswd);
+
+
+        fl_ftpConnection->setLayout(2, QFormLayout::FieldRole, hbl_ftpConnection2);
+
+
+        verticalLayout_9->addLayout(fl_ftpConnection);
+
+        hbl_ftpButtons = new QHBoxLayout();
+        hbl_ftpButtons->setSpacing(6);
+        hbl_ftpButtons->setObjectName(QString::fromUtf8("hbl_ftpButtons"));
+        hSpacer_ftpButtons = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+
+        hbl_ftpButtons->addItem(hSpacer_ftpButtons);
+
+        btn_loadSettings = new QPushButton(gb_ftpConnection);
+        btn_loadSettings->setObjectName(QString::fromUtf8("btn_loadSettings"));
+        btn_loadSettings->setAutoDefault(true);
+
+        hbl_ftpButtons->addWidget(btn_loadSettings);
+
+
+        verticalLayout_9->addLayout(hbl_ftpButtons);
+
+
+        verticalLayout_8->addWidget(gb_ftpConnection);
+
         gb_settings = new QGroupBox(tab3);
         gb_settings->setObjectName(QString::fromUtf8("gb_settings"));
         gb_settings->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
@@ -348,8 +537,279 @@ public:
         gb_settings->setFlat(false);
         gb_settings->setCheckable(false);
         gb_settings->setChecked(false);
+        verticalLayout_11 = new QVBoxLayout(gb_settings);
+        verticalLayout_11->setSpacing(6);
+        verticalLayout_11->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
+        scrollArea = new QScrollArea(gb_settings);
+        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setEnabled(false);
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 700, 409));
+        gridLayout_3 = new QGridLayout(scrollAreaWidgetContents);
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setContentsMargins(11, 11, 11, 11);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        vbl_settingsForm = new QVBoxLayout();
+        vbl_settingsForm->setSpacing(6);
+        vbl_settingsForm->setObjectName(QString::fromUtf8("vbl_settingsForm"));
+        fl_databaseSettings = new QFormLayout();
+        fl_databaseSettings->setSpacing(6);
+        fl_databaseSettings->setObjectName(QString::fromUtf8("fl_databaseSettings"));
+        fl_databaseSettings->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
+        lbl_databaseSettings = new QLabel(scrollAreaWidgetContents);
+        lbl_databaseSettings->setObjectName(QString::fromUtf8("lbl_databaseSettings"));
 
-        horizontalLayout_3->addWidget(gb_settings);
+        fl_databaseSettings->setWidget(0, QFormLayout::LabelRole, lbl_databaseSettings);
+
+        lbl_databaseSettings_dbHost = new QLabel(scrollAreaWidgetContents);
+        lbl_databaseSettings_dbHost->setObjectName(QString::fromUtf8("lbl_databaseSettings_dbHost"));
+
+        fl_databaseSettings->setWidget(1, QFormLayout::LabelRole, lbl_databaseSettings_dbHost);
+
+        txt_databaseSettings_dbHost = new QLineEdit(scrollAreaWidgetContents);
+        txt_databaseSettings_dbHost->setObjectName(QString::fromUtf8("txt_databaseSettings_dbHost"));
+
+        fl_databaseSettings->setWidget(1, QFormLayout::FieldRole, txt_databaseSettings_dbHost);
+
+        lbl_databaseSettings_dbName = new QLabel(scrollAreaWidgetContents);
+        lbl_databaseSettings_dbName->setObjectName(QString::fromUtf8("lbl_databaseSettings_dbName"));
+
+        fl_databaseSettings->setWidget(2, QFormLayout::LabelRole, lbl_databaseSettings_dbName);
+
+        txt_databaseSettings_dbName = new QLineEdit(scrollAreaWidgetContents);
+        txt_databaseSettings_dbName->setObjectName(QString::fromUtf8("txt_databaseSettings_dbName"));
+
+        fl_databaseSettings->setWidget(2, QFormLayout::FieldRole, txt_databaseSettings_dbName);
+
+        lbl_databaseSettings_dbUser = new QLabel(scrollAreaWidgetContents);
+        lbl_databaseSettings_dbUser->setObjectName(QString::fromUtf8("lbl_databaseSettings_dbUser"));
+
+        fl_databaseSettings->setWidget(3, QFormLayout::LabelRole, lbl_databaseSettings_dbUser);
+
+        hbl_databaseSettings = new QHBoxLayout();
+        hbl_databaseSettings->setSpacing(6);
+        hbl_databaseSettings->setObjectName(QString::fromUtf8("hbl_databaseSettings"));
+        txt_databaseSettings_dbUser = new QLineEdit(scrollAreaWidgetContents);
+        txt_databaseSettings_dbUser->setObjectName(QString::fromUtf8("txt_databaseSettings_dbUser"));
+
+        hbl_databaseSettings->addWidget(txt_databaseSettings_dbUser);
+
+        lbl_databaseSettings_dbPasswd = new QLabel(scrollAreaWidgetContents);
+        lbl_databaseSettings_dbPasswd->setObjectName(QString::fromUtf8("lbl_databaseSettings_dbPasswd"));
+
+        hbl_databaseSettings->addWidget(lbl_databaseSettings_dbPasswd);
+
+        txt_databaseSettings_dbPasswd = new QLineEdit(scrollAreaWidgetContents);
+        txt_databaseSettings_dbPasswd->setObjectName(QString::fromUtf8("txt_databaseSettings_dbPasswd"));
+
+        hbl_databaseSettings->addWidget(txt_databaseSettings_dbPasswd);
+
+
+        fl_databaseSettings->setLayout(3, QFormLayout::FieldRole, hbl_databaseSettings);
+
+
+        vbl_settingsForm->addLayout(fl_databaseSettings);
+
+        hline_settingsForm_1 = new QFrame(scrollAreaWidgetContents);
+        hline_settingsForm_1->setObjectName(QString::fromUtf8("hline_settingsForm_1"));
+        hline_settingsForm_1->setLineWidth(1);
+        hline_settingsForm_1->setFrameShape(QFrame::HLine);
+        hline_settingsForm_1->setFrameShadow(QFrame::Sunken);
+
+        vbl_settingsForm->addWidget(hline_settingsForm_1);
+
+        gl_gameSettings1 = new QGridLayout();
+        gl_gameSettings1->setSpacing(6);
+        gl_gameSettings1->setObjectName(QString::fromUtf8("gl_gameSettings1"));
+        lbl_gameSettings_GetNextAfterAnswer = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_GetNextAfterAnswer->setObjectName(QString::fromUtf8("lbl_gameSettings_GetNextAfterAnswer"));
+
+        gl_gameSettings1->addWidget(lbl_gameSettings_GetNextAfterAnswer, 3, 3, 1, 1);
+
+        chk_gameSettings_GetNextAfterAnswer = new QCheckBox(scrollAreaWidgetContents);
+        chk_gameSettings_GetNextAfterAnswer->setObjectName(QString::fromUtf8("chk_gameSettings_GetNextAfterAnswer"));
+        chk_gameSettings_GetNextAfterAnswer->setTristate(false);
+
+        gl_gameSettings1->addWidget(chk_gameSettings_GetNextAfterAnswer, 3, 4, 1, 1);
+
+        lbl_gameSettings_TimePerQ = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_TimePerQ->setObjectName(QString::fromUtf8("lbl_gameSettings_TimePerQ"));
+
+        gl_gameSettings1->addWidget(lbl_gameSettings_TimePerQ, 1, 3, 1, 1);
+
+        lbl_gameSettings_TimeWhenNailed = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_TimeWhenNailed->setObjectName(QString::fromUtf8("lbl_gameSettings_TimeWhenNailed"));
+
+        gl_gameSettings1->addWidget(lbl_gameSettings_TimeWhenNailed, 2, 0, 1, 1);
+
+        lbl_gameSettings_DelayQ_A = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_DelayQ_A->setObjectName(QString::fromUtf8("lbl_gameSettings_DelayQ_A"));
+
+        gl_gameSettings1->addWidget(lbl_gameSettings_DelayQ_A, 3, 0, 1, 1);
+
+        spinBox_gameSettings_TimesPerC = new QSpinBox(scrollAreaWidgetContents);
+        spinBox_gameSettings_TimesPerC->setObjectName(QString::fromUtf8("spinBox_gameSettings_TimesPerC"));
+
+        gl_gameSettings1->addWidget(spinBox_gameSettings_TimesPerC, 2, 4, 1, 1);
+
+        lbl_gameSettings_Rounds = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_Rounds->setObjectName(QString::fromUtf8("lbl_gameSettings_Rounds"));
+
+        gl_gameSettings1->addWidget(lbl_gameSettings_Rounds, 1, 0, 1, 1);
+
+        spinBox_gameSettings_Rounds = new QSpinBox(scrollAreaWidgetContents);
+        spinBox_gameSettings_Rounds->setObjectName(QString::fromUtf8("spinBox_gameSettings_Rounds"));
+
+        gl_gameSettings1->addWidget(spinBox_gameSettings_Rounds, 1, 1, 1, 1);
+
+        lbl_gameSettings_TimesPerC = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_TimesPerC->setObjectName(QString::fromUtf8("lbl_gameSettings_TimesPerC"));
+
+        gl_gameSettings1->addWidget(lbl_gameSettings_TimesPerC, 2, 3, 1, 1);
+
+        spinBox_gameSettings_TimeWhenNailed = new QSpinBox(scrollAreaWidgetContents);
+        spinBox_gameSettings_TimeWhenNailed->setObjectName(QString::fromUtf8("spinBox_gameSettings_TimeWhenNailed"));
+
+        gl_gameSettings1->addWidget(spinBox_gameSettings_TimeWhenNailed, 2, 1, 1, 1);
+
+        hSpacer_gameSettings2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gl_gameSettings1->addItem(hSpacer_gameSettings2, 1, 7, 1, 1);
+
+        spinBox_gameSettings_TimePerQ = new QSpinBox(scrollAreaWidgetContents);
+        spinBox_gameSettings_TimePerQ->setObjectName(QString::fromUtf8("spinBox_gameSettings_TimePerQ"));
+
+        gl_gameSettings1->addWidget(spinBox_gameSettings_TimePerQ, 1, 4, 1, 1);
+
+        lbl_gameSettings = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings->setObjectName(QString::fromUtf8("lbl_gameSettings"));
+
+        gl_gameSettings1->addWidget(lbl_gameSettings, 0, 0, 1, 1);
+
+        spinBox_gameSettings_DelayQ_A = new QSpinBox(scrollAreaWidgetContents);
+        spinBox_gameSettings_DelayQ_A->setObjectName(QString::fromUtf8("spinBox_gameSettings_DelayQ_A"));
+
+        gl_gameSettings1->addWidget(spinBox_gameSettings_DelayQ_A, 3, 1, 1, 1);
+
+        lbl_gameSettings_HSCount = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_HSCount->setObjectName(QString::fromUtf8("lbl_gameSettings_HSCount"));
+
+        gl_gameSettings1->addWidget(lbl_gameSettings_HSCount, 4, 0, 1, 1);
+
+        spinBox_gameSettings_HSCount = new QSpinBox(scrollAreaWidgetContents);
+        spinBox_gameSettings_HSCount->setObjectName(QString::fromUtf8("spinBox_gameSettings_HSCount"));
+
+        gl_gameSettings1->addWidget(spinBox_gameSettings_HSCount, 4, 1, 1, 1);
+
+        hSpacer_gameSettings1 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gl_gameSettings1->addItem(hSpacer_gameSettings1, 1, 2, 1, 1);
+
+
+        vbl_settingsForm->addLayout(gl_gameSettings1);
+
+        hline_settingsForm_2 = new QFrame(scrollAreaWidgetContents);
+        hline_settingsForm_2->setObjectName(QString::fromUtf8("hline_settingsForm_2"));
+        hline_settingsForm_2->setFrameShape(QFrame::HLine);
+        hline_settingsForm_2->setFrameShadow(QFrame::Sunken);
+
+        vbl_settingsForm->addWidget(hline_settingsForm_2);
+
+        gl_gameSettings2 = new QGridLayout();
+        gl_gameSettings2->setSpacing(6);
+        gl_gameSettings2->setObjectName(QString::fromUtf8("gl_gameSettings2"));
+        lbl_gameSettings_NailCount = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_NailCount->setObjectName(QString::fromUtf8("lbl_gameSettings_NailCount"));
+
+        gl_gameSettings2->addWidget(lbl_gameSettings_NailCount, 2, 0, 1, 1);
+
+        lbl_gameSettings_ignored = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_ignored->setObjectName(QString::fromUtf8("lbl_gameSettings_ignored"));
+
+        gl_gameSettings2->addWidget(lbl_gameSettings_ignored, 0, 0, 1, 1);
+
+        lbl_gameSettings_ReNail = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_ReNail->setObjectName(QString::fromUtf8("lbl_gameSettings_ReNail"));
+
+        gl_gameSettings2->addWidget(lbl_gameSettings_ReNail, 1, 0, 1, 1);
+
+        lbl_gameSettings_Points = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_Points->setObjectName(QString::fromUtf8("lbl_gameSettings_Points"));
+
+        gl_gameSettings2->addWidget(lbl_gameSettings_Points, 1, 3, 1, 1);
+
+        spinBox_gameSettings_NailCount = new QSpinBox(scrollAreaWidgetContents);
+        spinBox_gameSettings_NailCount->setObjectName(QString::fromUtf8("spinBox_gameSettings_NailCount"));
+        spinBox_gameSettings_NailCount->setEnabled(false);
+
+        gl_gameSettings2->addWidget(spinBox_gameSettings_NailCount, 2, 1, 1, 1);
+
+        cmb_gameSettings_Points = new QComboBox(scrollAreaWidgetContents);
+        cmb_gameSettings_Points->setObjectName(QString::fromUtf8("cmb_gameSettings_Points"));
+        cmb_gameSettings_Points->setEnabled(false);
+
+        gl_gameSettings2->addWidget(cmb_gameSettings_Points, 1, 4, 1, 1);
+
+        spinBox_gameSettings_MinUserCount = new QSpinBox(scrollAreaWidgetContents);
+        spinBox_gameSettings_MinUserCount->setObjectName(QString::fromUtf8("spinBox_gameSettings_MinUserCount"));
+        spinBox_gameSettings_MinUserCount->setEnabled(false);
+
+        gl_gameSettings2->addWidget(spinBox_gameSettings_MinUserCount, 2, 4, 1, 1);
+
+        lbl_gameSettings_MinUserCount = new QLabel(scrollAreaWidgetContents);
+        lbl_gameSettings_MinUserCount->setObjectName(QString::fromUtf8("lbl_gameSettings_MinUserCount"));
+
+        gl_gameSettings2->addWidget(lbl_gameSettings_MinUserCount, 2, 3, 1, 1);
+
+        hSpacer_gameSettings3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gl_gameSettings2->addItem(hSpacer_gameSettings3, 0, 2, 1, 1);
+
+        hSpacer_gameSettings4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gl_gameSettings2->addItem(hSpacer_gameSettings4, 0, 5, 1, 1);
+
+        chk_gameSettings_ReNail = new QCheckBox(scrollAreaWidgetContents);
+        chk_gameSettings_ReNail->setObjectName(QString::fromUtf8("chk_gameSettings_ReNail"));
+        chk_gameSettings_ReNail->setEnabled(false);
+
+        gl_gameSettings2->addWidget(chk_gameSettings_ReNail, 1, 1, 1, 1);
+
+
+        vbl_settingsForm->addLayout(gl_gameSettings2);
+
+
+        gridLayout_3->addLayout(vbl_settingsForm, 0, 0, 1, 1);
+
+        scrollArea->setWidget(scrollAreaWidgetContents);
+
+        verticalLayout_11->addWidget(scrollArea);
+
+        hbl_settingButtons = new QHBoxLayout();
+        hbl_settingButtons->setSpacing(6);
+        hbl_settingButtons->setObjectName(QString::fromUtf8("hbl_settingButtons"));
+        btn_sendSettings = new QPushButton(gb_settings);
+        btn_sendSettings->setObjectName(QString::fromUtf8("btn_sendSettings"));
+        btn_sendSettings->setEnabled(false);
+        btn_sendSettings->setAutoDefault(true);
+
+        hbl_settingButtons->addWidget(btn_sendSettings);
+
+        btn_discardChanges = new QPushButton(gb_settings);
+        btn_discardChanges->setObjectName(QString::fromUtf8("btn_discardChanges"));
+        btn_discardChanges->setEnabled(false);
+        btn_discardChanges->setAutoDefault(true);
+
+        hbl_settingButtons->addWidget(btn_discardChanges);
+
+
+        verticalLayout_11->addLayout(hbl_settingButtons);
+
+
+        verticalLayout_8->addWidget(gb_settings);
 
         tabWidget->addTab(tab3, QString());
 
@@ -358,7 +818,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 711, 25));
+        menuBar->setGeometry(QRect(0, 0, 780, 25));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -366,10 +826,26 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         MainWindow->setStatusBar(statusBar);
+        QWidget::setTabOrder(tabWidget, txt_dbHost);
+        QWidget::setTabOrder(txt_dbHost, txt_dbName);
+        QWidget::setTabOrder(txt_dbName, btn_dbConnect);
+        QWidget::setTabOrder(btn_dbConnect, btn_dbDisconnect);
+        QWidget::setTabOrder(btn_dbDisconnect, btn_norman);
+        QWidget::setTabOrder(btn_norman, txt_debug);
+        QWidget::setTabOrder(txt_debug, cmb_tabellen);
+        QWidget::setTabOrder(cmb_tabellen, btn_edit);
+        QWidget::setTabOrder(btn_edit, btn_save);
+        QWidget::setTabOrder(btn_save, tblView_tabellen);
+        QWidget::setTabOrder(tblView_tabellen, btn_add);
+        QWidget::setTabOrder(btn_add, btn_delete);
+        QWidget::setTabOrder(btn_delete, txt_ftpUrl);
+        QWidget::setTabOrder(txt_ftpUrl, spinBox_ftpPort);
+        QWidget::setTabOrder(spinBox_ftpPort, btn_loadSettings);
+        QWidget::setTabOrder(btn_loadSettings, scrollArea);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -378,28 +854,63 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
-        groupBox_2->setTitle(QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
-        lbl_dbHost->setText(QApplication::translate("MainWindow", "DB-Host", 0, QApplication::UnicodeUTF8));
-        txt_dbHost->setText(QApplication::translate("MainWindow", "192.168.0.1", 0, QApplication::UnicodeUTF8));
-        lbl_dbName->setText(QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
-        txt_dbName->setText(QApplication::translate("MainWindow", "test", 0, QApplication::UnicodeUTF8));
-        lbl_dbUser->setText(QApplication::translate("MainWindow", "Benutzer", 0, QApplication::UnicodeUTF8));
-        txt_dbUser->setText(QApplication::translate("MainWindow", "root", 0, QApplication::UnicodeUTF8));
-        lbl_dbUserPasswd->setText(QApplication::translate("MainWindow", "Passwort", 0, QApplication::UnicodeUTF8));
-        txt_dbPasswd->setText(QApplication::translate("MainWindow", "FGS.209=Wme!", 0, QApplication::UnicodeUTF8));
+        gb_dbConnect->setTitle(QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
+        lbl_dbHost->setText(QApplication::translate("MainWindow", "DB-Host:", 0, QApplication::UnicodeUTF8));
+        txt_dbHost->setText(QString());
+        lbl_dbName->setText(QApplication::translate("MainWindow", "Datenbank:", 0, QApplication::UnicodeUTF8));
+        txt_dbName->setText(QString());
+        lbl_dbUser->setText(QApplication::translate("MainWindow", "Benutzer:", 0, QApplication::UnicodeUTF8));
+        txt_dbUser->setText(QString());
+        lbl_dbUserPasswd->setText(QApplication::translate("MainWindow", "Passwort:", 0, QApplication::UnicodeUTF8));
+        txt_dbPasswd->setText(QString());
         btn_dbConnect->setText(QApplication::translate("MainWindow", "Verbinden", 0, QApplication::UnicodeUTF8));
         btn_dbDisconnect->setText(QApplication::translate("MainWindow", "Trennen", 0, QApplication::UnicodeUTF8));
         btn_norman->setText(QApplication::translate("MainWindow", "Norman", 0, QApplication::UnicodeUTF8));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Debug-Info", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Datenbankverbindung", 0, QApplication::UnicodeUTF8));
-        gb_selectTable->setTitle(QApplication::translate("MainWindow", "Tabelle ausw\303\244hlen:", 0, QApplication::UnicodeUTF8));
-        btn_edit->setText(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));
+        gb_dbConnectionInfo->setTitle(QApplication::translate("MainWindow", "Verbindungsinformationen", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("MainWindow", "Datenbankverbindung", 0, QApplication::UnicodeUTF8));
+        gb_selectTable->setTitle(QApplication::translate("MainWindow", "Tabelle ausw\303\244hlen", 0, QApplication::UnicodeUTF8));
+        btn_edit->setText(QApplication::translate("MainWindow", "Bearbeiten", 0, QApplication::UnicodeUTF8));
         btn_save->setText(QApplication::translate("MainWindow", "Speichern", 0, QApplication::UnicodeUTF8));
-        gb_editTable->setTitle(QApplication::translate("MainWindow", "Tabelle bearbeiten:", 0, QApplication::UnicodeUTF8));
-        btn_add->setText(QApplication::translate("MainWindow", "Datensatz hinzuf\303\274gen", 0, QApplication::UnicodeUTF8));
+        gb_editTable->setTitle(QApplication::translate("MainWindow", "Tabelle bearbeiten", 0, QApplication::UnicodeUTF8));
+        btn_add->setText(QApplication::translate("MainWindow", "Datensatz hinzufuegen", 0, QApplication::UnicodeUTF8));
         btn_delete->setText(QApplication::translate("MainWindow", "Datensatz loeschen", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("MainWindow", "Datensatz manipulieren", 0, QApplication::UnicodeUTF8));
-        gb_settings->setTitle(QApplication::translate("MainWindow", "GroupBox", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
+        gb_ftpConnection->setTitle(QApplication::translate("MainWindow", "FTP-Zugang", 0, QApplication::UnicodeUTF8));
+        lbl_ftpUrl->setText(QApplication::translate("MainWindow", "FTP-Adresse:", 0, QApplication::UnicodeUTF8));
+        txt_ftpUrl->setText(QApplication::translate("MainWindow", "ftp://178.25.75.91/config.ini", 0, QApplication::UnicodeUTF8));
+        lbl_ftpPort->setText(QApplication::translate("MainWindow", "Port:", 0, QApplication::UnicodeUTF8));
+        lbl_ftpUser->setText(QApplication::translate("MainWindow", "Benutzername:", 0, QApplication::UnicodeUTF8));
+        txt_ftpUser->setText(QApplication::translate("MainWindow", "ftpuser", 0, QApplication::UnicodeUTF8));
+        lbl_ftpPasswd->setText(QApplication::translate("MainWindow", "Passwort:", 0, QApplication::UnicodeUTF8));
+        txt_ftpPasswd->setText(QApplication::translate("MainWindow", "login", 0, QApplication::UnicodeUTF8));
+        btn_loadSettings->setText(QApplication::translate("MainWindow", "Datei laden", 0, QApplication::UnicodeUTF8));
+        gb_settings->setTitle(QApplication::translate("MainWindow", "Einstellungen bearbeiten", 0, QApplication::UnicodeUTF8));
+        lbl_databaseSettings->setText(QApplication::translate("MainWindow", "[DataBase]- Settings", 0, QApplication::UnicodeUTF8));
+        lbl_databaseSettings_dbHost->setText(QApplication::translate("MainWindow", "DBHost:", 0, QApplication::UnicodeUTF8));
+        lbl_databaseSettings_dbName->setText(QApplication::translate("MainWindow", "DBName:", 0, QApplication::UnicodeUTF8));
+        lbl_databaseSettings_dbUser->setText(QApplication::translate("MainWindow", "DBUser:", 0, QApplication::UnicodeUTF8));
+        lbl_databaseSettings_dbPasswd->setText(QApplication::translate("MainWindow", "DBPassword", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_GetNextAfterAnswer->setText(QApplication::translate("MainWindow", "GetNextAfterAnswer:", 0, QApplication::UnicodeUTF8));
+        chk_gameSettings_GetNextAfterAnswer->setText(QString());
+        lbl_gameSettings_TimePerQ->setText(QApplication::translate("MainWindow", "TimePerQ:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_TimeWhenNailed->setText(QApplication::translate("MainWindow", "TimeWhenNailed:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_DelayQ_A->setText(QApplication::translate("MainWindow", "DelayQ_A:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_Rounds->setText(QApplication::translate("MainWindow", "Rounds:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_TimesPerC->setText(QApplication::translate("MainWindow", "TimesPerC:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings->setText(QApplication::translate("MainWindow", "[Game]-Settings", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_HSCount->setText(QApplication::translate("MainWindow", "HSCount:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_NailCount->setText(QApplication::translate("MainWindow", "NailCount:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_ignored->setText(QApplication::translate("MainWindow", "Nicht ber\303\274cksichtigt:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_ReNail->setText(QApplication::translate("MainWindow", "ReNail:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_Points->setText(QApplication::translate("MainWindow", "Points:", 0, QApplication::UnicodeUTF8));
+        cmb_gameSettings_Points->clear();
+        cmb_gameSettings_Points->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "default", 0, QApplication::UnicodeUTF8)
+        );
+        lbl_gameSettings_MinUserCount->setText(QApplication::translate("MainWindow", "MinUserCount:", 0, QApplication::UnicodeUTF8));
+        chk_gameSettings_ReNail->setText(QString());
+        btn_sendSettings->setText(QApplication::translate("MainWindow", "Senden", 0, QApplication::UnicodeUTF8));
+        btn_discardChanges->setText(QApplication::translate("MainWindow", "Abbrechen", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab3), QApplication::translate("MainWindow", "Einstellungen", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
