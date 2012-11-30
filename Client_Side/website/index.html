@@ -1,5 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>QuickQuizzer</title>
     <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"/>
@@ -10,72 +10,356 @@
 
 <link rel="stylesheet" type="text/css" href="layout/layout.css"/>
 
-<script type="text/javascript" src="scripts/scripts.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="scripts/scripts.js"></script>
 </head>
 <body>
-         <div id="header">
-			<div id = "lauftext" ><marquee>QuickQuizzer</marquee></div>
-			
-            <div id = "login">
-            <button class="btnlogin" value="login" onclick="login()">Login</button>
-            </div>
-            <div id="highscore">
-            <button type="button" class="btnhighscore" value="Highscore" onclick="self.location.href='file:///C:/Users/Enrico/Desktop/quizz/highscore.html'">Highscore</button>
-            </div>
-         </div> <!-- Ende header -->
-<div id = "wrapper">
 
-
-         <div id="page">
-            <div id="container_kategorie">
-                 <button class="btnkat" value="Naturwissenschaften">Naturwissenschaften</button>
-                 <button class="btnkat" value="Naturwissenschaften">Sport</button>
-                 <button class="btnkat" value="Naturwissenschaften">Informatik</button>
+<!-- category -->
+	<div id="index">
+        <div id="header">
+            <div id="time">
+                <p>30<p>
+            </div>
+            <div id="category_points">
+                <div id="category_text">
+                    <p>Kategorie</p>
+                </div>
+                <div id="points">
+                    <p>Punkte</p>
+                </div>
+           </div>
+        </div> 
+        <div id="main">
+            <div id="page">
+                <div id="question_number">
+                    <p>1</p>
+                </div>
+                <div id="question">
+                    <p>
+                        Sie w�nschen sich ein Fahrrad zum Geburtstag,
+                        bekommen von Ihren Eltern versehentlich ein
+                        "Farad"geschenkt. Was k�nnten Sie in Anbetracht
+                        dessen ausrufen?
+                    </p>
+                </div>
+                <div id="answer">
+                    <ul>
+                        <li id="answer1" onclick="answer(1)" >
+                            <img src="images/answer_1.png" width="33" height="33" alt="1"/>
+                            <p id="answer1_text">"Verdammt eine physikalische Einheit!"</p>
+                        </li>
+                        <li id="answer2" onclick="answer(2)" >
+                            <img src="images/answer_2.png" width="33" height="33" alt="2"/>
+                            <p id="answer2_text">"So'n Mist, ein indisches Rieseninsekt!"</p>
+                        </li>
+                        <li id="answer3" onclick="answer(3)" >
+                            <img src="images/answer_3.png" width="33" height="33" alt="3"/>
+                            <p id="answer3_text">"Oh nein eine arabische Wüstengegend!"</p>
+                        </li>
+                        <li id="answer4" onclick="answer(4)" >
+                            <img src="images/answer_4.png" width="33" height="33" alt="4"/>
+                            <p id="answer4_text">"Ohh, ein dunkelhäutiges Supermodel!"</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
             
-            <div id="container_frage">
-                <div id="frage">
-                Welcher Schriftsteller hat die Blechtrommel geschrieben?
-                </div>
-                <div id="timer"></div>
-                <button value="Timer" onclick="timer()">Timer</button>
-            </div>
-            
-            <div id="container_antworten">
-                
-                <div id="antwort1" class = "font_antwort" >
-                <button class="btnantwort" value="Antwort1">Antwort 1</button>
-                </div>
-                <div id="antwort2" class = "font_antwort">
-                <button class="btnantwort" value="Antwort1">Antwort 2</button>
-                </div>
-                <div id="antwort3" class = "font_antwort">
-                <button class="btnantwort" value="Antwort1">Antwort 3</button>
-                </div>
-                <div id="antwort4" class = "font_antwort">
-                <button class="btnantwort" value="Antwort1">Antwort 4</button>
-                </div>
-                
-                
-            </div>
             <div id="container_player">
-                <div id="player1" >
-                Player1
-                </div>
+                
+                <!--Player1-->
+                <div id="player1">
+                    <div>
+                        <div id="player1_name">
+                            <p>Player1</p>
+                        </div>
+                        <div id="player1_points">
+                            <p>5000?</p>
+                      </div>
+                    </div>
+                    <div id="player1_nail" onclick="nailClick(1)">
+                        <img src="images/nail.png"/>
+                    </div>
+                    <div id="player1_nailed">
+                        <img src="images/nail_head.png" width="38" height="35"/>
+                    </div>
+              </div>
+                
+                <!--Player2-->
                 <div id="player2">
-                Player2
+                    <div>
+                        <div id="player2_name">
+                            <p>Player</p>
+                        </div>
+                        <div id="player2_points">
+                            <p>0?</p>
+                        </div>
+                    </div>
+                    <div id="player2_nail" onclick="nailClick(2)">
+                        <img src="images/nail.png"/>
+                    </div>
+                    <div id="player2_nailed">
+                        <img src="images/nail_head.png" width="38" height="35"/>
+                    </div>
                 </div>
+                
+                <!--Player3-->
                 <div id="player3">
-                Player3
+                    <div>
+                        <div id="player3_name">
+                            <p>Player3</p>
+                        </div>
+                        <div id="player3_points">
+                            <p>0?</p>
+                        </div>
+                    </div>
+                    <div id="player3_nail" onclick="nailClick(3)">
+                        <img src="images/nail.png"/>
+                    </div>
+                    <div id="player3_nailed">
+                        <img src="images/nail_head.png" width="38" height="35"/>
+                    </div>
                 </div>
+                
+                <!--Player4-->
                 <div id="player4">
-                Player4
+                    <div>
+                        <div id="player4_name">
+                            <p>Player4</p>
+                        </div>
+                        <div id="player4_points">
+                            <p>0?</p>
+                        </div>
+                    </div>
+                    <div id="player4_nail" onclick="nailClick(4)">
+                        <img src="images/nail.png"/>
+                    </div>
+                    <div id="player4_nailed">
+                        <img src="images/nail_head.png" width="38" height="35"/>
+                    </div>
                 </div>
-            
             </div>
-         </div> <!-- Ende page -->
+        </div>
+    </div>
+    
 
-<div style="clear: both;"></div>
-</div>  <!-- Ende wrapper -->
+<!-- category -->
+    <div id="category">
+    	<div id="main">
+            <div id="category_head">
+                <div id="category_player1">
+                    <div id="category_player1_name">
+                        <p>Player1</p>
+                    </div>
+                </div>
+                
+                <div id="category_player2">
+                    <div id="category_player2_name">
+                        <p>Player2</p>
+                    </div>
+                </div>
+                
+                <div id="category_player3">
+                    <div id="category_player3_name">
+                        <p>Player3</p>
+                    </div>
+                </div>
+                
+                <div id="category_player4">
+                    <div id="category_player4_name">
+                        <p>Player4</p>
+                    </div>
+                </div>
+                
+            </div> 
+			
+            <br /><p>Kategorie wählen</p><br />
+				
+            <div id="category1" onClick="chooseCat(1)">
+                <img src="images/cat_1.png" width="90" height="100" alt="1" longdesc="cat_1" />
+                <div id="category1_name">
+                  <p>Kategorie 1</p>
+                </div>
+            </div> 
+            
+            <div id="category2" onClick="chooseCat(2)">
+                <img src="images/cat_2.png" width="90" height="100" alt="2" longdesc="cat_2" />
+                <div id="category2_name">
+                    <p>Kategorie 2</p>
+                </div>
+            </div> 
+            
+            <div id="category3" onClick="chooseCat(3)">
+                <img src="images/cat_3.png" width="90" height="100" alt="3" longdesc="cat_3" />
+                <div id="category3_name">
+                    <p>Kategorie 3</p>
+                </div>
+            </div>  
+        </div>       
+    </div>
+    
+<!-- highscore -->
+	<div id="highscore">
+        <div id="main">
+            <div id="score_head">
+                <img src="images/highscore.png" width="926" height="164">
+            </div>
+            <div id="score_page">
+                <table class="highscore_list">
+                    <!-- highscore 1 -->
+                    <tr>                	
+                        <td class="highscore_number1">
+                            <p>1</p>
+                        </td>
+                        <td id="highscore1_name" class="highscore1_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore1_points" class="highscore1_points">
+                            <p>?0</p>
+                        </td>
+                    </tr> 
+                    
+                    <!-- highscore 2 -->
+                    <tr>                	
+                        <td id="highscore_number2" class="highscore_number2">
+                            <p>2</p>
+                        </td>
+                        <td id="highscore2_name" class="highscore2_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore2_points" class="highscore2_points">
+                            <p>?0</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- highscore 3 -->
+                    <tr>                	
+                        <td id="highscore_number3" class="highscore_number3">
+                            <p>3</p>
+                        </td>
+                        <td id="highscore3_name" class="highscore3_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore3_points" class="highscore3_points">
+                            <p>?0</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- highscore 4 -->
+                    <tr>                	
+                        <td class="highscore_number4">
+                            <p>4</p>
+                        </td>
+                        <td id="highscore4_name" class="highscore4_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore4_points" class="highscore4_points">
+                            <p>?0</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- highscore 5 -->
+                    <tr>                	
+                        <td class="highscore_number5">
+                            <p>5</p>
+                        </td>
+                        <td id="highscore5_name" class="highscore5_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore5_points" class="highscore5_points">
+                            <p>?0</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- highscore 6 -->
+                    <tr>                	
+                        <td class="highscore_number6">
+                            <p>6</p>
+                        </td>
+                        <td id="highscore6_name" class="highscore6_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore6_points" class="highscore6_points">
+                            <p>?0</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- highscore 7 -->
+                    <tr>                	
+                        <td class="highscore_number7">
+                            <p>7</p>
+                        </td>
+                        <td id="highscore7_name" class="highscore7_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore7_points" class="highscore7_points">
+                            <p>?0</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- highscore 8 -->
+                    <tr>                	
+                        <td class="highscore_number8">
+                            <p>8</p>
+                        </td>
+                        <td id="highscore8_name" class="highscore8_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore8_points" class="highscore8_points">
+                            <p>?0</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- highscore 9 -->
+                    <tr>                	
+                        <td class="highscore_number9">
+                            <p>9</p>
+                        </td>
+                        <td id="highscore9_name" class="highscore9_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore9_points" class="highscore9_points">
+                            <p>?0</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- highscore 10 -->
+                    <tr>                	
+                        <td class="highscore_number10">
+                            <p>10</p>
+                        </td>
+                        <td id="highscore10_name" class="highscore10_name">
+                            <p>Player</p>
+                        </td>
+                        <td id="highscore10_points" class="highscore10_points">
+                            <p>?0</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>	    
+        </div>
+    </div>
+
+<!-- anmeldung -->
+	<div id="anmeldung">
+		 <div>
+			 <p><h1>Herzlich Wilkommen beim QuickQuizzer!</h1></p><br />
+			  <img src="images/node_logo.png" /><br /><br />
+			  <p>Hier wird später eine kleine Einweisung stehen und etwas hübscher macht der Marcel das bestimmt auch noch.</p><br />
+			  <p>Trotzdem schon spielen? kein Problem!</p>
+			  <p>Einfach hier den Namen eintragen:</p><br />
+			  <!--<div id="errorBox"></div>-->
+			  <input id="txtPlayerName" type="text" value="Player"/>
+			  <input id="btnPlayerName" type="button" value="Los Gehts!" onclick="addUser()" /><br />
+		 </div>
+	</div>
+	
+<!-- message -->	
+	<div id="message">
+		<div>
+			 <p><h1 id="message_title">Text</h1></p><br />
+			 <p id="message_text">Text</p>
+		</div>	 
+	</div>
 </body>
 </html>
