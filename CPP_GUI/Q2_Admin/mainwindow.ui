@@ -27,7 +27,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab1">
        <attribute name="title">
@@ -38,12 +38,13 @@
          <widget class="QGroupBox" name="gb_dbConnect">
           <property name="styleSheet">
            <string notr="true"> QGroupBox {
-     border: 2px solid gray;
+     border: 2px solid darkblue;
      border-radius: 5px;
      margin-top: 1ex; /* leave space at the top for the title */
  }
 
  QGroupBox::title {
+	color: darkblue;
      subcontrol-origin: margin;
      subcontrol-position: top left; /* position at the top center */
      padding: 0 3px;
@@ -140,6 +141,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btn_dbConnect">
+               <property name="toolTip">
+                <string/>
+               </property>
                <property name="text">
                 <string>Verbinden</string>
                </property>
@@ -153,18 +157,11 @@
                <property name="enabled">
                 <bool>false</bool>
                </property>
+               <property name="toolTip">
+                <string/>
+               </property>
                <property name="text">
                 <string>Trennen</string>
-               </property>
-               <property name="autoDefault">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btn_norman">
-               <property name="text">
-                <string>Norman</string>
                </property>
                <property name="autoDefault">
                 <bool>true</bool>
@@ -180,12 +177,13 @@
          <widget class="QGroupBox" name="gb_dbConnectionInfo">
           <property name="styleSheet">
            <string notr="true"> QGroupBox {
-     border: 2px solid gray;
+     border: 2px solid darkblue;
      border-radius: 5px;
      margin-top: 1ex; /* leave space at the top for the title */
  }
 
  QGroupBox::title {
+	color: darkblue;
      subcontrol-origin: margin;
      subcontrol-position: top left; /* position at the top center */
      padding: 0 3px;
@@ -212,12 +210,13 @@
          <widget class="QGroupBox" name="gb_selectTable">
           <property name="styleSheet">
            <string notr="true"> QGroupBox {
-     border: 2px solid gray;
+     border: 2px solid darkblue;
      border-radius: 5px;
      margin-top: 1ex; /* leave space at the top for the title */
  }
 
  QGroupBox::title {
+	color: darkblue;
      subcontrol-origin: margin;
      subcontrol-position: top left; /* position at the top center */
      padding: 0 3px;
@@ -230,12 +229,47 @@
            <item>
             <layout class="QHBoxLayout" name="hbl_selectTable">
              <item>
-              <widget class="QComboBox" name="cmb_tabellen"/>
+              <widget class="QComboBox" name="cmb_tabellen">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tabelle aus Datenbank zur Bearbeitung auswaehlen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
              </item>
              <item>
               <widget class="QPushButton" name="btn_edit">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tabelle zur Bearbeitung freischalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Bearbeiten</string>
@@ -249,6 +283,9 @@
               <widget class="QPushButton" name="btn_save">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string/>
                </property>
                <property name="text">
                 <string>Speichern</string>
@@ -267,12 +304,13 @@
          <widget class="QGroupBox" name="gb_editTable">
           <property name="styleSheet">
            <string notr="true"> QGroupBox {
-     border: 2px solid gray;
+     border: 2px solid darkblue;
      border-radius: 5px;
      margin-top: 1ex; /* leave space at the top for the title */
  }
 
  QGroupBox::title {
+	color: darkblue;
      subcontrol-origin: margin;
      subcontrol-position: top left; /* position at the top center */
      padding: 0 3px;
@@ -302,9 +340,25 @@
            <item>
             <layout class="QHBoxLayout" name="hbl_editTable">
              <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QPushButton" name="btn_add">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string/>
                </property>
                <property name="text">
                 <string>Datensatz hinzufuegen</string>
@@ -318,6 +372,9 @@
               <widget class="QPushButton" name="btn_delete">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string/>
                </property>
                <property name="text">
                 <string>Datensatz loeschen</string>
@@ -343,12 +400,13 @@
          <widget class="QGroupBox" name="gb_ftpConnection">
           <property name="styleSheet">
            <string notr="true"> QGroupBox {
-     border: 2px solid gray;
+     border: 2px solid darkblue;
      border-radius: 5px;
      margin-top: 1ex; /* leave space at the top for the title */
  }
 
  QGroupBox::title {
+	color: darkblue;
      subcontrol-origin: margin;
      subcontrol-position: top left; /* position at the top center */
      padding: 0 3px;
@@ -455,11 +513,24 @@
              </item>
              <item>
               <widget class="QPushButton" name="btn_loadSettings">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Einstellungsdatei per FTP herunterladen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="text">
-                <string>Datei laden</string>
+                <string>Verbinden</string>
                </property>
                <property name="autoDefault">
                 <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_ftpDisconnect">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Trennen</string>
                </property>
               </widget>
              </item>
@@ -472,12 +543,13 @@
          <widget class="QGroupBox" name="gb_settings">
           <property name="styleSheet">
            <string notr="true"> QGroupBox {
-     border: 2px solid gray;
+     border: 2px solid darkblue;
      border-radius: 5px;
      margin-top: 1ex; /* leave space at the top for the title */
  }
 
  QGroupBox::title {
+	color: darkblue;
      subcontrol-origin: margin;
      subcontrol-position: top left; /* position at the top center */
      padding: 0 3px;
@@ -717,7 +789,7 @@
                    <item row="0" column="0">
                     <widget class="QLabel" name="lbl_gameSettings_ignored">
                      <property name="text">
-                      <string>Nicht berücksichtigt:</string>
+                      <string>In der Demo nicht verfügbar:</string>
                      </property>
                     </widget>
                    </item>
@@ -815,9 +887,25 @@
            <item>
             <layout class="QHBoxLayout" name="hbl_settingButtons">
              <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QPushButton" name="btn_sendSettings">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Aenderungen per FTP zum Server senden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Senden</string>
@@ -832,8 +920,11 @@
                <property name="enabled">
                 <bool>false</bool>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Einstellungen erneut laden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="text">
-                <string>Abbrechen</string>
+                <string>Neu laden</string>
                </property>
                <property name="autoDefault">
                 <bool>true</bool>
@@ -860,6 +951,34 @@
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuDatei">
+    <property name="title">
+     <string>Datei</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuInfo">
+    <property name="title">
+     <string>Hilfe</string>
+    </property>
+    <addaction name="actionInfo"/>
+   </widget>
+   <widget class="QMenu" name="menuEinstellungen">
+    <property name="title">
+     <string>Einstellungen</string>
+    </property>
+    <widget class="QMenu" name="menuSprache">
+     <property name="title">
+      <string>Sprache</string>
+     </property>
+     <addaction name="actionDeutsch"/>
+     <addaction name="actionEnglisch"/>
+    </widget>
+    <addaction name="menuSprache"/>
+   </widget>
+   <addaction name="menuDatei"/>
+   <addaction name="menuEinstellungen"/>
+   <addaction name="menuInfo"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -870,15 +989,48 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Beenden</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionDeutsch">
+   <property name="text">
+    <string>Deutsch</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionEnglisch">
+   <property name="text">
+    <string>Englisch</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="actionInfo">
+   <property name="text">
+    <string>Info</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>tabWidget</tabstop>
   <tabstop>txt_dbHost</tabstop>
   <tabstop>txt_dbName</tabstop>
+  <tabstop>txt_dbUser</tabstop>
+  <tabstop>txt_dbPasswd</tabstop>
   <tabstop>btn_dbConnect</tabstop>
   <tabstop>btn_dbDisconnect</tabstop>
-  <tabstop>btn_norman</tabstop>
   <tabstop>txt_debug</tabstop>
   <tabstop>cmb_tabellen</tabstop>
   <tabstop>btn_edit</tabstop>
@@ -888,8 +1040,27 @@
   <tabstop>btn_delete</tabstop>
   <tabstop>txt_ftpUrl</tabstop>
   <tabstop>spinBox_ftpPort</tabstop>
+  <tabstop>txt_ftpUser</tabstop>
+  <tabstop>txt_ftpPasswd</tabstop>
   <tabstop>btn_loadSettings</tabstop>
   <tabstop>scrollArea</tabstop>
+  <tabstop>txt_databaseSettings_dbHost</tabstop>
+  <tabstop>txt_databaseSettings_dbName</tabstop>
+  <tabstop>txt_databaseSettings_dbUser</tabstop>
+  <tabstop>txt_databaseSettings_dbPasswd</tabstop>
+  <tabstop>spinBox_gameSettings_Rounds</tabstop>
+  <tabstop>spinBox_gameSettings_TimePerQ</tabstop>
+  <tabstop>spinBox_gameSettings_TimeWhenNailed</tabstop>
+  <tabstop>spinBox_gameSettings_TimesPerC</tabstop>
+  <tabstop>spinBox_gameSettings_DelayQ_A</tabstop>
+  <tabstop>chk_gameSettings_GetNextAfterAnswer</tabstop>
+  <tabstop>spinBox_gameSettings_HSCount</tabstop>
+  <tabstop>chk_gameSettings_ReNail</tabstop>
+  <tabstop>cmb_gameSettings_Points</tabstop>
+  <tabstop>spinBox_gameSettings_NailCount</tabstop>
+  <tabstop>spinBox_gameSettings_MinUserCount</tabstop>
+  <tabstop>btn_sendSettings</tabstop>
+  <tabstop>btn_discardChanges</tabstop>
  </tabstops>
  <resources/>
  <connections/>

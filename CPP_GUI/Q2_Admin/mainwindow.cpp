@@ -10,7 +10,6 @@
 #include "dbhandler.h"
 #include <QtSql>
 #include <QUuid>
-//#include <QScrollArea>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,8 +26,11 @@ MainWindow::MainWindow(QWidget *parent) :
     mStatLabel = new QLabel;
     mStatLabel->setTextFormat(Qt::RichText);
     this->mStatLabel->setText("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>");
+    progressBar = new QProgressBar();
+    progressBar->hide();
     statusBar()->addWidget(nStatlabel);
     statusBar()->addPermanentWidget(mStatLabel);
+    statusBar()->addWidget(progressBar);
 
     // Signals/Slots
     connect(ui->btn_dbConnect, SIGNAL(clicked()), this, SLOT(btn_dbConnectOnClick()));
@@ -38,10 +40,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btn_save, SIGNAL(clicked()), this, SLOT(btn_saveOnClick()));
     connect(ui->btn_add,SIGNAL(clicked()), this, SLOT (btn_addOnClick()));
     connect(ui->btn_edit, SIGNAL(clicked()), this, SLOT(btn_editOnClick()));
-    connect(ui->btn_norman, SIGNAL(clicked()), this, SLOT(btn_normanOnClick()));
     connect(ui->btn_loadSettings, SIGNAL(clicked()), this, SLOT(btn_loadSettingsOnClick()));
+    connect(ui->btn_ftpDisconnect, SIGNAL(clicked()), this, SLOT(btn_ftpDisconnectOnClick()));
     connect(ui->btn_sendSettings, SIGNAL(clicked()), this,SLOT(btn_sendSettingsOnClick()));
     connect(ui->btn_discardChanges, SIGNAL(clicked()), this,SLOT(btn_discardChangesOnClick()));
+    connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(actionExitOnClick()));
+    connect(ui->actionInfo, SIGNAL(triggered()), this, SLOT(actionInfoOnClick()));
+    connect(ui->actionDeutsch, SIGNAL(triggered()), this, SLOT(actionDeutschOnClick()));
+    connect(ui->actionEnglisch, SIGNAL(triggered()), this, SLOT(actionEnglischOnClick()));
 }
 
 MainWindow::~MainWindow()
@@ -161,7 +167,41 @@ Formular generieren Ende*/
 
 // Schreibe Schluessel-Wertpaare in INI-File
 void MainWindow::writeToIniFile(){
-    fileHandler.writeFile();
+
+    // Strings aus Formular auslesen und in HashTable speichern
+    this->newStringKeyValues.insert("DataBase/DbHost", this->ui->txt_databaseSettings_dbHost->text());
+    this->newStringKeyValues.insert("DataBase/DbName", this->ui->txt_databaseSettings_dbName->text());
+    this->newStringKeyValues.insert("DataBase/DbUser", this->ui->txt_databaseSettings_dbUser->text());
+    this->newStringKeyValues.insert("DataBase/DbPassword", this->ui->txt_databaseSettings_dbPasswd->text());
+
+    if (this->ui->chk_gameSettings_GetNextAfterAnswer->isChecked()){
+        this->newStringKeyValues.insert("Game/GetNextAfterAnswer", "true");
+    } else {
+        this->newStringKeyValues.insert("Game/GetNextAfterAnswer", "false");
+    }
+
+    if (this->ui->chk_gameSettings_ReNail->isChecked()){
+        this->newStringKeyValues.insert("Game/ReNail", "true");
+    } else {
+        this->newStringKeyValues.insert("Game/ReNail", "false");
+    }
+
+    this->newStringKeyValues.insert("Game/Points", this->ui->cmb_gameSettings_Points->currentText());
+
+    // Int-Werte aus Formular auslesen und in HashTable speichern
+    this->newIntKeyValues.insert("Game/Rounds", this->ui->spinBox_gameSettings_Rounds->value());
+    this->newIntKeyValues.insert("Game/TimePerQ", this->ui->spinBox_gameSettings_TimePerQ->value());
+    this->newIntKeyValues.insert("Game/TimePerC", this->ui->spinBox_gameSettings_TimesPerC->value());
+    this->newIntKeyValues.insert("Game/TimeWhenNailed", this->ui->spinBox_gameSettings_TimeWhenNailed->value());
+    this->newIntKeyValues.insert("Game/DelayQ_A", this->ui->spinBox_gameSettings_DelayQ_A->value());
+    this->newIntKeyValues.insert("Game/HSCount", this->ui->spinBox_gameSettings_HSCount->value());
+    this->newIntKeyValues.insert("Game/MinUserCount", this->ui->spinBox_gameSettings_MinUserCount->value());
+    this->newIntKeyValues.insert("Game/NailCount", this->ui->spinBox_gameSettings_NailCount->value());
+
+    if(!fileHandler.writeFile(newStringKeyValues, newIntKeyValues)){
+        QMessageBox::information(this, tr("FTP"),
+                                       trUtf8("Datei %1 konnte nicht zum schreiben geöffnet werden.").arg(this->file->fileName()));
+    }
 }
 
 // INI-File ueber Ftp downloaden
@@ -177,10 +217,10 @@ bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QSt
     //Erstelle neues QFtp-Objekt
     ftp = new QFtp(this);
     connect(ftp, SIGNAL(commandFinished(int,bool)), this, SLOT(ftpCommandFinished(int,bool)));
-    //connect(ftp, SIGNAL(dataTransferProgress(qint64,qint64)), this, SLOT(updateDataTransferProgress(qint64,qint64)));
+    connect(ftp, SIGNAL(dataTransferProgress(qint64,qint64)), this, SLOT(updateDataTransferProgress(qint64,qint64)));
 
     if (!url.isValid()) {
-        QMessageBox::information(this, tr("Q2 Admin"),tr("Fehler:\nUngueltige Adresse: %1").arg(this->ui->txt_ftpUrl->text()));
+        QMessageBox::information(this, tr("Q2 Admin"),trUtf8("Fehler:\nUngültige Adresse: %1").arg(this->ui->txt_ftpUrl->text()));
         return false;
     }
     if (url.scheme() != "ftp") {
@@ -201,7 +241,6 @@ bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QSt
     }
 
     if(!file->open(QIODevice::WriteOnly | QIODevice::Text)){
-        qDebug() << "Could not open file.";
         showInfobox((QString) "Error: Cannot write file "
                     + qPrintable(file->fileName()) + ": "
                     + qPrintable(file->errorString()), "");
@@ -214,8 +253,6 @@ bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QSt
     } else {
         return false;
     }
-    ftp->close();
-
     return true;
 }
 
@@ -243,7 +280,9 @@ void MainWindow::btn_dbConnectOnClick(){
         //Aktiviere Edit-Button
         ui->btn_edit->setEnabled(true);
 
-        ui->txt_debug->append("Verbindung zu " + this->DBHOST + " erfolgreich hergestellt.");
+        ui->cmb_tabellen->setEnabled(true);
+
+        ui->txt_debug->append("[" + timeStamp.currentTime().toString() + "] Verbindung zu " + this->DBHOST + " erfolgreich hergestellt.");
         this->mStatLabel->setText("Datenbankverbindung aktiv <img src=':images/db-connect.png'>");
 
         fillComboBoxes();//Methode ComboBoxen fuellen
@@ -254,18 +293,11 @@ void MainWindow::btn_dbConnectOnClick(){
         showInfobox((QString)"Verbindung konnte nicht hergestellt werden.",(QString)"DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER);
 
         // Verbindung nicht erfolgreich..
-        ui->txt_debug->append("Verbindung konnte nicht aufgebaut werden.");
-        ui->txt_debug->append(this->dbHandler.getError());
+        ui->txt_debug->append("[" + timeStamp.currentTime().toString() + "] Verbindung konnte nicht aufgebaut werden.");
+        ui->txt_debug->append("[" + timeStamp.currentTime().toString() + "] Fehler: " + this->dbHandler.getError());
         this->mStatLabel->setText("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>");
 
     }
-
-    // Debug-Informationen
-    //QString returnString = QString::number(returnCode);
-    //ui->txt_debug->append("DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER+"\nPasswort: "+this->DBPASSWD+"\nDB-Connect-Returncode="+returnString);
-
-    //Frage alle Tabelle der DB ab
-    this->dbHandler.dbShowTablesQuery(&this->DBNAME);
 }
 
 // SLOT: Button-Methode "Trennen"
@@ -279,30 +311,28 @@ void MainWindow::btn_dbDisconnectOnClick(){
 
     //InfoBox " Verbindung wurde getrennt "
     //showInfobox((QString)"Verbindung wurde getrennt.",(QString)"DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER);
-    this->nStatlabel->setText("Datenbankverbindung wurde getrennt.");
+    //this->nStatlabel->setText(tr("Datenbankverbindung wurde getrennt."));
 
     //Aktiviere/Deaktiviere entsprechende Buttons
     ui->btn_dbDisconnect->setEnabled(false);
     ui->btn_dbConnect->setEnabled(true);
+    ui->cmb_tabellen->setEnabled(false);
 
     //Debug-Informationen
-    ui->txt_debug->append("Verbindung geschlossen.");
+    ui->txt_debug->append("[" + timeStamp.currentTime().toString() + "] Verbindung geschlossen.");
 
     //StatusBar aktualisieren
     this->mStatLabel->setText("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>");
 }
 
-// SLOT: Button-Methode Norman
-void MainWindow::btn_normanOnClick(){
-    ui->txt_dbHost->setText("10.157.83.38");
-    ui->txt_dbName->setText("test");
-    ui->txt_dbUser->setText("test-user");
-    ui->txt_dbPasswd->setText("test-user");
-}
-
 // SLOT:Button-Methode Datensatz loeschen
 void MainWindow::btn_deleteOnClick(){
-    tableModel->removeRows((ui->tblView_tabellen->currentIndex().row()),1);//Datensatz loeschen der gerade selektiert ist
+    //Datensatz loeschen der gerade selektiert ist
+    if(tableModel->removeRows((ui->tblView_tabellen->currentIndex().row()),1)){
+        nStatlabel->setText(trUtf8("Datensatz gelöscht."));
+    } else {
+        nStatlabel->setText(trUtf8("Datensatz konnte nicht gelöscht werden."));
+    }
 }
 
 // SLOT: ComboBox Auswahl/Index aendert sich
@@ -333,9 +363,7 @@ void MainWindow::cmb_tabellenIndexChanged(){
 // SLOT: Button-Methode Datensatz speichern
 void MainWindow::btn_saveOnClick(){
 
-    //InfoBox
-    //showInfobox((QString)"Aenderungen wurden gespeichert.",(QString)"Hallo");
-    this->nStatlabel->setText("Aenderungen wurden gespeichert.");
+    this->nStatlabel->setText(trUtf8("Änderungen wurden gespeichert."));
     tableModel->submitAll();
      ui->tblView_tabellen->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
@@ -346,16 +374,14 @@ void MainWindow::btn_addOnClick(){
     record.setValue(0,(QVariant) this->uuid->createUuid());
     this->tableModel->insertRecord(tableModel->rowCount(),this->record);//neuen Datensatz mit uuid hinzufuegen
      uuid = new QUuid();
-    qDebug() << this->uuid->createUuid();
+    this->nStatlabel->setText(trUtf8("Datensatz hinzugefügt."));
 
 }
 
 // SLOT: Button-Methode Tabelle editieren
 void MainWindow::btn_editOnClick(){
 
-    //InfoBox
-    //showInfobox((QString)"Tabelle kann nun editiert werden.",(QString)"HUHU");
-    this->nStatlabel->setText("Tabelle kann editiert werden.");
+    this->nStatlabel->setText(tr("Tabelle kann editiert werden."));
     ui->tblView_tabellen->setEditTriggers(QAbstractItemView::DoubleClicked);
     ui->btn_add->setEnabled(true);
     ui->btn_delete->setEnabled(true);
@@ -364,13 +390,17 @@ void MainWindow::btn_editOnClick(){
 
 // SLOT: Button-Methode INI-File laden
 void MainWindow::btn_loadSettingsOnClick(){
-
+    ftpUrl = this->ui->txt_ftpUrl->text();
     connectToFtp(QUrl(this->ui->txt_ftpUrl->text()), (quint16) this->ui->spinBox_ftpPort->value(), this->ui->txt_ftpUser->text(), this->ui->txt_ftpPasswd->text());
+}
+
+//SLOT: Button-Methode FTP-Verbindung trennen
+void MainWindow::btn_ftpDisconnectOnClick(){
+    ftp->close();
 }
 
 // SLOT: Wird ausgefuehrt, wenn ein FTP-Kommando abgeschlossen wurde
 void MainWindow::ftpCommandFinished(int, bool error){
-    qDebug() << "Aufruf ftpCommandFinished:" << ftp->currentCommand();
 
     if (ftp->currentCommand() == QFtp::ConnectToHost) {
         if (error) {
@@ -381,7 +411,9 @@ void MainWindow::ftpCommandFinished(int, bool error){
              return;
         }
         nStatlabel->setText(tr("Eingeloggt auf %1.")
-                                  .arg(this->ui->txt_ftpUrl->text()));
+                                  .arg(ftpUrl.host()));
+        this->ui->btn_loadSettings->setEnabled(false);
+        this->ui->btn_ftpDisconnect->setEnabled(true);
         return;
     }
     if (ftp->currentCommand() == QFtp::Get) {
@@ -397,15 +429,76 @@ void MainWindow::ftpCommandFinished(int, bool error){
         //delete file;
 
     }
+    if (ftp->currentCommand() == QFtp::Put) {
+        if (error) {
+            QMessageBox::information(this, tr("FTP"),
+                                           tr("Datei %1 konnte nicht zum Server %2 gesendet werden").arg(this->file->fileName()).arg(ftpUrl.host()));
+            nStatlabel->setText(tr("Datei konnte nicht gesendet werden."));
+        } else {
+            nStatlabel->setText(tr("%1 gesendet.").arg("newconfig.ini"));
+        }
+    }
+    if (ftp->currentCommand() == QFtp::Close) {
+        if(error) {
+            nStatlabel->setText(tr("Verbindung konnte nicht getrennt werden."));
+            return;
+        } else{
+            nStatlabel->setText(tr("Auf %1 ausgeloggt.").arg(ftpUrl.host()));
+            this->ui->btn_ftpDisconnect->setEnabled(false);
+            this->ui->btn_loadSettings->setEnabled(true);
+            progressBar->hide();
+            this->ui->scrollAreaWidgetContents->setEnabled(false);
+            this->ui->btn_sendSettings->setEnabled(false);
+            this->ui->btn_discardChanges->setEnabled(false);
+        }
+    }
+}
+
+//SLOT: Aktualisiere Fortschrittsanzeige der ProgressBar
+void MainWindow::updateDataTransferProgress(qint64 readBytes, qint64 totalBytes){
+    progressBar->show();
+    progressBar->setMaximum(totalBytes);
+    progressBar->setValue(readBytes);
 }
 
 // SLOT: Button-Methode Einstellungen senden
 void MainWindow::btn_sendSettingsOnClick(){
-    qDebug() << "Button geklickt.";
+
     writeToIniFile();
+    this->file = fileHandler.getFile();
+    ftp->put(this->file, "newconfig.ini");
+
 }
 
 // SLOT: Button-Methode Einstellungen neuladen
 void MainWindow::btn_discardChangesOnClick(){
+    loadIniFile();
+    progressBar->hide();
+    nStatlabel->setText(tr("%1 neu geladen.").arg("config.ini"));
+}
 
+//SLOT: Methode fuer Menue-Eintrag "Exit"
+void MainWindow::actionExitOnClick(){
+    this->close();
+}
+
+//SLOT: Methode fuer Menue-Eintrag "About"
+void MainWindow::actionInfoOnClick(){
+    //QMessageBox::about(this, tr("Ueber Q2_Admin"), tr("Q2_Admin 1.0\n\nBasierend auf Qt4.8\n\nErstellt am 30.11.2012.\n\nEntwickler:\nAlexander Papenfuss\nEnrico Nohl\nMarcel Wesberg\nNorman Bestfleisch"));
+    msg_about = new QMessageBox();
+    msg_about->setWindowTitle(trUtf8("Über Q2 Admin"));
+    msg_about->setText(trUtf8("Q2 Admin 1.0\n\nBasierend auf Qt4.8\n\nErstellt am 03.12.2012.\n\nEntwickler:  Alexander Papenfuss\n\tEnrico Nohl\n\tMarcel Wesberg\n\tNorman Bestfleisch"));
+    msg_about->setStandardButtons(QMessageBox::Ok);
+    msg_about->setIconPixmap(QPixmap("images/Q2.png"));
+    msg_about->exec();
+}
+
+void MainWindow::actionDeutschOnClick(){
+    QMessageBox::information(this, tr("Q2 Admin"),
+                                   trUtf8("Diese Funktion wurde noch nicht implementiert."));
+}
+
+void MainWindow::actionEnglischOnClick(){
+    QMessageBox::information(this, tr("Q2 Admin"),
+                                   trUtf8("Diese Funktion wurde noch nicht implementiert."));
 }

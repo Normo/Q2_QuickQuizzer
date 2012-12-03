@@ -11,6 +11,7 @@
 #include <QStringList>
 #include <QHash>
 #include <QFile>
+#include <QTextStream>
 
 class FileHandler
 {
@@ -19,13 +20,15 @@ public:
     FileHandler();
     FileHandler(QFile *file);
     void addKeyValue(QString key, QString value);
-    void writeFile();
+    bool writeFile(QHash<QString, QString> newStringKeyValues, QHash<QString, int> newIntKeyValues);
+    QFile* getFile();
     QHash<QString, QString> getStringKeyValues();
     QHash<QString, int> getIntKeyValues();
     QStringList getKeys();
 
 private:
     QFile *myFile;
+    QTextStream *out;
     QStringList keys;
     //QStringList values;
     QHash<QString, QString> stringKeyValues;

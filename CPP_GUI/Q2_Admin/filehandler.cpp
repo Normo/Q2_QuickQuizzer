@@ -11,14 +11,7 @@ FileHandler::FileHandler(){
 FileHandler::FileHandler(QFile *file)
 {
     this->myFile = file;
-    QString fileName = "config.ini";
 
-    if(myFile->exists()){
-        qDebug() << "File " << fileName << " does exist.";
-    }/*if(!file->open(QIODevice::ReadWrite|QIODevice::Text)){
-        qDebug() << "Could not open file.";
-    }*/
-    qDebug() << "Hier Dateiname: " << myFile->fileName();
     QSettings settings(myFile->fileName(), QSettings::IniFormat);
     this->keys = settings.allKeys();
 
@@ -45,8 +38,6 @@ FileHandler::FileHandler(QFile *file)
         this->stringKeyValues.insert(key, settings.value(key).toString());
     }*/
 
-    qDebug() << "stringKeyValues    : " << this->stringKeyValues;
-    qDebug() << "intKeyValues       : " << this->intKeyValues;
 }
 
 QHash<QString, QString> FileHandler::getStringKeyValues(){
@@ -61,21 +52,51 @@ QStringList FileHandler::getKeys(){
     return this->keys;
 }
 
-void FileHandler::writeFile(){
+bool FileHandler::writeFile(QHash<QString, QString> newStringKeyValues, QHash<QString, int> newIntKeyValues){
 
     if (!this->myFile->isOpen()) {
-        if(!this->myFile->open(QIODevice::ReadWrite|QIODevice::Text)) {
+        if(!this->myFile->open(QIODevice::WriteOnly|QIODevice::Text)) {
             qDebug() << "Datei '" + this->myFile->fileName() + "' konnte nicht zum Schreiben geöffnet werden.";
-            return;
+            return false;
         }
     }
-    //this->myFile->write("[DataBase]");
-    QTextStream textStream(this->myFile);
-    QString line = textStream.readLine();
-    while(!line.isNull()) {
-        qDebug() << line;
-        line = textStream.readLine();
 
-    }
+    QTextStream outputStream(this->myFile);
 
+    outputStream << "[DataBase]" << endl;
+    outputStream << "DbHost=" << newStringKeyValues.value("DataBase/DbHost") << endl;
+    outputStream << "DbName=" << newStringKeyValues.value("DataBase/DbName") << endl;
+    outputStream << "DbUser=" << newStringKeyValues.value("DataBase/DbUser") << endl;
+    outputStream << "DbPassword=" << newStringKeyValues.value("DataBase/DbPassword") << endl << endl;
+    outputStream << "[Game]" << endl << "; Runden" << endl;
+    outputStream << "Rounds=" << newIntKeyValues.value("Game/Rounds") << endl;
+    outputStream << "; Zeit pro Frage" << endl;
+    outputStream << "TimePerQ=" << newIntKeyValues.value("Game/TimePerQ") << endl;
+    outputStream << QString::fromUtf8("; Zeit zum Wählen einer Kategorie") << endl;
+    outputStream << "TimePerC=" << newIntKeyValues.value("Game/TimePerC") << endl;
+    outputStream << "; Zeit wenn man genagelt wurde" << endl;
+    outputStream << "TimeWhenNailed=" << newIntKeyValues.value("Game/TimeWhenNailed") << endl;
+    outputStream << "; Zeit bis die Antworten aufploppen" << endl;
+    outputStream << "DelayQ_A=" << newIntKeyValues.value("Game/DelayQ_A") << endl;
+    outputStream << "; Sobald einer geantwortet hat wird die Runde beendet" << endl;
+    outputStream << "GetNextAfterAnswer=" << newStringKeyValues.value("Game/GetNextAfterAnswer") << endl;
+    outputStream << "; Anzahl Highscore" << endl;
+    outputStream << "HSCount=" << newIntKeyValues.value("Game/HSCount") << endl << endl;
+    outputStream << "; folgendes wurdee noch nicht implementiert" << endl << QString::fromUtf8("; oder berücksichtigt") << endl << endl;
+    outputStream << "; Nagel kann wieder gewonnen werden" << endl;
+    outputStream << "ReNail=" << newStringKeyValues.value("Game/ReNail") << endl;
+    outputStream << "; Minimale Spieleranzahl" << endl;
+    outputStream << "MinUserCount=" << newIntKeyValues.value("Game/MinUserCount") << endl;
+    outputStream << "; Punkteverteilung countdown, default" << endl;
+    outputStream << "Points=" << newStringKeyValues.value("Game/Points") << endl;
+    outputStream << QString::fromUtf8("; Anzahl der Nägel pro Spieler") << endl;
+    outputStream << "NailCount=" << newIntKeyValues.value("Game/NailCount") << endl;
+
+    outputStream.flush();
+    this->myFile->close();
+    return true;
+}
+
+QFile* FileHandler::getFile(){
+    return this->myFile;
 }

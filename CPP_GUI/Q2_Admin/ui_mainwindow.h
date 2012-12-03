@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri Nov 30 07:55:24 2012
+** Created: Mon Dec 3 18:50:41 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -25,6 +25,7 @@
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QMainWindow>
+#include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QPushButton>
 #include <QtGui/QScrollArea>
@@ -43,6 +44,10 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionExit;
+    QAction *actionDeutsch;
+    QAction *actionEnglisch;
+    QAction *actionInfo;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_2;
     QTabWidget *tabWidget;
@@ -64,7 +69,6 @@ public:
     QSpacerItem *hspacer_dbConnect;
     QPushButton *btn_dbConnect;
     QPushButton *btn_dbDisconnect;
-    QPushButton *btn_norman;
     QGroupBox *gb_dbConnectionInfo;
     QVBoxLayout *verticalLayout_6;
     QTextEdit *txt_debug;
@@ -74,6 +78,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *hbl_selectTable;
     QComboBox *cmb_tabellen;
+    QSpacerItem *horizontalSpacer_2;
     QPushButton *btn_edit;
     QPushButton *btn_save;
     QGroupBox *gb_editTable;
@@ -81,6 +86,7 @@ public:
     QGridLayout *gl_editTable;
     QTableView *tblView_tabellen;
     QHBoxLayout *hbl_editTable;
+    QSpacerItem *horizontalSpacer_3;
     QPushButton *btn_add;
     QPushButton *btn_delete;
     QWidget *tab3;
@@ -101,6 +107,7 @@ public:
     QHBoxLayout *hbl_ftpButtons;
     QSpacerItem *hSpacer_ftpButtons;
     QPushButton *btn_loadSettings;
+    QPushButton *btn_ftpDisconnect;
     QGroupBox *gb_settings;
     QVBoxLayout *verticalLayout_11;
     QScrollArea *scrollArea;
@@ -151,9 +158,14 @@ public:
     QSpacerItem *hSpacer_gameSettings4;
     QCheckBox *chk_gameSettings_ReNail;
     QHBoxLayout *hbl_settingButtons;
+    QSpacerItem *horizontalSpacer;
     QPushButton *btn_sendSettings;
     QPushButton *btn_discardChanges;
     QMenuBar *menuBar;
+    QMenu *menuDatei;
+    QMenu *menuInfo;
+    QMenu *menuEinstellungen;
+    QMenu *menuSprache;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -162,6 +174,14 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(780, 721);
+        actionExit = new QAction(MainWindow);
+        actionExit->setObjectName(QString::fromUtf8("actionExit"));
+        actionDeutsch = new QAction(MainWindow);
+        actionDeutsch->setObjectName(QString::fromUtf8("actionDeutsch"));
+        actionEnglisch = new QAction(MainWindow);
+        actionEnglisch->setObjectName(QString::fromUtf8("actionEnglisch"));
+        actionInfo = new QAction(MainWindow);
+        actionInfo->setObjectName(QString::fromUtf8("actionInfo"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_2 = new QVBoxLayout(centralWidget);
@@ -185,12 +205,13 @@ public:
         gb_dbConnect = new QGroupBox(tab1);
         gb_dbConnect->setObjectName(QString::fromUtf8("gb_dbConnect"));
         gb_dbConnect->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
-"     border: 2px solid gray;\n"
+"     border: 2px solid darkblue;\n"
 "     border-radius: 5px;\n"
 "     margin-top: 1ex; /* leave space at the top for the title */\n"
 " }\n"
 "\n"
 " QGroupBox::title {\n"
+"	color: darkblue;\n"
 "     subcontrol-origin: margin;\n"
 "     subcontrol-position: top left; /* position at the top center */\n"
 "     padding: 0 3px;\n"
@@ -273,12 +294,6 @@ public:
 
         hbl_dbConnect2->addWidget(btn_dbDisconnect);
 
-        btn_norman = new QPushButton(gb_dbConnect);
-        btn_norman->setObjectName(QString::fromUtf8("btn_norman"));
-        btn_norman->setAutoDefault(true);
-
-        hbl_dbConnect2->addWidget(btn_norman);
-
 
         verticalLayout_7->addLayout(hbl_dbConnect2);
 
@@ -288,12 +303,13 @@ public:
         gb_dbConnectionInfo = new QGroupBox(tab1);
         gb_dbConnectionInfo->setObjectName(QString::fromUtf8("gb_dbConnectionInfo"));
         gb_dbConnectionInfo->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
-"     border: 2px solid gray;\n"
+"     border: 2px solid darkblue;\n"
 "     border-radius: 5px;\n"
 "     margin-top: 1ex; /* leave space at the top for the title */\n"
 " }\n"
 "\n"
 " QGroupBox::title {\n"
+"	color: darkblue;\n"
 "     subcontrol-origin: margin;\n"
 "     subcontrol-position: top left; /* position at the top center */\n"
 "     padding: 0 3px;\n"
@@ -320,12 +336,13 @@ public:
         gb_selectTable = new QGroupBox(tab2);
         gb_selectTable->setObjectName(QString::fromUtf8("gb_selectTable"));
         gb_selectTable->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
-"     border: 2px solid gray;\n"
+"     border: 2px solid darkblue;\n"
 "     border-radius: 5px;\n"
 "     margin-top: 1ex; /* leave space at the top for the title */\n"
 " }\n"
 "\n"
 " QGroupBox::title {\n"
+"	color: darkblue;\n"
 "     subcontrol-origin: margin;\n"
 "     subcontrol-position: top left; /* position at the top center */\n"
 "     padding: 0 3px;\n"
@@ -339,8 +356,19 @@ public:
         hbl_selectTable->setObjectName(QString::fromUtf8("hbl_selectTable"));
         cmb_tabellen = new QComboBox(gb_selectTable);
         cmb_tabellen->setObjectName(QString::fromUtf8("cmb_tabellen"));
+        cmb_tabellen->setEnabled(false);
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(cmb_tabellen->sizePolicy().hasHeightForWidth());
+        cmb_tabellen->setSizePolicy(sizePolicy1);
+        cmb_tabellen->setMinimumSize(QSize(100, 30));
 
         hbl_selectTable->addWidget(cmb_tabellen);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        hbl_selectTable->addItem(horizontalSpacer_2);
 
         btn_edit = new QPushButton(gb_selectTable);
         btn_edit->setObjectName(QString::fromUtf8("btn_edit"));
@@ -365,12 +393,13 @@ public:
         gb_editTable = new QGroupBox(tab2);
         gb_editTable->setObjectName(QString::fromUtf8("gb_editTable"));
         gb_editTable->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
-"     border: 2px solid gray;\n"
+"     border: 2px solid darkblue;\n"
 "     border-radius: 5px;\n"
 "     margin-top: 1ex; /* leave space at the top for the title */\n"
 " }\n"
 "\n"
 " QGroupBox::title {\n"
+"	color: darkblue;\n"
 "     subcontrol-origin: margin;\n"
 "     subcontrol-position: top left; /* position at the top center */\n"
 "     padding: 0 3px;\n"
@@ -396,6 +425,10 @@ public:
         hbl_editTable = new QHBoxLayout();
         hbl_editTable->setSpacing(6);
         hbl_editTable->setObjectName(QString::fromUtf8("hbl_editTable"));
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        hbl_editTable->addItem(horizontalSpacer_3);
+
         btn_add = new QPushButton(gb_editTable);
         btn_add->setObjectName(QString::fromUtf8("btn_add"));
         btn_add->setEnabled(false);
@@ -426,12 +459,13 @@ public:
         gb_ftpConnection = new QGroupBox(tab3);
         gb_ftpConnection->setObjectName(QString::fromUtf8("gb_ftpConnection"));
         gb_ftpConnection->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
-"     border: 2px solid gray;\n"
+"     border: 2px solid darkblue;\n"
 "     border-radius: 5px;\n"
 "     margin-top: 1ex; /* leave space at the top for the title */\n"
 " }\n"
 "\n"
 " QGroupBox::title {\n"
+"	color: darkblue;\n"
 "     subcontrol-origin: margin;\n"
 "     subcontrol-position: top left; /* position at the top center */\n"
 "     padding: 0 3px;\n"
@@ -515,6 +549,12 @@ public:
 
         hbl_ftpButtons->addWidget(btn_loadSettings);
 
+        btn_ftpDisconnect = new QPushButton(gb_ftpConnection);
+        btn_ftpDisconnect->setObjectName(QString::fromUtf8("btn_ftpDisconnect"));
+        btn_ftpDisconnect->setEnabled(false);
+
+        hbl_ftpButtons->addWidget(btn_ftpDisconnect);
+
 
         verticalLayout_9->addLayout(hbl_ftpButtons);
 
@@ -524,12 +564,13 @@ public:
         gb_settings = new QGroupBox(tab3);
         gb_settings->setObjectName(QString::fromUtf8("gb_settings"));
         gb_settings->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
-"     border: 2px solid gray;\n"
+"     border: 2px solid darkblue;\n"
 "     border-radius: 5px;\n"
 "     margin-top: 1ex; /* leave space at the top for the title */\n"
 " }\n"
 "\n"
 " QGroupBox::title {\n"
+"	color: darkblue;\n"
 "     subcontrol-origin: margin;\n"
 "     subcontrol-position: top left; /* position at the top center */\n"
 "     padding: 0 3px;\n"
@@ -791,6 +832,10 @@ public:
         hbl_settingButtons = new QHBoxLayout();
         hbl_settingButtons->setSpacing(6);
         hbl_settingButtons->setObjectName(QString::fromUtf8("hbl_settingButtons"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        hbl_settingButtons->addItem(horizontalSpacer);
+
         btn_sendSettings = new QPushButton(gb_settings);
         btn_sendSettings->setObjectName(QString::fromUtf8("btn_sendSettings"));
         btn_sendSettings->setEnabled(false);
@@ -819,6 +864,14 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 780, 25));
+        menuDatei = new QMenu(menuBar);
+        menuDatei->setObjectName(QString::fromUtf8("menuDatei"));
+        menuInfo = new QMenu(menuBar);
+        menuInfo->setObjectName(QString::fromUtf8("menuInfo"));
+        menuEinstellungen = new QMenu(menuBar);
+        menuEinstellungen->setObjectName(QString::fromUtf8("menuEinstellungen"));
+        menuSprache = new QMenu(menuEinstellungen);
+        menuSprache->setObjectName(QString::fromUtf8("menuSprache"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -828,10 +881,11 @@ public:
         MainWindow->setStatusBar(statusBar);
         QWidget::setTabOrder(tabWidget, txt_dbHost);
         QWidget::setTabOrder(txt_dbHost, txt_dbName);
-        QWidget::setTabOrder(txt_dbName, btn_dbConnect);
+        QWidget::setTabOrder(txt_dbName, txt_dbUser);
+        QWidget::setTabOrder(txt_dbUser, txt_dbPasswd);
+        QWidget::setTabOrder(txt_dbPasswd, btn_dbConnect);
         QWidget::setTabOrder(btn_dbConnect, btn_dbDisconnect);
-        QWidget::setTabOrder(btn_dbDisconnect, btn_norman);
-        QWidget::setTabOrder(btn_norman, txt_debug);
+        QWidget::setTabOrder(btn_dbDisconnect, txt_debug);
         QWidget::setTabOrder(txt_debug, cmb_tabellen);
         QWidget::setTabOrder(cmb_tabellen, btn_edit);
         QWidget::setTabOrder(btn_edit, btn_save);
@@ -840,12 +894,40 @@ public:
         QWidget::setTabOrder(btn_add, btn_delete);
         QWidget::setTabOrder(btn_delete, txt_ftpUrl);
         QWidget::setTabOrder(txt_ftpUrl, spinBox_ftpPort);
-        QWidget::setTabOrder(spinBox_ftpPort, btn_loadSettings);
+        QWidget::setTabOrder(spinBox_ftpPort, txt_ftpUser);
+        QWidget::setTabOrder(txt_ftpUser, txt_ftpPasswd);
+        QWidget::setTabOrder(txt_ftpPasswd, btn_loadSettings);
         QWidget::setTabOrder(btn_loadSettings, scrollArea);
+        QWidget::setTabOrder(scrollArea, txt_databaseSettings_dbHost);
+        QWidget::setTabOrder(txt_databaseSettings_dbHost, txt_databaseSettings_dbName);
+        QWidget::setTabOrder(txt_databaseSettings_dbName, txt_databaseSettings_dbUser);
+        QWidget::setTabOrder(txt_databaseSettings_dbUser, txt_databaseSettings_dbPasswd);
+        QWidget::setTabOrder(txt_databaseSettings_dbPasswd, spinBox_gameSettings_Rounds);
+        QWidget::setTabOrder(spinBox_gameSettings_Rounds, spinBox_gameSettings_TimePerQ);
+        QWidget::setTabOrder(spinBox_gameSettings_TimePerQ, spinBox_gameSettings_TimeWhenNailed);
+        QWidget::setTabOrder(spinBox_gameSettings_TimeWhenNailed, spinBox_gameSettings_TimesPerC);
+        QWidget::setTabOrder(spinBox_gameSettings_TimesPerC, spinBox_gameSettings_DelayQ_A);
+        QWidget::setTabOrder(spinBox_gameSettings_DelayQ_A, chk_gameSettings_GetNextAfterAnswer);
+        QWidget::setTabOrder(chk_gameSettings_GetNextAfterAnswer, spinBox_gameSettings_HSCount);
+        QWidget::setTabOrder(spinBox_gameSettings_HSCount, chk_gameSettings_ReNail);
+        QWidget::setTabOrder(chk_gameSettings_ReNail, cmb_gameSettings_Points);
+        QWidget::setTabOrder(cmb_gameSettings_Points, spinBox_gameSettings_NailCount);
+        QWidget::setTabOrder(spinBox_gameSettings_NailCount, spinBox_gameSettings_MinUserCount);
+        QWidget::setTabOrder(spinBox_gameSettings_MinUserCount, btn_sendSettings);
+        QWidget::setTabOrder(btn_sendSettings, btn_discardChanges);
+
+        menuBar->addAction(menuDatei->menuAction());
+        menuBar->addAction(menuEinstellungen->menuAction());
+        menuBar->addAction(menuInfo->menuAction());
+        menuDatei->addAction(actionExit);
+        menuInfo->addAction(actionInfo);
+        menuEinstellungen->addAction(menuSprache->menuAction());
+        menuSprache->addAction(actionDeutsch);
+        menuSprache->addAction(actionEnglisch);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -854,6 +936,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
+        actionExit->setText(QApplication::translate("MainWindow", "Beenden", 0, QApplication::UnicodeUTF8));
+        actionExit->setShortcut(QApplication::translate("MainWindow", "Ctrl+Q", 0, QApplication::UnicodeUTF8));
+        actionDeutsch->setText(QApplication::translate("MainWindow", "Deutsch", 0, QApplication::UnicodeUTF8));
+        actionDeutsch->setShortcut(QApplication::translate("MainWindow", "Ctrl+D", 0, QApplication::UnicodeUTF8));
+        actionEnglisch->setText(QApplication::translate("MainWindow", "Englisch", 0, QApplication::UnicodeUTF8));
+        actionEnglisch->setShortcut(QApplication::translate("MainWindow", "Ctrl+E", 0, QApplication::UnicodeUTF8));
+        actionInfo->setText(QApplication::translate("MainWindow", "Info", 0, QApplication::UnicodeUTF8));
+        actionInfo->setShortcut(QApplication::translate("MainWindow", "Ctrl+I", 0, QApplication::UnicodeUTF8));
         gb_dbConnect->setTitle(QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
         lbl_dbHost->setText(QApplication::translate("MainWindow", "DB-Host:", 0, QApplication::UnicodeUTF8));
         txt_dbHost->setText(QString());
@@ -863,16 +953,36 @@ public:
         txt_dbUser->setText(QString());
         lbl_dbUserPasswd->setText(QApplication::translate("MainWindow", "Passwort:", 0, QApplication::UnicodeUTF8));
         txt_dbPasswd->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        btn_dbConnect->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
         btn_dbConnect->setText(QApplication::translate("MainWindow", "Verbinden", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        btn_dbDisconnect->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
         btn_dbDisconnect->setText(QApplication::translate("MainWindow", "Trennen", 0, QApplication::UnicodeUTF8));
-        btn_norman->setText(QApplication::translate("MainWindow", "Norman", 0, QApplication::UnicodeUTF8));
         gb_dbConnectionInfo->setTitle(QApplication::translate("MainWindow", "Verbindungsinformationen", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("MainWindow", "Datenbankverbindung", 0, QApplication::UnicodeUTF8));
         gb_selectTable->setTitle(QApplication::translate("MainWindow", "Tabelle ausw\303\244hlen", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        cmb_tabellen->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Tabelle aus Datenbank zur Bearbeitung auswaehlen.</p></body></html>", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_TOOLTIP
+        btn_edit->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Tabelle zur Bearbeitung freischalten.</p></body></html>", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         btn_edit->setText(QApplication::translate("MainWindow", "Bearbeiten", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        btn_save->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
         btn_save->setText(QApplication::translate("MainWindow", "Speichern", 0, QApplication::UnicodeUTF8));
         gb_editTable->setTitle(QApplication::translate("MainWindow", "Tabelle bearbeiten", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        btn_add->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
         btn_add->setText(QApplication::translate("MainWindow", "Datensatz hinzufuegen", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        btn_delete->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
         btn_delete->setText(QApplication::translate("MainWindow", "Datensatz loeschen", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
         gb_ftpConnection->setTitle(QApplication::translate("MainWindow", "FTP-Zugang", 0, QApplication::UnicodeUTF8));
@@ -883,7 +993,11 @@ public:
         txt_ftpUser->setText(QApplication::translate("MainWindow", "ftpuser", 0, QApplication::UnicodeUTF8));
         lbl_ftpPasswd->setText(QApplication::translate("MainWindow", "Passwort:", 0, QApplication::UnicodeUTF8));
         txt_ftpPasswd->setText(QApplication::translate("MainWindow", "login", 0, QApplication::UnicodeUTF8));
-        btn_loadSettings->setText(QApplication::translate("MainWindow", "Datei laden", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        btn_loadSettings->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Einstellungsdatei per FTP herunterladen.</p></body></html>", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+        btn_loadSettings->setText(QApplication::translate("MainWindow", "Verbinden", 0, QApplication::UnicodeUTF8));
+        btn_ftpDisconnect->setText(QApplication::translate("MainWindow", "Trennen", 0, QApplication::UnicodeUTF8));
         gb_settings->setTitle(QApplication::translate("MainWindow", "Einstellungen bearbeiten", 0, QApplication::UnicodeUTF8));
         lbl_databaseSettings->setText(QApplication::translate("MainWindow", "[DataBase]- Settings", 0, QApplication::UnicodeUTF8));
         lbl_databaseSettings_dbHost->setText(QApplication::translate("MainWindow", "DBHost:", 0, QApplication::UnicodeUTF8));
@@ -900,7 +1014,7 @@ public:
         lbl_gameSettings->setText(QApplication::translate("MainWindow", "[Game]-Settings", 0, QApplication::UnicodeUTF8));
         lbl_gameSettings_HSCount->setText(QApplication::translate("MainWindow", "HSCount:", 0, QApplication::UnicodeUTF8));
         lbl_gameSettings_NailCount->setText(QApplication::translate("MainWindow", "NailCount:", 0, QApplication::UnicodeUTF8));
-        lbl_gameSettings_ignored->setText(QApplication::translate("MainWindow", "Nicht ber\303\274cksichtigt:", 0, QApplication::UnicodeUTF8));
+        lbl_gameSettings_ignored->setText(QApplication::translate("MainWindow", "In der Demo nicht verf\303\274gbar:", 0, QApplication::UnicodeUTF8));
         lbl_gameSettings_ReNail->setText(QApplication::translate("MainWindow", "ReNail:", 0, QApplication::UnicodeUTF8));
         lbl_gameSettings_Points->setText(QApplication::translate("MainWindow", "Points:", 0, QApplication::UnicodeUTF8));
         cmb_gameSettings_Points->clear();
@@ -909,9 +1023,19 @@ public:
         );
         lbl_gameSettings_MinUserCount->setText(QApplication::translate("MainWindow", "MinUserCount:", 0, QApplication::UnicodeUTF8));
         chk_gameSettings_ReNail->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        btn_sendSettings->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Aenderungen per FTP zum Server senden.</p></body></html>", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         btn_sendSettings->setText(QApplication::translate("MainWindow", "Senden", 0, QApplication::UnicodeUTF8));
-        btn_discardChanges->setText(QApplication::translate("MainWindow", "Abbrechen", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        btn_discardChanges->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Einstellungen erneut laden.</p></body></html>", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+        btn_discardChanges->setText(QApplication::translate("MainWindow", "Neu laden", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab3), QApplication::translate("MainWindow", "Einstellungen", 0, QApplication::UnicodeUTF8));
+        menuDatei->setTitle(QApplication::translate("MainWindow", "Datei", 0, QApplication::UnicodeUTF8));
+        menuInfo->setTitle(QApplication::translate("MainWindow", "Hilfe", 0, QApplication::UnicodeUTF8));
+        menuEinstellungen->setTitle(QApplication::translate("MainWindow", "Einstellungen", 0, QApplication::UnicodeUTF8));
+        menuSprache->setTitle(QApplication::translate("MainWindow", "Sprache", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
