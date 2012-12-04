@@ -199,7 +199,7 @@ void MainWindow::writeToIniFile(){
     this->newIntKeyValues.insert("Game/NailCount", this->ui->spinBox_gameSettings_NailCount->value());
 
     if(!fileHandler.writeFile(newStringKeyValues, newIntKeyValues)){
-        QMessageBox::information(this, tr("FTP"),
+        QMessageBox::information(this, tr("Q2 Admin"),
                                        trUtf8("Datei %1 konnte nicht zum schreiben geöffnet werden.").arg(this->file->fileName()));
     }
 }
@@ -234,11 +234,11 @@ bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QSt
 
     QString localFileName = "/tmp/config.ini"; //QFileInfo(url.path()).fileName();
     file = new QFile(localFileName);
-    if(file->exists()){
+    /*if(file->exists()){
         qDebug() << "File " << localFileName << " does exist.";
     } else {
         qDebug() << "File " << localFileName << " doesn't' exist. Will be created.";
-    }
+    }*/
 
     if(!file->open(QIODevice::WriteOnly | QIODevice::Text)){
         showInfobox((QString) "Error: Cannot write file "
@@ -247,6 +247,7 @@ bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QSt
     }
 
     ftp->connectToHost(url.host(), ftpPort);
+    nStatlabel->setText("Verbinde zu " + url.host() + " ...");
     ftp->login(ftpUser, ftpPasswd);
     if(file != 0){
         ftp->get(url.path(), file);
@@ -404,10 +405,8 @@ void MainWindow::ftpCommandFinished(int, bool error){
 
     if (ftp->currentCommand() == QFtp::ConnectToHost) {
         if (error) {
-            QMessageBox::information(this, tr("FTP"),
-                                           tr("Verbindung zum FTP-Server %1 nicht moeglich."
-                                              "Bitte vergewissern Sie sich, ob der Hostname korrekt ist.").arg(this->ui->txt_ftpUrl->text()));
-             //connectToFtp()
+            QMessageBox::information(this, tr("Q2 Admin"),
+                                           trUtf8("Verbindung zum FTP-Server %1 nicht möglich. Bitte vergewissern Sie sich, ob der Hostname korrekt ist.").arg(ftpUrl.host()));
              return;
         }
         nStatlabel->setText(tr("Eingeloggt auf %1.")
@@ -431,7 +430,7 @@ void MainWindow::ftpCommandFinished(int, bool error){
     }
     if (ftp->currentCommand() == QFtp::Put) {
         if (error) {
-            QMessageBox::information(this, tr("FTP"),
+            QMessageBox::information(this, tr("Q2 Admin"),
                                            tr("Datei %1 konnte nicht zum Server %2 gesendet werden").arg(this->file->fileName()).arg(ftpUrl.host()));
             nStatlabel->setText(tr("Datei konnte nicht gesendet werden."));
         } else {
@@ -487,7 +486,7 @@ void MainWindow::actionInfoOnClick(){
     //QMessageBox::about(this, tr("Ueber Q2_Admin"), tr("Q2_Admin 1.0\n\nBasierend auf Qt4.8\n\nErstellt am 30.11.2012.\n\nEntwickler:\nAlexander Papenfuss\nEnrico Nohl\nMarcel Wesberg\nNorman Bestfleisch"));
     msg_about = new QMessageBox();
     msg_about->setWindowTitle(trUtf8("Über Q2 Admin"));
-    msg_about->setText(trUtf8("Q2 Admin 1.0\n\nBasierend auf Qt4.8\n\nErstellt am 03.12.2012.\n\nEntwickler:  Alexander Papenfuss\n\tEnrico Nohl\n\tMarcel Wesberg\n\tNorman Bestfleisch"));
+    msg_about->setText(trUtf8("Q2 Admin 1.0\n\nBasierend auf Qt4.8\n\nErstellt am 03.12.2012.\n\nEntwickler:  Alexander.Papenfuss@it2010.ba-leipzig.de\n\tEnrico.Nohl@it2010.ba-leipzig.de\n\tMarcel.Wesberg@it2010.ba-leipzig.de\n\tNorman.Bestfleisch@it2010.ba-leipzig.de"));
     msg_about->setStandardButtons(QMessageBox::Ok);
     msg_about->setIconPixmap(QPixmap("images/Q2.png"));
     msg_about->exec();
