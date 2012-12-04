@@ -1,4 +1,4 @@
-#Q² - QuickQuizzer
+#Q² - QuickQuizzer ![Icon](https://github.com/Normo/Q2_QuickQuizzer/blob/master/CPP_GUI/Q2_Admin/images/Q2.png?raw=true)
 ------------------
 Q2 ist Softwareprojekt der Berufsakademie Leipzig, mit dem Ziel ein Mehrspieler-Echtzeit-Browserquiz unter Verwendung von Node.js und Socket.io zu entwickeln.
 
