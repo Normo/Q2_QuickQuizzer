@@ -11,6 +11,8 @@
 #include <QtSql>
 #include <QUuid>
 
+extern QTranslator *qTranslator;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -23,9 +25,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Statusbarlabels initialisieren
     nStatlabel = new QLabel;
+    nStatlabel->setTextFormat(Qt::RichText);
     mStatLabel = new QLabel;
     mStatLabel->setTextFormat(Qt::RichText);
-    this->mStatLabel->setText("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>");
+    this->mStatLabel->setText(tr("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>"));
     progressBar = new QProgressBar();
     progressBar->hide();
     statusBar()->addWidget(nStatlabel);
@@ -66,7 +69,6 @@ void MainWindow::changeEvent(QEvent *e)
         break;
     }
 }
-
 
 // Befuelle ComboBox mit den Fragekategorien
 void MainWindow::fillComboBoxes(){
@@ -219,6 +221,7 @@ bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QSt
     connect(ftp, SIGNAL(commandFinished(int,bool)), this, SLOT(ftpCommandFinished(int,bool)));
     connect(ftp, SIGNAL(dataTransferProgress(qint64,qint64)), this, SLOT(updateDataTransferProgress(qint64,qint64)));
 
+    //Url ueberpruefen
     if (!url.isValid()) {
         QMessageBox::information(this, tr("Q2 Admin"),trUtf8("Fehler:\nUngültige Adresse: %1").arg(this->ui->txt_ftpUrl->text()));
         return false;
@@ -232,13 +235,8 @@ bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QSt
         return false;
     }
 
-    QString localFileName = "/tmp/config.ini"; //QFileInfo(url.path()).fileName();
+    QString localFileName = "/tmp/config.ini";
     file = new QFile(localFileName);
-    /*if(file->exists()){
-        qDebug() << "File " << localFileName << " does exist.";
-    } else {
-        qDebug() << "File " << localFileName << " doesn't' exist. Will be created.";
-    }*/
 
     if(!file->open(QIODevice::WriteOnly | QIODevice::Text)){
         showInfobox((QString) "Error: Cannot write file "
@@ -247,7 +245,7 @@ bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QSt
     }
 
     ftp->connectToHost(url.host(), ftpPort);
-    nStatlabel->setText("Verbinde zu " + url.host() + " ...");
+    nStatlabel->setText(tr("Verbinde zu %1 ...").arg(url.host()));
     ftp->login(ftpUser, ftpPasswd);
     if(file != 0){
         ftp->get(url.path(), file);
@@ -283,20 +281,20 @@ void MainWindow::btn_dbConnectOnClick(){
 
         ui->cmb_tabellen->setEnabled(true);
 
-        ui->txt_debug->append("[" + timeStamp.currentTime().toString() + "] Verbindung zu " + this->DBHOST + " erfolgreich hergestellt.");
-        this->mStatLabel->setText("Datenbankverbindung aktiv <img src=':images/db-connect.png'>");
+        ui->txt_debug->append(tr("[%1] Verbindung zu %2 erfolgreich hergestellt.").arg(timeStamp.currentTime().toString()).arg(this->DBHOST));
+        this->mStatLabel->setText(tr("Datenbankverbindung aktiv <img src=':images/db-connect.png'>"));
 
         fillComboBoxes();//Methode ComboBoxen fuellen
 
     } else {
 
         //InfoBox " Verbindung wurde nicht hergestellt "
-        showInfobox((QString)"Verbindung konnte nicht hergestellt werden.",(QString)"DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER);
+        showInfobox(tr("Verbindung konnte nicht hergestellt werden."),"DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER);
 
         // Verbindung nicht erfolgreich..
         ui->txt_debug->append("[" + timeStamp.currentTime().toString() + "] Verbindung konnte nicht aufgebaut werden.");
         ui->txt_debug->append("[" + timeStamp.currentTime().toString() + "] Fehler: " + this->dbHandler.getError());
-        this->mStatLabel->setText("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>");
+        this->mStatLabel->setText(tr("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>"));
 
     }
 }
@@ -310,20 +308,20 @@ void MainWindow::btn_dbDisconnectOnClick(){
     // Trenne Datenbankverbindung
     this->dbHandler.dbClose();
 
-    //InfoBox " Verbindung wurde getrennt "
-    //showInfobox((QString)"Verbindung wurde getrennt.",(QString)"DB-Host: "+this->DBHOST+"\nDatenbank: "+this->DBNAME+"\nBenutzer: "+this->DBUSER);
-    //this->nStatlabel->setText(tr("Datenbankverbindung wurde getrennt."));
-
     //Aktiviere/Deaktiviere entsprechende Buttons
     ui->btn_dbDisconnect->setEnabled(false);
     ui->btn_dbConnect->setEnabled(true);
     ui->cmb_tabellen->setEnabled(false);
+    ui->btn_edit->setEnabled(false);
+    ui->btn_delete->setEnabled(false);
+    ui->btn_add->setEnabled(false);
+    ui->btn_save->setEnabled(false);
 
     //Debug-Informationen
-    ui->txt_debug->append("[" + timeStamp.currentTime().toString() + "] Verbindung geschlossen.");
+    ui->txt_debug->append(tr("[%1] Verbindung getrennt.").arg(timeStamp.currentTime().toString()));
 
     //StatusBar aktualisieren
-    this->mStatLabel->setText("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>");
+    this->mStatLabel->setText(tr("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>"));
 }
 
 // SLOT:Button-Methode Datensatz loeschen
@@ -382,7 +380,7 @@ void MainWindow::btn_addOnClick(){
 // SLOT: Button-Methode Tabelle editieren
 void MainWindow::btn_editOnClick(){
 
-    this->nStatlabel->setText(tr("Tabelle kann editiert werden."));
+    this->nStatlabel->setText(tr("Tabelle editierbar <img src=':images/datasetUnlocked.png'>"));
     ui->tblView_tabellen->setEditTriggers(QAbstractItemView::DoubleClicked);
     ui->btn_add->setEnabled(true);
     ui->btn_delete->setEnabled(true);
@@ -407,7 +405,8 @@ void MainWindow::ftpCommandFinished(int, bool error){
         if (error) {
             QMessageBox::information(this, tr("Q2 Admin"),
                                            trUtf8("Verbindung zum FTP-Server %1 nicht möglich. Bitte vergewissern Sie sich, ob der Hostname korrekt ist.").arg(ftpUrl.host()));
-             return;
+            nStatlabel->setText(trUtf8("Verbindung zu %1 nicht möglich.").arg(ftpUrl.host()));
+            return;
         }
         nStatlabel->setText(tr("Eingeloggt auf %1.")
                                   .arg(ftpUrl.host()));
@@ -481,23 +480,24 @@ void MainWindow::actionExitOnClick(){
     this->close();
 }
 
-//SLOT: Methode fuer Menue-Eintrag "About"
+//SLOT: Methode fuer Menu-Eintrag "Info"
 void MainWindow::actionInfoOnClick(){
-    //QMessageBox::about(this, tr("Ueber Q2_Admin"), tr("Q2_Admin 1.0\n\nBasierend auf Qt4.8\n\nErstellt am 30.11.2012.\n\nEntwickler:\nAlexander Papenfuss\nEnrico Nohl\nMarcel Wesberg\nNorman Bestfleisch"));
     msg_about = new QMessageBox();
     msg_about->setWindowTitle(trUtf8("Über Q2 Admin"));
-    msg_about->setText(trUtf8("Q2 Admin 1.0\n\nBasierend auf Qt4.8\n\nErstellt am 03.12.2012.\n\nEntwickler:  Alexander.Papenfuss@it2010.ba-leipzig.de\n\tEnrico.Nohl@it2010.ba-leipzig.de\n\tMarcel.Wesberg@it2010.ba-leipzig.de\n\tNorman.Bestfleisch@it2010.ba-leipzig.de"));
+    msg_about->setText(trUtf8("Q2 Admin 1.0\n\nBasierend auf Qt4.8\n\nErstellt am %1.\n\nEntwickler:  Alexander.Papenfuss@it2010.ba-leipzig.de\n\tEnrico.Nohl@it2010.ba-leipzig.de\n\tMarcel.Wesberg@it2010.ba-leipzig.de\n\tNorman.Bestfleisch@it2010.ba-leipzig.de").arg("05.12.2012"));
     msg_about->setStandardButtons(QMessageBox::Ok);
     msg_about->setIconPixmap(QPixmap("images/Q2.png"));
     msg_about->exec();
 }
 
+//SLOT: Methode fuer Menu-Eintrag "Deutsch"
 void MainWindow::actionDeutschOnClick(){
-    QMessageBox::information(this, tr("Q2 Admin"),
-                                   trUtf8("Diese Funktion wurde noch nicht implementiert."));
+    //lade deutsche Sprachdatei
+    qTranslator->load("Q2_Admin_de.qm");
 }
 
+//SLOT: Methode fuer Menu-Eintrag "Englisch"
 void MainWindow::actionEnglischOnClick(){
-    QMessageBox::information(this, tr("Q2 Admin"),
-                                   trUtf8("Diese Funktion wurde noch nicht implementiert."));
+    //lade englische Sprachdatei
+    qTranslator->load("Q2_Admin_en.qm");
 }

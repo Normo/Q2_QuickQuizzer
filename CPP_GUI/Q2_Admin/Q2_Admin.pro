@@ -20,3 +20,6 @@ HEADERS  += mainwindow.h \
     filehandler.h
 
 FORMS    += mainwindow.ui
+
+TRANSLATIONS = Q2_Admin_de.ts \
+    Q2_Admin_en.ts

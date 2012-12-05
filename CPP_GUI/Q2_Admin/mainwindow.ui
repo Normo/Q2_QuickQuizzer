@@ -26,10 +26,18 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
       <widget class="QWidget" name="tab1">
+       <attribute name="icon">
+        <iconset>
+         <normalon>images/stecker.png</normalon>
+        </iconset>
+       </attribute>
        <attribute name="title">
         <string>Datenbankverbindung</string>
        </attribute>
@@ -69,7 +77,7 @@
              <item row="0" column="1">
               <widget class="QLineEdit" name="txt_dbHost">
                <property name="text">
-                <string/>
+                <string>dbserv.ba-leipzig.de</string>
                </property>
               </widget>
              </item>
@@ -83,7 +91,7 @@
              <item row="1" column="1">
               <widget class="QLineEdit" name="txt_dbName">
                <property name="text">
-                <string/>
+                <string>test</string>
                </property>
               </widget>
              </item>
@@ -99,7 +107,7 @@
                <item>
                 <widget class="QLineEdit" name="txt_dbUser">
                  <property name="text">
-                  <string/>
+                  <string>it10nb1</string>
                  </property>
                 </widget>
                </item>
@@ -113,7 +121,7 @@
                <item>
                 <widget class="QLineEdit" name="txt_dbPasswd">
                  <property name="text">
-                  <string/>
+                  <string>jlilizat</string>
                  </property>
                  <property name="echoMode">
                   <enum>QLineEdit::Password</enum>
@@ -147,6 +155,11 @@
                <property name="text">
                 <string>Verbinden</string>
                </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/connect.png</normalon>
+                </iconset>
+               </property>
                <property name="autoDefault">
                 <bool>true</bool>
                </property>
@@ -162,6 +175,11 @@
                </property>
                <property name="text">
                 <string>Trennen</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/disconnect.png</normalon>
+                </iconset>
                </property>
                <property name="autoDefault">
                 <bool>true</bool>
@@ -202,6 +220,11 @@
        </layout>
       </widget>
       <widget class="QWidget" name="tab2">
+       <attribute name="icon">
+        <iconset>
+         <normalon>images/db.png</normalon>
+        </iconset>
+       </attribute>
        <attribute name="title">
         <string>Datenbank</string>
        </attribute>
@@ -274,6 +297,11 @@
                <property name="text">
                 <string>Bearbeiten</string>
                </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/edit-4.png</normalon>
+                </iconset>
+               </property>
                <property name="autoDefault">
                 <bool>true</bool>
                </property>
@@ -289,6 +317,11 @@
                </property>
                <property name="text">
                 <string>Speichern</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/speichern.png</normalon>
+                </iconset>
                </property>
                <property name="autoDefault">
                 <bool>true</bool>
@@ -363,6 +396,11 @@
                <property name="text">
                 <string>Datensatz hinzufuegen</string>
                </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/datasetAdd24.png</normalon>
+                </iconset>
+               </property>
                <property name="autoDefault">
                 <bool>true</bool>
                </property>
@@ -379,6 +417,11 @@
                <property name="text">
                 <string>Datensatz loeschen</string>
                </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/datasetRemove.png</normalon>
+                </iconset>
+               </property>
                <property name="autoDefault">
                 <bool>true</bool>
                </property>
@@ -392,6 +435,11 @@
        </layout>
       </widget>
       <widget class="QWidget" name="tab3">
+       <attribute name="icon">
+        <iconset>
+         <normalon>images/settings.png</normalon>
+        </iconset>
+       </attribute>
        <attribute name="title">
         <string>Einstellungen</string>
        </attribute>
@@ -519,6 +567,11 @@
                <property name="text">
                 <string>Verbinden</string>
                </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/connect.png</normalon>
+                </iconset>
+               </property>
                <property name="autoDefault">
                 <bool>true</bool>
                </property>
@@ -531,6 +584,11 @@
                </property>
                <property name="text">
                 <string>Trennen</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/disconnect.png</normalon>
+                </iconset>
                </property>
               </widget>
              </item>
@@ -910,6 +968,11 @@
                <property name="text">
                 <string>Senden</string>
                </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/senden24.png</normalon>
+                </iconset>
+               </property>
                <property name="autoDefault">
                 <bool>true</bool>
                </property>
@@ -925,6 +988,11 @@
                </property>
                <property name="text">
                 <string>Neu laden</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normalon>images/neuladen16.png</normalon>
+                </iconset>
                </property>
                <property name="autoDefault">
                 <bool>true</bool>
@@ -990,6 +1058,11 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionExit">
+   <property name="icon">
+    <iconset>
+     <normalon>images/exit.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Beenden</string>
    </property>
@@ -1014,6 +1087,11 @@
    </property>
   </action>
   <action name="actionInfo">
+   <property name="icon">
+    <iconset>
+     <normalon>images/beaver.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Info</string>
    </property>

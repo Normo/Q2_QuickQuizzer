@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon Dec 3 18:50:41 2012
+** Created: Wed Dec 5 23:04:30 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -176,12 +176,18 @@ public:
         MainWindow->resize(780, 721);
         actionExit = new QAction(MainWindow);
         actionExit->setObjectName(QString::fromUtf8("actionExit"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("images/exit.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionExit->setIcon(icon);
         actionDeutsch = new QAction(MainWindow);
         actionDeutsch->setObjectName(QString::fromUtf8("actionDeutsch"));
         actionEnglisch = new QAction(MainWindow);
         actionEnglisch->setObjectName(QString::fromUtf8("actionEnglisch"));
         actionInfo = new QAction(MainWindow);
         actionInfo->setObjectName(QString::fromUtf8("actionInfo"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8("images/beaver.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionInfo->setIcon(icon1);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_2 = new QVBoxLayout(centralWidget);
@@ -196,6 +202,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
         tabWidget->setSizePolicy(sizePolicy);
+        tabWidget->setFocusPolicy(Qt::NoFocus);
         tab1 = new QWidget();
         tab1->setObjectName(QString::fromUtf8("tab1"));
         verticalLayout_5 = new QVBoxLayout(tab1);
@@ -283,6 +290,9 @@ public:
 
         btn_dbConnect = new QPushButton(gb_dbConnect);
         btn_dbConnect->setObjectName(QString::fromUtf8("btn_dbConnect"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8("images/connect.png"), QSize(), QIcon::Normal, QIcon::On);
+        btn_dbConnect->setIcon(icon2);
         btn_dbConnect->setAutoDefault(true);
 
         hbl_dbConnect2->addWidget(btn_dbConnect);
@@ -290,6 +300,9 @@ public:
         btn_dbDisconnect = new QPushButton(gb_dbConnect);
         btn_dbDisconnect->setObjectName(QString::fromUtf8("btn_dbDisconnect"));
         btn_dbDisconnect->setEnabled(false);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8("images/disconnect.png"), QSize(), QIcon::Normal, QIcon::On);
+        btn_dbDisconnect->setIcon(icon3);
         btn_dbDisconnect->setAutoDefault(true);
 
         hbl_dbConnect2->addWidget(btn_dbDisconnect);
@@ -326,7 +339,9 @@ public:
 
         verticalLayout_5->addWidget(gb_dbConnectionInfo);
 
-        tabWidget->addTab(tab1, QString());
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8("images/stecker.png"), QSize(), QIcon::Normal, QIcon::On);
+        tabWidget->addTab(tab1, icon4, QString());
         tab2 = new QWidget();
         tab2->setObjectName(QString::fromUtf8("tab2"));
         verticalLayout = new QVBoxLayout(tab2);
@@ -373,6 +388,9 @@ public:
         btn_edit = new QPushButton(gb_selectTable);
         btn_edit->setObjectName(QString::fromUtf8("btn_edit"));
         btn_edit->setEnabled(false);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8("images/edit-4.png"), QSize(), QIcon::Normal, QIcon::On);
+        btn_edit->setIcon(icon5);
         btn_edit->setAutoDefault(true);
 
         hbl_selectTable->addWidget(btn_edit);
@@ -380,6 +398,9 @@ public:
         btn_save = new QPushButton(gb_selectTable);
         btn_save->setObjectName(QString::fromUtf8("btn_save"));
         btn_save->setEnabled(false);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8("images/speichern.png"), QSize(), QIcon::Normal, QIcon::On);
+        btn_save->setIcon(icon6);
         btn_save->setAutoDefault(true);
 
         hbl_selectTable->addWidget(btn_save);
@@ -432,6 +453,9 @@ public:
         btn_add = new QPushButton(gb_editTable);
         btn_add->setObjectName(QString::fromUtf8("btn_add"));
         btn_add->setEnabled(false);
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8("images/datasetAdd24.png"), QSize(), QIcon::Normal, QIcon::On);
+        btn_add->setIcon(icon7);
         btn_add->setAutoDefault(true);
 
         hbl_editTable->addWidget(btn_add);
@@ -439,6 +463,9 @@ public:
         btn_delete = new QPushButton(gb_editTable);
         btn_delete->setObjectName(QString::fromUtf8("btn_delete"));
         btn_delete->setEnabled(false);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8("images/datasetRemove.png"), QSize(), QIcon::Normal, QIcon::On);
+        btn_delete->setIcon(icon8);
         btn_delete->setAutoDefault(true);
 
         hbl_editTable->addWidget(btn_delete);
@@ -449,7 +476,9 @@ public:
 
         verticalLayout->addWidget(gb_editTable);
 
-        tabWidget->addTab(tab2, QString());
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8("images/db.png"), QSize(), QIcon::Normal, QIcon::On);
+        tabWidget->addTab(tab2, icon9, QString());
         tab3 = new QWidget();
         tab3->setObjectName(QString::fromUtf8("tab3"));
         verticalLayout_8 = new QVBoxLayout(tab3);
@@ -545,6 +574,7 @@ public:
 
         btn_loadSettings = new QPushButton(gb_ftpConnection);
         btn_loadSettings->setObjectName(QString::fromUtf8("btn_loadSettings"));
+        btn_loadSettings->setIcon(icon2);
         btn_loadSettings->setAutoDefault(true);
 
         hbl_ftpButtons->addWidget(btn_loadSettings);
@@ -552,6 +582,7 @@ public:
         btn_ftpDisconnect = new QPushButton(gb_ftpConnection);
         btn_ftpDisconnect->setObjectName(QString::fromUtf8("btn_ftpDisconnect"));
         btn_ftpDisconnect->setEnabled(false);
+        btn_ftpDisconnect->setIcon(icon3);
 
         hbl_ftpButtons->addWidget(btn_ftpDisconnect);
 
@@ -839,6 +870,9 @@ public:
         btn_sendSettings = new QPushButton(gb_settings);
         btn_sendSettings->setObjectName(QString::fromUtf8("btn_sendSettings"));
         btn_sendSettings->setEnabled(false);
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8("images/senden24.png"), QSize(), QIcon::Normal, QIcon::On);
+        btn_sendSettings->setIcon(icon10);
         btn_sendSettings->setAutoDefault(true);
 
         hbl_settingButtons->addWidget(btn_sendSettings);
@@ -846,6 +880,9 @@ public:
         btn_discardChanges = new QPushButton(gb_settings);
         btn_discardChanges->setObjectName(QString::fromUtf8("btn_discardChanges"));
         btn_discardChanges->setEnabled(false);
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8("images/neuladen16.png"), QSize(), QIcon::Normal, QIcon::On);
+        btn_discardChanges->setIcon(icon11);
         btn_discardChanges->setAutoDefault(true);
 
         hbl_settingButtons->addWidget(btn_discardChanges);
@@ -856,7 +893,9 @@ public:
 
         verticalLayout_8->addWidget(gb_settings);
 
-        tabWidget->addTab(tab3, QString());
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8("images/settings.png"), QSize(), QIcon::Normal, QIcon::On);
+        tabWidget->addTab(tab3, icon12, QString());
 
         verticalLayout_2->addWidget(tabWidget);
 
@@ -946,13 +985,13 @@ public:
         actionInfo->setShortcut(QApplication::translate("MainWindow", "Ctrl+I", 0, QApplication::UnicodeUTF8));
         gb_dbConnect->setTitle(QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
         lbl_dbHost->setText(QApplication::translate("MainWindow", "DB-Host:", 0, QApplication::UnicodeUTF8));
-        txt_dbHost->setText(QString());
+        txt_dbHost->setText(QApplication::translate("MainWindow", "dbserv.ba-leipzig.de", 0, QApplication::UnicodeUTF8));
         lbl_dbName->setText(QApplication::translate("MainWindow", "Datenbank:", 0, QApplication::UnicodeUTF8));
-        txt_dbName->setText(QString());
+        txt_dbName->setText(QApplication::translate("MainWindow", "test", 0, QApplication::UnicodeUTF8));
         lbl_dbUser->setText(QApplication::translate("MainWindow", "Benutzer:", 0, QApplication::UnicodeUTF8));
-        txt_dbUser->setText(QString());
+        txt_dbUser->setText(QApplication::translate("MainWindow", "it10nb1", 0, QApplication::UnicodeUTF8));
         lbl_dbUserPasswd->setText(QApplication::translate("MainWindow", "Passwort:", 0, QApplication::UnicodeUTF8));
-        txt_dbPasswd->setText(QString());
+        txt_dbPasswd->setText(QApplication::translate("MainWindow", "jlilizat", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         btn_dbConnect->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
