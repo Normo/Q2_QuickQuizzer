@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$class_main_window.html#a0d2b6ec2eed31d51430061bbf3042a37" title="Lädt die Schlüssel&#45;Wertpaare aus der INI&#45;Datei." alt="" coords="247,33,409,63"/>
-<area shape="rect" id="node5" href="$class_main_window.html#a97f438c82d6ad82a83302be48de7a1c5" title="Wird ausgeführt, sobald ein FTP&#45;Kommando ausgeführt wurde." alt="" coords="459,7,688,36"/>
-<area shape="rect" id="node13" href="$class_main_window.html#a54bdce9292447fc6e3ce8e4bab9d3e49" title="Lädt die Einstellungen aus der INI&#45;Datei erneut in das Formular." alt="" coords="737,59,1007,88"/>
-<area shape="rect" id="node7" href="$class_main_window.html#afd468e760f0738d327c473e74ac189f2" title="Baut Verbindung zum FTP&#45;Server auf und lädt die INI&#45;Datei herunter." alt="" coords="780,5,964,35"/>
-<area shape="rect" id="node9" href="$class_main_window.html#a1249f552b8200e43c803fccb247ed704" title="Button&#45;Methode zum Herunterladen der INI&#45;Datei per FTP." alt="" coords="1057,7,1305,36"/>
-<area shape="rect" id="node11" href="$class_main_window.html#a8b244be8b7b7db1b08de2a2acb9409db" title="MainWindow::MainWindow" alt="" coords="1356,33,1535,63"/>
-</map>

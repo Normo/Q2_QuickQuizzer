@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$class_main_window.html#afd468e760f0738d327c473e74ac189f2" title="Baut Verbindung zum FTP&#45;Server auf und lädt die INI&#45;Datei herunter." alt="" coords="305,85,489,115"/>
-<area shape="rect" id="node5" href="$class_main_window.html#a97f438c82d6ad82a83302be48de7a1c5" title="Wird ausgeführt, sobald ein FTP&#45;Kommando ausgeführt wurde." alt="" coords="560,32,789,61"/>
-<area shape="rect" id="node13" href="$class_main_window.html#ad283ce4bfa32259392fe9a5574cafc75" title="Aktualisiert Fortschrittsanzeige der progressBar bei Down&#45;/Upload." alt="" coords="539,85,811,115"/>
-<area shape="rect" id="node15" href="$class_main_window.html#ae3d7fe0907fe6f83b0c8e11a0496ce0b" title="Ruft einen Info&#45;Dialog auf." alt="" coords="585,139,764,168"/>
-<area shape="rect" id="node7" href="$class_main_window.html#a0d2b6ec2eed31d51430061bbf3042a37" title="Lädt die Schlüssel&#45;Wertpaare aus der INI&#45;Datei." alt="" coords="860,32,1023,61"/>
-<area shape="rect" id="node9" href="$class_file_handler.html#a62ec4bf28c98159610bae3e19f00e55c" title="Gibt die HashTable mit den Schlüssel/String&#45;Wertpaaren zurück." alt="" coords="1072,5,1283,35"/>
-<area shape="rect" id="node11" href="$class_file_handler.html#a0fd7cb1a72eca8e25ea720b12d58b7b6" title="Gibt die HashTable mit den Schlüssel/Zahlen&#45;Wertpaaren zurück." alt="" coords="1081,59,1273,88"/>
-</map>

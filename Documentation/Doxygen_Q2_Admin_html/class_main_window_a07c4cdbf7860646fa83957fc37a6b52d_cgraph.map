@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$class_d_b_handler.html#a00d1684231b0ba8b441c46e1fd0e4644" title="Baut Verbindung zur MySQL&#45;Datenbank auf." alt="" coords="313,5,471,35"/>
-<area shape="rect" id="node5" href="$class_main_window.html#ab68f126452dc87d1393509891b9c3be1" title="Befüllt die ComboBox mit den Name der Tabellen in der Datenbank." alt="" coords="293,59,491,88"/>
-<area shape="rect" id="node9" href="$class_main_window.html#ae3d7fe0907fe6f83b0c8e11a0496ce0b" title="Ruft einen Info&#45;Dialog auf." alt="" coords="303,112,481,141"/>
-<area shape="rect" id="node11" href="$class_d_b_handler.html#af6c804b9da174d6b07d1a4d311dfa616" title="Gibt Fehler des QSqlDatabase Objekts zurück." alt="" coords="323,165,461,195"/>
-<area shape="rect" id="node7" href="$class_d_b_handler.html#a3e739e2099644372016ea96e378aa83a" title="Gibt alle Tabellennamen der Datenbank zurück (SQL&#45;Abfrage &quot;SHOW TABLES&quot;)." alt="" coords="539,59,707,88"/>
-</map>
