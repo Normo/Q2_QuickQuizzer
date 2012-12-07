@@ -3,7 +3,6 @@
  *Source : dbhandler.cpp
  *Purpose: Implementation of DBHandler class.
  *         Beinhaltet die Datenbankfunktionen & -abfragen.
- *
  */
 
 #include "dbhandler.h"
@@ -14,11 +13,18 @@ DBHandler::DBHandler()
     this->db = QSqlDatabase::database();
 }
 
-// Verbindung zu Datenbank aufnehmen
-int DBHandler::dbConnect(QString &host, QString &dbName, QString &dbUser, QString &dbPasswd){
+/**
+ * @brief Baut Verbindung zur MySQL-Datenbank auf.
+ * @param dbhost - URL des Datenbankservers
+ * @param dbName - Name der Datenbank
+ * @param dbUser - Name des Datenbankbenutzers
+ * @param dbPasswd - Passwort des Datenbankbenutzers
+ * @return returnCode - 0=Keine Fehler, 1=Fehler
+ */
+int DBHandler::dbConnect(QString &dbHost, QString &dbName, QString &dbUser, QString &dbPasswd){
 
     this->db = QSqlDatabase::addDatabase("QMYSQL");
-    this->db.setHostName(host);
+    this->db.setHostName(dbHost);
     this->db.setDatabaseName(dbName);
     this->db.setUserName(dbUser);
     this->db.setPassword(dbPasswd);
@@ -31,10 +37,49 @@ int DBHandler::dbConnect(QString &host, QString &dbName, QString &dbUser, QStrin
     return 0;
 }
 
+/**
+ * @brief Schließt die Datenbankverbindung
+ *
+ *Schließt die Datenbankverbindung, gibt alle bisher benötigten Ressourcen frei und
+ *entfernt die Verbindung aus der Liste der Datenbankverbindungen.
+ */
+void DBHandler::dbClose(){
+
+    QString connectionName;
+    connectionName = this->db.connectionName();
+    this->db.close();
+    this->db = QSqlDatabase();
+
+    QSqlDatabase::removeDatabase(connectionName);
+}
+
+/**
+ * @brief Gibt Fehler des QSqlDatabase Objekts zurück.
+ * @return error - Fehler als Zeichenkette
+ */
 QString DBHandler::getError(){
     return db.lastError().text();
 }
 
+/**
+ * @brief Gibt alle Tabellennamen der Datenbank zurück (SQL-Abfrage "SHOW TABLES").
+ * @param dbName - Name der Datenbank
+ * @return tables - Liste mit allen Tabellen der Datenbank als Zeichenketten
+
+ */
+QStringList DBHandler::dbGetTables(QString *dbName){
+    this->query = QSqlQuery("SHOW TABLES;");
+    this->record = this->query.record();
+    QStringList tables;
+    //int count = 0;
+    while (this->query.next()){
+    tables.append(this->query.value(this->record.indexOf("Tables_in_"+*dbName)).toString());
+
+    }
+    return tables;
+}
+
+/*
 // Zeige Tabellen der Datenbank
 void DBHandler::dbShowTablesQuery(QString *dbName){
     this->query = QSqlQuery("SHOW TABLES;");
@@ -47,19 +92,6 @@ void DBHandler::dbShowTablesQuery(QString *dbName){
         tables[count] = table;
         count++;
     }
-}
-
-// Hole Tabellen aus Datenbank
-QStringList DBHandler::dbGetTables(QString *dbName){
-    this->query = QSqlQuery("SHOW TABLES;");
-    this->record = this->query.record();
-    QStringList tables;
-    //int count = 0;
-    while (this->query.next()){
-    tables.append(this->query.value(this->record.indexOf("Tables_in_"+*dbName)).toString());
-
-    }
-    return tables;
 }
 
 // Hole Fragenkategorien aus Datenbank
@@ -87,15 +119,4 @@ QStringList DBHandler::dbGetDifficulties(){
     }
     return difficulties;
 }
-
-// Schließe Datenbankverbindung
-void DBHandler::dbClose(){
-
-    QString connectionName;
-    connectionName = this->db.connectionName();
-    this->db.close();
-    this->db = QSqlDatabase();
-
-    QSqlDatabase::removeDatabase(connectionName);
-    qDebug() << "Datenbankverbindung getrennt.";
-}
+*/

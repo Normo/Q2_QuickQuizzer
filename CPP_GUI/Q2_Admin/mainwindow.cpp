@@ -70,7 +70,9 @@ void MainWindow::changeEvent(QEvent *e)
     }
 }
 
-// Befuelle ComboBox mit den Fragekategorien
+/**
+ * @brief Befüllt die ComboBox mit den Name der Tabellen in der Datenbank.
+ */
 void MainWindow::fillComboBoxes(){
 
     //Befuelle ComboBox mit Tabellen
@@ -79,7 +81,11 @@ void MainWindow::fillComboBoxes(){
     ui->cmb_tabellen->addItems(table);
 }
 
-//Methode InfoBox anzeigen
+/**
+ * @brief Ruft einen Info-Dialog auf.
+ * @param msg - Zeichenkette mit der Hauptnachricht
+ * @param detmsg - Zeichenkette mit weiteren Details
+ */
 void MainWindow::showInfobox(QString msg, QString detmsg){
 
     msgBox = new QMessageBox();
@@ -93,7 +99,12 @@ void MainWindow::showInfobox(QString msg, QString detmsg){
 
 }
 
-// Lade Schluessel-Wertpaare aus INI-File
+/**
+ * @brief Lädt die Schlüssel-Wertpaare aus der INI-Datei
+ *
+ *Hier wird das FileHandler-Objekt initialisiert. Dem Konstruktor wird hierbei die über FTP heruntergeladene INI-Datei als Parameter übergeben.
+ *Über das FileHandler-Objekt wird die Datei ausgelesen und die Werte in die zugehörigen Formularfelder eingetragen.
+ */
 void MainWindow::loadIniFile(){
 
     // initialisiere FileHandler-Objekt mit der heruntergeladenen INI-File
@@ -167,7 +178,11 @@ Formular generieren Ende*/
     this->ui->btn_discardChanges->setEnabled(true);
 }
 
-// Schreibe Schluessel-Wertpaare in INI-File
+/**
+ * @brief Schreibt Änderungen der Spiel-Einstellungen in die lokale INI-Datei.
+ *
+ * Die Werte werden aus dem Formular ausgelesen und in Hashtables gespeichert, die anschließende der writeFile-Methode des FileHandler-Objekts als Parameter übergeben werden.
+ */
 void MainWindow::writeToIniFile(){
 
     // Strings aus Formular auslesen und in HashTable speichern
@@ -206,7 +221,16 @@ void MainWindow::writeToIniFile(){
     }
 }
 
-// INI-File ueber Ftp downloaden
+/**
+ * @brief Baut Verbindung zum FTP-Server auf und lädt die INI-Datei herunter.
+ * @param url - Server-URL mit Pfad zur INI-Datei
+ * @param ftpPort - TCP-Port (default 21)
+ * @param ftpUser - FTP-Benutzername
+ * @param ftpPasswd - Passwort des FTP-Benutzers
+ * @return  bool - true=Erfolg, false=Fehler
+ *
+ * Schließt zunächst bereits geöffnete FTP-verbindung. Erstellt neues QFtp-Objekt, überprüft die angegebene Server-URL, legt eine leere Datei im /tmp-Verzeichnis an, in der die heruntergeladene INI-Datei gespeichert wird.
+ */
 bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QString &ftpUser, const QString ftpPasswd){
 
     // Schliesse die FTP-Verbindung und loesche das Objekt auf das ftp zeigt.
@@ -255,7 +279,9 @@ bool MainWindow::connectToFtp(const QUrl &url, const quint16 &ftpPort, const QSt
     return true;
 }
 
-// SLOT: Button-Methode "Verbinden"
+/**
+ * @brief Initialisiert Verbindung zur MySQL-Datenbank.
+ */
 void MainWindow::btn_dbConnectOnClick(){
 
     // lese Eingabe felder aus
@@ -299,7 +325,9 @@ void MainWindow::btn_dbConnectOnClick(){
     }
 }
 
-// SLOT: Button-Methode "Trennen"
+/**
+ * @brief Trennt die Datenbankverbindung.
+ */
 void MainWindow::btn_dbDisconnectOnClick(){
 
     //Aktive Datenbankverbindungen schliessen
@@ -324,17 +352,9 @@ void MainWindow::btn_dbDisconnectOnClick(){
     this->mStatLabel->setText(tr("Datenbankverbindung getrennt <img src=':images/db-disconnect.png'>"));
 }
 
-// SLOT:Button-Methode Datensatz loeschen
-void MainWindow::btn_deleteOnClick(){
-    //Datensatz loeschen der gerade selektiert ist
-    if(tableModel->removeRows((ui->tblView_tabellen->currentIndex().row()),1)){
-        nStatlabel->setText(trUtf8("Datensatz gelöscht."));
-    } else {
-        nStatlabel->setText(trUtf8("Datensatz konnte nicht gelöscht werden."));
-    }
-}
-
-// SLOT: ComboBox Auswahl/Index aendert sich
+/**
+ * @brief Lädt Tabelle in die tableView.
+ */
 void MainWindow::cmb_tabellenIndexChanged(){
 
     this->tableModel = new QSqlRelationalTableModel(0,dbHandler.db);  //tableModel instanziert
@@ -359,7 +379,21 @@ void MainWindow::cmb_tabellenIndexChanged(){
     ui->tblView_tabellen->show();//View anzeigen
 }
 
-// SLOT: Button-Methode Datensatz speichern
+/**
+ * @brief Löscht den in der Tabelle selektierten Datensatz.
+ */
+void MainWindow::btn_deleteOnClick(){
+    //Datensatz loeschen der gerade selektiert ist
+    if(tableModel->removeRows((ui->tblView_tabellen->currentIndex().row()),1)){
+        nStatlabel->setText(trUtf8("Datensatz gelöscht."));
+    } else {
+        nStatlabel->setText(trUtf8("Datensatz konnte nicht gelöscht werden."));
+    }
+}
+
+/**
+ * @brief Speichert Änderungen der Tabelle bzw. sendet sie an die Datenbank.
+ */
 void MainWindow::btn_saveOnClick(){
 
     this->nStatlabel->setText(trUtf8("Änderungen wurden gespeichert."));
@@ -367,7 +401,9 @@ void MainWindow::btn_saveOnClick(){
      ui->tblView_tabellen->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
-// SLOT: Button-Methode Datensatz hinzufuegen
+/**
+ * @brief Fügt der Tabelle einen neuen Datensatz hinzu.
+ */
 void MainWindow::btn_addOnClick(){
     this->record = tableModel->record();
     record.setValue(0,(QVariant) this->uuid->createUuid());
@@ -377,28 +413,38 @@ void MainWindow::btn_addOnClick(){
 
 }
 
-// SLOT: Button-Methode Tabelle editieren
+/**
+ * @brief Schaltet die Tabelle zur Bearbeitung frei.
+ */
 void MainWindow::btn_editOnClick(){
 
     this->nStatlabel->setText(tr("Tabelle editierbar <img src=':images/datasetUnlocked.png'>"));
+    progressBar->hide();
     ui->tblView_tabellen->setEditTriggers(QAbstractItemView::DoubleClicked);
     ui->btn_add->setEnabled(true);
     ui->btn_delete->setEnabled(true);
     ui->btn_save->setEnabled(true);
 }
 
-// SLOT: Button-Methode INI-File laden
+/**
+ * @brief Button-Methode zum Herunterladen der INI-Datei per FTP
+ */
 void MainWindow::btn_loadSettingsOnClick(){
     ftpUrl = this->ui->txt_ftpUrl->text();
     connectToFtp(QUrl(this->ui->txt_ftpUrl->text()), (quint16) this->ui->spinBox_ftpPort->value(), this->ui->txt_ftpUser->text(), this->ui->txt_ftpPasswd->text());
 }
 
-//SLOT: Button-Methode FTP-Verbindung trennen
+/**
+ * @brief Trennt die Verbindung zum FTP-Server.
+ */
 void MainWindow::btn_ftpDisconnectOnClick(){
     ftp->close();
 }
 
-// SLOT: Wird ausgefuehrt, wenn ein FTP-Kommando abgeschlossen wurde
+/**
+ * @brief Wird ausgeführt, sobald ein FTP-Kommando ausgeführt wurde.
+ * @param error
+ */
 void MainWindow::ftpCommandFinished(int, bool error){
 
     if (ftp->currentCommand() == QFtp::ConnectToHost) {
@@ -414,6 +460,7 @@ void MainWindow::ftpCommandFinished(int, bool error){
         this->ui->btn_ftpDisconnect->setEnabled(true);
         return;
     }
+
     if (ftp->currentCommand() == QFtp::Get) {
         if (error) {
             nStatlabel->setText(tr("Download von %1. abgebrochen").arg("config.ini"));
@@ -422,20 +469,21 @@ void MainWindow::ftpCommandFinished(int, bool error){
         } else {
             nStatlabel->setText(tr("%1 heruntergeladen.").arg("config.ini"));
             file->close();
-            loadIniFile();
+            loadIniFile(); //lade den Inhalt der Datei in das Formular
         }
-        //delete file;
-
     }
+
     if (ftp->currentCommand() == QFtp::Put) {
         if (error) {
             QMessageBox::information(this, tr("Q2 Admin"),
                                            tr("Datei %1 konnte nicht zum Server %2 gesendet werden").arg(this->file->fileName()).arg(ftpUrl.host()));
             nStatlabel->setText(tr("Datei konnte nicht gesendet werden."));
+            progressBar->hide();
         } else {
             nStatlabel->setText(tr("%1 gesendet.").arg("newconfig.ini"));
         }
     }
+
     if (ftp->currentCommand() == QFtp::Close) {
         if(error) {
             nStatlabel->setText(tr("Verbindung konnte nicht getrennt werden."));
@@ -452,14 +500,20 @@ void MainWindow::ftpCommandFinished(int, bool error){
     }
 }
 
-//SLOT: Aktualisiere Fortschrittsanzeige der ProgressBar
+/**
+ * @brief Aktualisiert Fortschrittsanzeige der progressBar bei Down-/Upload.
+ * @param readBytes - bereits gelesene/übertragene Bytes
+ * @param totalBytes - Gesamtgröße
+ */
 void MainWindow::updateDataTransferProgress(qint64 readBytes, qint64 totalBytes){
     progressBar->show();
     progressBar->setMaximum(totalBytes);
     progressBar->setValue(readBytes);
 }
 
-// SLOT: Button-Methode Einstellungen senden
+/**
+ * @brief Sendet Einstellungen zum FTP-Server
+ */
 void MainWindow::btn_sendSettingsOnClick(){
 
     writeToIniFile();
@@ -468,19 +522,25 @@ void MainWindow::btn_sendSettingsOnClick(){
 
 }
 
-// SLOT: Button-Methode Einstellungen neuladen
+/**
+ * @brief Lädt die Einstellungen aus der INI-Datei erneut in das Formular.
+ */
 void MainWindow::btn_discardChangesOnClick(){
     loadIniFile();
     progressBar->hide();
     nStatlabel->setText(tr("%1 neu geladen.").arg("config.ini"));
 }
 
-//SLOT: Methode fuer Menue-Eintrag "Exit"
+/**
+ * @brief Beendet das Programm.
+ */
 void MainWindow::actionExitOnClick(){
     this->close();
 }
 
-//SLOT: Methode fuer Menu-Eintrag "Info"
+/**
+ * @brief Ruft den Info-/About-Dialog auf.
+ */
 void MainWindow::actionInfoOnClick(){
     msg_about = new QMessageBox();
     msg_about->setWindowTitle(trUtf8("Über Q2 Admin"));
@@ -490,13 +550,17 @@ void MainWindow::actionInfoOnClick(){
     msg_about->exec();
 }
 
-//SLOT: Methode fuer Menu-Eintrag "Deutsch"
+/**
+ * @brief Lädt die deutsche Sprachdatei.
+ */
 void MainWindow::actionDeutschOnClick(){
     //lade deutsche Sprachdatei
     qTranslator->load("Q2_Admin_de.qm");
 }
 
-//SLOT: Methode fuer Menu-Eintrag "Englisch"
+/**
+ * @brief Lädt die englische Sprachdatei
+ */
 void MainWindow::actionEnglischOnClick(){
     //lade englische Sprachdatei
     qTranslator->load("Q2_Admin_en.qm");

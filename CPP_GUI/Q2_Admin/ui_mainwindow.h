@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed Dec 5 23:04:30 2012
+** Created: Thu Dec 6 23:03:41 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -1026,12 +1026,12 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("MainWindow", "Datenbank", 0, QApplication::UnicodeUTF8));
         gb_ftpConnection->setTitle(QApplication::translate("MainWindow", "FTP-Zugang", 0, QApplication::UnicodeUTF8));
         lbl_ftpUrl->setText(QApplication::translate("MainWindow", "FTP-Adresse:", 0, QApplication::UnicodeUTF8));
-        txt_ftpUrl->setText(QApplication::translate("MainWindow", "ftp://178.25.75.91/config.ini", 0, QApplication::UnicodeUTF8));
+        txt_ftpUrl->setText(QApplication::translate("MainWindow", "ftp://178.24.240.158/config.ini", 0, QApplication::UnicodeUTF8));
         lbl_ftpPort->setText(QApplication::translate("MainWindow", "Port:", 0, QApplication::UnicodeUTF8));
         lbl_ftpUser->setText(QApplication::translate("MainWindow", "Benutzername:", 0, QApplication::UnicodeUTF8));
         txt_ftpUser->setText(QApplication::translate("MainWindow", "ftpuser", 0, QApplication::UnicodeUTF8));
         lbl_ftpPasswd->setText(QApplication::translate("MainWindow", "Passwort:", 0, QApplication::UnicodeUTF8));
-        txt_ftpPasswd->setText(QApplication::translate("MainWindow", "login", 0, QApplication::UnicodeUTF8));
+        txt_ftpPasswd->setText(QApplication::translate("MainWindow", "QuickQuizzer2012", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         btn_loadSettings->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Einstellungsdatei per FTP herunterladen.</p></body></html>", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP

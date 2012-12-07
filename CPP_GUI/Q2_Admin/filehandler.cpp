@@ -40,18 +40,36 @@ FileHandler::FileHandler(QFile *file)
 
 }
 
+/**
+ * @brief Gibt die HashTable mit den Schlüssel/String-Wertpaaren zurück.
+ * @return stringKeyValues - QHash<QString, QString>
+ */
 QHash<QString, QString> FileHandler::getStringKeyValues(){
     return this->stringKeyValues;
 }
 
+/**
+ * @brief Gibt die HashTable mit den Schlüssel/Zahlen-Wertpaaren zurück.
+ * @return intKeyValues - QHash<QString, int>
+ */
 QHash<QString, int> FileHandler::getIntKeyValues(){
     return this->intKeyValues;
 }
 
+/**
+ * @brief Gibt eine Liste der Schlüssel als Zeichenketten zurück.
+ * @return keys - QStringList
+ */
 QStringList FileHandler::getKeys(){
     return this->keys;
 }
 
+/**
+ * @brief Schreibt Änderungen der Schlüssel-Wertpaare in die heruntergeladene Datei.
+ * @param newStringKeyValues - Beinhaltet Schlüssel/String-Wertpaare in einer QHash<QString, QString>
+ * @param newIntKeyValues - Beinhaltet Schlüssel/Zahlen-Wertpaare in einer QHash<QString, int>
+ * @return boolean - true=Erfolg, false=Fehler
+ */
 bool FileHandler::writeFile(QHash<QString, QString> newStringKeyValues, QHash<QString, int> newIntKeyValues){
 
     if (!this->myFile->isOpen()) {
@@ -97,6 +115,10 @@ bool FileHandler::writeFile(QHash<QString, QString> newStringKeyValues, QHash<QS
     return true;
 }
 
+/**
+ * @brief Gibt ein Zeiger auf die Datei zurück.
+ * @return QFile*
+ */
 QFile* FileHandler::getFile(){
     return this->myFile;
 }

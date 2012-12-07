@@ -481,7 +481,7 @@
                <item>
                 <widget class="QLineEdit" name="txt_ftpUrl">
                  <property name="text">
-                  <string>ftp://178.25.75.91/config.ini</string>
+                  <string>ftp://178.24.240.158/config.ini</string>
                  </property>
                 </widget>
                </item>
@@ -530,7 +530,7 @@
                <item>
                 <widget class="QLineEdit" name="txt_ftpPasswd">
                  <property name="text">
-                  <string>login</string>
+                  <string>QuickQuizzer2012</string>
                  </property>
                  <property name="echoMode">
                   <enum>QLineEdit::Password</enum>

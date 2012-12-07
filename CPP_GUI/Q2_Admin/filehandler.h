@@ -13,13 +13,15 @@
 #include <QFile>
 #include <QTextStream>
 
+/**
+ * @brief FileHandler Klasse: Beinhaltet Zugriffsfunktionen für die INI-Datei.
+ */
 class FileHandler
 {
 
 public:
     FileHandler();
     FileHandler(QFile *file);
-    void addKeyValue(QString key, QString value);
     bool writeFile(QHash<QString, QString> newStringKeyValues, QHash<QString, int> newIntKeyValues);
     QFile* getFile();
     QHash<QString, QString> getStringKeyValues();
@@ -30,7 +32,6 @@ private:
     QFile *myFile;
     QTextStream *out;
     QStringList keys;
-    //QStringList values;
     QHash<QString, QString> stringKeyValues;
     QHash<QString, int> intKeyValues;
 };

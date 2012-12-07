@@ -1,0 +1,10 @@
+/*!
+\mainpage
+
+\author Alexander Papenfuß
+\author Enrico Nohl
+\author Marcel Wesberg
+\author Norman Bestfleisch
+
+"Q2 Admin" ist das Administrationswerkzeug für das Multiplayer-Echtzeit-Browserquiz "QuickQuizzer". Es bietet die Möglichkeit der Bearbeitung der im Rahmen von QuickQuizzer verwendeten MySQL-Datenbank und der Konfiguration der serverseitigen INI-Datei, welche Einstellungen für das Quiz enthält. Das Tool wurde in der Progreammiersprache C++ verfasst und basiert auf der Klassenbibliothek Qt 4.8.
+*/

@@ -23,9 +23,9 @@ namespace Ui {
     class MainWindow;
 }
 
-class QLabel;
-//class FileHandler;
-
+/**
+ * @brief MainWindow Klasse: Implementierung der Fensterklasse.
+ */
 class MainWindow : public QMainWindow {
     Q_OBJECT
 public:
@@ -66,7 +66,6 @@ private:
     QLabel *nStatlabel; //Normale Statusbarmeldung (z.B. für FTP-Uebertragung)
     QLabel *mStatLabel; //Permanente Statusbarmeldung (für Datenbankverbindung)
     QProgressBar *progressBar; //ProgressBar für Statusbar (FTP-Download-Fortschrittsanzeige)
-    //QLabel *keyLabel[];
     QString DBHOST;
     QString DBNAME;
     QString DBUSER;
