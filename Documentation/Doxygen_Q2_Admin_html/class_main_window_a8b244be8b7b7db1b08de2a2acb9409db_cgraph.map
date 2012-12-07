@@ -1,0 +1,34 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$class_ui___main_window.html#acf4a0872c4c77d8f43a2ec66ed849b58" title="Ui_MainWindow::setupUi" alt="" coords="283,32,453,61"/>
+<area shape="rect" id="node7" href="$class_main_window.html#a07c4cdbf7860646fa83957fc37a6b52d" title="Initialisiert Verbindung zur MySQL&#45;Datenbank." alt="" coords="248,112,488,141"/>
+<area shape="rect" id="node19" href="$class_main_window.html#a5109786a0bfc3ba82ab482f3c9d2f8bd" title="Trennt die Datenbankverbindung." alt="" coords="240,165,496,195"/>
+<area shape="rect" id="node23" href="$class_main_window.html#a48e9239c9741b908aea76885925f55ac" title="Löscht den in der Tabelle selektierten Datensatz." alt="" coords="263,219,473,248"/>
+<area shape="rect" id="node25" href="$class_main_window.html#a6a9a3f16b9d649952793725e4649be0b" title="Lädt Tabelle in die tableView." alt="" coords="235,272,501,301"/>
+<area shape="rect" id="node27" href="$class_main_window.html#a7a098fae9d949897cd1d2371b52127a0" title="Speichert Änderungen der Tabelle bzw. sendet sie an die Datenbank." alt="" coords="265,325,471,355"/>
+<area shape="rect" id="node29" href="$class_main_window.html#af12b27dad9382a7ca3dbe29b73d4d3c7" title="Fügt der Tabelle einen neuen Datensatz hinzu." alt="" coords="269,379,467,408"/>
+<area shape="rect" id="node31" href="$class_main_window.html#a4720d5b6a6c5150de60bdeb4fa49681a" title="Schaltet die Tabelle zur Bearbeitung frei." alt="" coords="269,432,467,461"/>
+<area shape="rect" id="node33" href="$class_main_window.html#a1249f552b8200e43c803fccb247ed704" title="Button&#45;Methode zum Herunterladen der INI&#45;Datei per FTP." alt="" coords="244,485,492,515"/>
+<area shape="rect" id="node48" href="$class_main_window.html#aa8caebfd82eac7f600320fb66e194684" title="Trennt die Verbindung zum FTP&#45;Server." alt="" coords="239,539,497,568"/>
+<area shape="rect" id="node50" href="$class_main_window.html#af222c2d8f06e9174d8e498a52054da44" title="Sendet Einstellungen zum FTP&#45;Server." alt="" coords="241,592,495,621"/>
+<area shape="rect" id="node58" href="$class_main_window.html#a54bdce9292447fc6e3ce8e4bab9d3e49" title="Lädt die Einstellungen aus der INI&#45;Datei erneut in das Formular." alt="" coords="799,631,1068,660"/>
+<area shape="rect" id="node61" href="$class_main_window.html#a79c21ad373bd9539f593947f5cbe9018" title="Beendet das Programm." alt="" coords="263,696,473,725"/>
+<area shape="rect" id="node63" href="$class_main_window.html#a4eff5cd64c18fb4a46f71916fc13a7c8" title="Ruft den Info&#45;/About&#45;Dialog auf." alt="" coords="264,749,472,779"/>
+<area shape="rect" id="node65" href="$class_main_window.html#a93fcfad228df43ca7baa26bfc4169e41" title="Lädt die deutsche Sprachdatei." alt="" coords="251,803,485,832"/>
+<area shape="rect" id="node67" href="$class_main_window.html#a5fc6f5227ac6a561f3b58b10ef9e72ef" title="Lädt die englische Sprachdatei." alt="" coords="249,856,487,885"/>
+<area shape="rect" id="node5" href="$class_ui___main_window.html#a097dd160c3534a204904cb374412c618" title="Ui_MainWindow::retranslateUi" alt="" coords="551,5,748,35"/>
+<area shape="rect" id="node9" href="$class_d_b_handler.html#a00d1684231b0ba8b441c46e1fd0e4644" title="Baut Verbindung zur MySQL&#45;Datenbank auf." alt="" coords="571,59,728,88"/>
+<area shape="rect" id="node11" href="$class_main_window.html#ab68f126452dc87d1393509891b9c3be1" title="Befüllt die ComboBox mit den Name der Tabellen in der Datenbank." alt="" coords="551,112,748,141"/>
+<area shape="rect" id="node15" href="$class_main_window.html#ae3d7fe0907fe6f83b0c8e11a0496ce0b" title="Ruft einen Info&#45;Dialog auf." alt="" coords="844,297,1023,327"/>
+<area shape="rect" id="node17" href="$class_d_b_handler.html#af6c804b9da174d6b07d1a4d311dfa616" title="Gibt Fehler des QSqlDatabase Objekts zurück." alt="" coords="580,216,719,245"/>
+<area shape="rect" id="node13" href="$class_d_b_handler.html#a3e739e2099644372016ea96e378aa83a" title="Gibt alle Tabellennamen der Datenbank zurück (SQL&#45;Abfrage &quot;SHOW TABLES&quot;)." alt="" coords="849,112,1017,141"/>
+<area shape="rect" id="node21" href="$class_d_b_handler.html#a98e87a27317ff12bdf842eb4526de121" title="Schließt die Datenbankverbindung." alt="" coords="579,269,720,299"/>
+<area shape="rect" id="node35" href="$class_main_window.html#afd468e760f0738d327c473e74ac189f2" title="Baut Verbindung zum FTP&#45;Server auf und lädt die INI&#45;Datei herunter." alt="" coords="557,465,741,495"/>
+<area shape="rect" id="node37" href="$class_main_window.html#a97f438c82d6ad82a83302be48de7a1c5" title="Wird ausgeführt, sobald ein FTP&#45;Kommando ausgeführt wurde." alt="" coords="819,445,1048,475"/>
+<area shape="rect" id="node45" href="$class_main_window.html#ad283ce4bfa32259392fe9a5574cafc75" title="Aktualisiert Fortschrittsanzeige der progressBar bei Down&#45;/Upload." alt="" coords="797,499,1069,528"/>
+<area shape="rect" id="node39" href="$class_main_window.html#a0d2b6ec2eed31d51430061bbf3042a37" title="Lädt die Schlüssel&#45;Wertpaare aus der INI&#45;Datei." alt="" coords="1119,539,1281,568"/>
+<area shape="rect" id="node41" href="$class_file_handler.html#a62ec4bf28c98159610bae3e19f00e55c" title="Gibt die HashTable mit den Schlüssel/String&#45;Wertpaaren zurück." alt="" coords="1331,512,1541,541"/>
+<area shape="rect" id="node43" href="$class_file_handler.html#a0fd7cb1a72eca8e25ea720b12d58b7b6" title="Gibt die HashTable mit den Schlüssel/Zahlen&#45;Wertpaaren zurück." alt="" coords="1340,565,1532,595"/>
+<area shape="rect" id="node52" href="$class_main_window.html#ac61bbd3241bf7e9a0f684d7d44eb6eb7" title="Schreibt Änderungen der Spiel&#45;Einstellungen in die lokale INI&#45;Datei." alt="" coords="559,539,740,568"/>
+<area shape="rect" id="node56" href="$class_file_handler.html#aa24ec318bfaec0a3ea72179aef45b5b8" title="Gibt ein Zeiger auf die Datei zurück." alt="" coords="583,592,716,621"/>
+<area shape="rect" id="node54" href="$class_file_handler.html#a55af4dac3034a6b569b976155cb98e06" title="Schreibt Änderungen der Schlüssel&#45;Wertpaare in die heruntergeladene Datei." alt="" coords="861,552,1005,581"/>
+</map>

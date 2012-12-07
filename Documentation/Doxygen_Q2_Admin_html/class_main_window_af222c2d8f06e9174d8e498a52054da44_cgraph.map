@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$class_main_window.html#ac61bbd3241bf7e9a0f684d7d44eb6eb7" title="Schreibt Änderungen der Spiel&#45;Einstellungen in die lokale INI&#45;Datei." alt="" coords="308,5,489,35"/>
+<area shape="rect" id="node7" href="$class_file_handler.html#aa24ec318bfaec0a3ea72179aef45b5b8" title="Gibt ein Zeiger auf die Datei zurück." alt="" coords="332,59,465,88"/>
+<area shape="rect" id="node5" href="$class_file_handler.html#a55af4dac3034a6b569b976155cb98e06" title="Schreibt Änderungen der Schlüssel&#45;Wertpaare in die heruntergeladene Datei." alt="" coords="540,5,684,35"/>
+</map>

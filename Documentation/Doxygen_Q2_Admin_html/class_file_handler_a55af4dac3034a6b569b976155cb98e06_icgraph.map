@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$class_main_window.html#ac61bbd3241bf7e9a0f684d7d44eb6eb7" title="Schreibt Änderungen der Spiel&#45;Einstellungen in die lokale INI&#45;Datei." alt="" coords="201,5,383,35"/>
+<area shape="rect" id="node5" href="$class_main_window.html#af222c2d8f06e9174d8e498a52054da44" title="Sendet Einstellungen zum FTP&#45;Server." alt="" coords="432,5,685,35"/>
+<area shape="rect" id="node7" href="$class_main_window.html#a8b244be8b7b7db1b08de2a2acb9409db" title="MainWindow::MainWindow" alt="" coords="735,5,913,35"/>
+</map>
